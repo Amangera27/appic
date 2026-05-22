@@ -45,6 +45,7 @@ const TESTIMONIALS = [
 
 interface TestimonialsProps {
   setCursorColor?: (color: string) => void;
+  setPageBg?: (color: string) => void;
 }
 
 // Geometry constants — must match Tailwind on the card outer wrapper
