@@ -12,11 +12,9 @@ const LOGOS = [
   { name: "Bridl", src: "/bridl-logo.svg" },
 ];
 
-interface EyeSectionProps {
-  isDarkMode: boolean;
-}
 
-export default function EyeSection({ isDarkMode }: EyeSectionProps) {
+
+export default function EyeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -296,11 +294,12 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className={`relative w-full h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 ${isDarkMode ? "bg-[#030303]" : "bg-white"}`}
-      style={{ contentVisibility: "auto" }}
-    >
+    <div className="relative w-full">
+      <section
+        ref={sectionRef}
+        className={`relative w-full h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 ${"bg-white"}`}
+        style={{ contentVisibility: "auto" }}
+      >
       {/* Premium Tech Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle grid pattern */}
@@ -314,7 +313,7 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
         {/* Red glowing radial gradient ambient light on white bg */}
         <div
           ref={glowRef}
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] rounded-full filter blur-[100px] pointer-events-none transition-opacity duration-700 ${isDarkMode ? "opacity-[0.16]" : "opacity-10"}`}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] rounded-full filter blur-[100px] pointer-events-none transition-opacity duration-700 ${"opacity-10"}`}
           style={{
             background: "radial-gradient(circle, #E40D28 0%, transparent 70%)",
             willChange: "transform, opacity",
@@ -322,10 +321,10 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
         />
         
         {/* Corner tech accents */}
-        <div className={`absolute top-10 left-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${isDarkMode ? "text-red-500/40" : "text-red-600/30"}`}>
+        <div className={`absolute top-10 left-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${"text-red-600/30"}`}>
           [ SYSTEM.MONITOR.ACTIVE ]
         </div>
-        <div className={`absolute bottom-10 right-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${isDarkMode ? "text-red-500/40" : "text-red-600/30"}`}>
+        <div className={`absolute bottom-10 right-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${"text-red-600/30"}`}>
           [ APPIC.SEC_04.100VH ]
         </div>
       </div>
@@ -397,7 +396,7 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
           <span className="line-1 block text-[11px] md:text-[13px] font-bold tracking-[0.25em] text-[#E40D28] uppercase mb-4 opacity-0" style={{ willChange: "transform, opacity" }}>
             Still not convinced to work with us?
           </span>
-          <h2 className={`text-2xl md:text-[40px] lg:text-[46px] xl:text-[50px] font-black leading-[1.12] uppercase tracking-tight transition-colors duration-700 ${isDarkMode ? "text-zinc-50" : "text-zinc-950"}`}>
+          <h2 className={`text-2xl md:text-[40px] lg:text-[46px] xl:text-[50px] font-black leading-[1.12] uppercase tracking-tight transition-colors duration-700 ${"text-zinc-950"}`}>
             <span className="line-2 block opacity-0" style={{ willChange: "transform, opacity" }}>
               Look at the partners
             </span>
@@ -430,7 +429,7 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
                 alt={logo.name}
                 className="h-7 md:h-16 max-w-[11vw] md:max-w-[10vw] lg:max-w-[120px] xl:max-w-[150px] 2xl:max-w-[180px] object-contain opacity-85 hover:opacity-100 transition-all duration-300 cursor-pointer"
                 style={{
-                  filter: isDarkMode ? "brightness(0) invert(1)" : "none",
+                  filter: "none",
                 }}
               />
             </div>
@@ -439,5 +438,6 @@ export default function EyeSection({ isDarkMode }: EyeSectionProps) {
 
       </div>
     </section>
+    </div>
   );
 }

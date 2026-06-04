@@ -10,15 +10,15 @@ export default function SplashLoader({ onComplete }: SplashLoaderProps) {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    // Let the GIF animation run for a premium duration (e.g., 3 seconds)
+    // Start fading out almost immediately
     const timer = setTimeout(() => {
       setIsFadingOut(true);
       // Wait for the fade transition to finish before calling onComplete
       const fadeTimer = setTimeout(() => {
         onComplete();
-      }, 800);
+      }, 500);
       return () => clearTimeout(fadeTimer);
-    }, 3000);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [onComplete]);

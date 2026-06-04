@@ -137,14 +137,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       gsap.to(marquee, { xPercent: -50, ease: "none", duration: 30, repeat: -1 });
     }
 
-    bgBlobsRef.current.forEach((blob) => {
-      if (!blob) return;
-      gsap.to(blob, {
-        x: () => gsap.utils.random(-200, 200), y: () => gsap.utils.random(-200, 200),
-        rotation: () => gsap.utils.random(-90, 90), scale: () => gsap.utils.random(0.8, 1.4),
-        duration: () => gsap.utils.random(15, 25), ease: "sine.inOut", repeat: -1, yoyo: true,
-      });
-    });
+    // (DISABLED FOR PERFORMANCE) Endless heavy blob animations
+    // bgBlobsRef.current.forEach((blob) => { ... });
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -161,7 +155,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
           },
           onLeave: () => {
             setCursorColor && setCursorColor("#E21628");
-            setPageBg && setPageBg("#F5EFE6");
+            setPageBg && setPageBg("#Fdfdfd");
           },
           onEnterBack: () => {
             setCursorColor && setCursorColor("#ffffff");
@@ -185,10 +179,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       tl.to(headerDesc, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 0.5);
 
       const animProps = { y: 0, z: 0, rotationX: 0, rotationY: 0, opacity: 1, filter: "blur(0px)", duration: 2.5, ease: "expo.out" };
-      tl.to(cards[0], animProps, 1.0);
-      tl.to(cards[1], animProps, 2.0);
-      tl.to(cards[2], animProps, 3.0);
-      tl.to(cards[3], animProps, 4.0);
+      // Animate all cards together at the same timeline position (1.0)
+      tl.to(cards, animProps, 1.0);
       tl.to(cards, { y: "-=40", duration: 2, stagger: 0.3, ease: "sine.inOut" }, "-=1");
       tl.to({}, { duration: 1 });
     }, section);
@@ -230,7 +222,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen flex flex-col bg-[#DE0C27] isolate">
+    <div className="relative w-full">
+    <section ref={sectionRef} className="relative w-full h-screen flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden">
 
       {/* ─── BACKGROUND ──────────────────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0 opacity-[0.40] mix-blend-overlay pointer-events-none"
@@ -242,17 +235,29 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
           </h1>
         </div>
       </div>
-      <div ref={el => { bgBlobsRef.current[0] = el; }} className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#FF4D4D]/50 blur-[150px] mix-blend-screen pointer-events-none z-0" />
-      <div ref={el => { bgBlobsRef.current[1] = el; }} className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-[#8A000F]/80 blur-[150px] mix-blend-multiply pointer-events-none z-0" />
-      <div ref={el => { bgBlobsRef.current[2] = el; }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] rounded-full bg-black/30 blur-[200px] pointer-events-none z-0" />
-      <div className="absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-overlay z-[1]"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")` }} />
+      <div ref={el => { bgBlobsRef.current[0] = el; }} className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,77,77,0.3)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div ref={el => { bgBlobsRef.current[1] = el; }} className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(circle_at_center,rgba(138,0,15,0.4)_0%,transparent_70%)] pointer-events-none z-0" />
+      <div ref={el => { bgBlobsRef.current[2] = el; }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,transparent_70%)] pointer-events-none z-0" />
+      {/* Grid overlay for texture (Replaced heavy SVG noise) */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-[1]"
+        style={{ backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`, backgroundSize: `20px 20px` }} />
 
       {/* ─── MAIN CONTENT ─────────────────────────────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 h-full flex flex-col justify-center gap-12 lg:gap-20">
+      <style>{`
+        @media (max-height: 900px) {
+          .testimonials-scaler { transform: scale(0.85); transform-origin: top center; }
+        }
+        @media (max-height: 750px) {
+          .testimonials-scaler { transform: scale(0.75); transform-origin: top center; }
+        }
+        @media (max-height: 650px) {
+          .testimonials-scaler { transform: scale(0.60); transform-origin: top center; }
+        }
+      `}</style>
+      <div className="testimonials-scaler relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-10 lg:gap-16 h-full pt-4 pb-12">
 
         {/* Header */}
-        <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-8 pt-12">
+        <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6">
               <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
@@ -269,7 +274,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
         </div>
 
         {/* Cards Grid */}
-        <div ref={cardsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 w-full"
+        <div ref={cardsContainerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 w-full mt-4"
           style={{ perspective: "2000px" }}>
           {TESTIMONIALS.map((data, index) => {
             const isFlipped = flippedIndex === index;
@@ -406,5 +411,6 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
         </div>
       </div>
     </section>
+    </div>
   );
 }

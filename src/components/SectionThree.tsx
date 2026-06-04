@@ -6,25 +6,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* ──────────────────────────── SVG Icons ─────────────────────────────────────── */
 const MobileIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="12" y="4" width="24" height="40" rx="5" stroke="#E40D28" strokeWidth="2" /><rect x="16" y="10" width="16" height="20" rx="2" fill="#E40D28" fillOpacity="0.06" stroke="#E40D28" strokeWidth="1" strokeOpacity="0.2" /><circle cx="24" cy="37" r="2.5" stroke="#E40D28" strokeWidth="1.5" /><path d="M20 7h8" stroke="#E40D28" strokeWidth="1.5" strokeLinecap="round" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><rect x="12" y="4" width="24" height="40" rx="6" stroke="#E40D28" strokeWidth="2.5" /><rect x="16" y="10" width="16" height="20" rx="3" fill="#E40D28" fillOpacity="0.08" stroke="#E40D28" strokeWidth="1" strokeOpacity="0.3" /><circle cx="24" cy="37" r="2.5" stroke="#E40D28" strokeWidth="2" /><path d="M20 7h8" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /></svg>
 );
 const WebIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="3" y="6" width="42" height="30" rx="4" stroke="#E40D28" strokeWidth="2" /><path d="M3 14h42" stroke="#E40D28" strokeWidth="1.5" /><circle cx="9" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.5" /><circle cx="14" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.35" /><circle cx="19" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.2" /><path d="M12 20l6 6-6 6" stroke="#E40D28" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /><path d="M22 28h10" stroke="#E40D28" strokeWidth="1.8" strokeLinecap="round" /><path d="M16 42h16M24 36v6" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><rect x="3" y="6" width="42" height="30" rx="5" stroke="#E40D28" strokeWidth="2.5" /><path d="M3 14h42" stroke="#E40D28" strokeWidth="2" /><circle cx="9" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.6" /><circle cx="14" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.4" /><circle cx="19" cy="10" r="1.5" fill="#E40D28" fillOpacity="0.2" /><path d="M12 20l6 6-6 6" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M22 28h10" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /><path d="M16 42h16M24 36v6" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" /></svg>
 );
 const DesignIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><circle cx="24" cy="24" r="20" stroke="#E40D28" strokeWidth="2" /><circle cx="15" cy="18" r="3.5" fill="#E40D28" fillOpacity="0.6" /><circle cx="22" cy="12" r="3" fill="#E40D28" fillOpacity="0.4" /><circle cx="31" cy="14" r="2.5" fill="#E40D28" fillOpacity="0.25" /><circle cx="34" cy="22" r="3" fill="#E40D28" fillOpacity="0.15" /><path d="M38 30l-4 10c-.5 1.5-2 2-3 1l-1-1" stroke="#E40D28" strokeWidth="1.5" strokeLinecap="round" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><circle cx="24" cy="24" r="20" stroke="#E40D28" strokeWidth="2.5" /><circle cx="15" cy="18" r="3.5" fill="#E40D28" fillOpacity="0.7" /><circle cx="22" cy="12" r="3" fill="#E40D28" fillOpacity="0.5" /><circle cx="31" cy="14" r="2.5" fill="#E40D28" fillOpacity="0.3" /><circle cx="34" cy="22" r="3" fill="#E40D28" fillOpacity="0.15" /><path d="M38 30l-4 10c-.5 1.5-2 2-3 1l-1-1" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /></svg>
 );
 const CloudIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M13 36a9 9 0 0 1-.84-17.96A14 14 0 0 1 39 24h1a7 7 0 0 1 0 14H13z" stroke="#E40D28" strokeWidth="2" fill="#E40D28" fillOpacity="0.04" /><path d="M20 30l4-4 4 4" stroke="#E40D28" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /><path d="M24 26v8" stroke="#E40D28" strokeWidth="1.8" strokeLinecap="round" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><path d="M13 36a9 9 0 0 1-.84-17.96A14 14 0 0 1 39 24h1a7 7 0 0 1 0 14H13z" stroke="#E40D28" strokeWidth="2.5" fill="#E40D28" fillOpacity="0.06" /><path d="M20 30l4-4 4 4" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M24 26v8" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /></svg>
 );
 const AiIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><rect x="10" y="8" width="28" height="28" rx="8" stroke="#E40D28" strokeWidth="2" fill="#E40D28" fillOpacity="0.04" /><circle cx="19" cy="20" r="2.5" fill="#E40D28" /><circle cx="29" cy="20" r="2.5" fill="#E40D28" /><path d="M19 28c0 0 2.5 3 5 3s5-3 5-3" stroke="#E40D28" strokeWidth="1.8" strokeLinecap="round" /><path d="M24 4v4M44 22h-4M8 22H4" stroke="#E40D28" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.3" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><rect x="10" y="8" width="28" height="28" rx="8" stroke="#E40D28" strokeWidth="2.5" fill="#E40D28" fillOpacity="0.06" /><circle cx="19" cy="20" r="2.5" fill="#E40D28" /><circle cx="29" cy="20" r="2.5" fill="#E40D28" /><path d="M19 28c0 0 2.5 3 5 3s5-3 5-3" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" /><path d="M24 4v4M44 22h-4M8 22H4" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4" /></svg>
 );
 const EcommerceIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M6 6h6l1.5 6" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M13.5 12h28l-4 16H16" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M16 28l-2.5 10h26" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><circle cx="18" cy="42" r="2.5" stroke="#E40D28" strokeWidth="2" /><circle cx="34" cy="42" r="2.5" stroke="#E40D28" strokeWidth="2" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><path d="M6 6h6l1.5 6" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M13.5 12h28l-4 16H16" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /><path d="M16 28l-2.5 10h26" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /><circle cx="18" cy="42" r="3" stroke="#E40D28" strokeWidth="2.5" /><circle cx="34" cy="42" r="3" stroke="#E40D28" strokeWidth="2.5" /></svg>
 );
 const RocketIcon = () => (
-  <svg viewBox="0 0 48 48" fill="none" className="w-9 h-9"><path d="M24 4c0 0-12 10-12 24a12 12 0 0 0 24 0c0-14-12-24-12-24z" stroke="#E40D28" strokeWidth="2" fill="#E40D28" fillOpacity="0.04" /><circle cx="24" cy="24" r="4" stroke="#E40D28" strokeWidth="1.5" fill="#E40D28" fillOpacity="0.1" /><circle cx="24" cy="24" r="1.5" fill="#E40D28" /><path d="M20 40l4-4 4 4" stroke="#E40D28" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+  <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10"><path d="M24 4c0 0-12 10-12 24a12 12 0 0 0 24 0c0-14-12-24-12-24z" stroke="#E40D28" strokeWidth="2.5" fill="#E40D28" fillOpacity="0.06" /><circle cx="24" cy="24" r="4" stroke="#E40D28" strokeWidth="2" fill="#E40D28" fillOpacity="0.15" /><circle cx="24" cy="24" r="1.5" fill="#E40D28" /><path d="M20 40l4-4 4 4" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 );
 
 /* ──────────────────────────── Card Data ─────────────────────────────────────── */
@@ -38,12 +38,8 @@ const CARDS = [
   { id: 7, category: "Strategy", title: "Digital Transformation", desc: "End-to-end digital strategy to modernize and future-proof your operations.", Icon: RocketIcon, metric: "12+", metricLabel: "Years Experience" },
 ];
 
-interface SectionThreeProps {
-  isDarkMode: boolean;
-}
-
 /* ──────────────────────────── Component ─────────────────────────────────────── */
-export default function SectionThree({ isDarkMode }: SectionThreeProps) {
+export default function SectionThree() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -54,21 +50,10 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
 
   useEffect(() => {
     // ── 1. Heading slide-in ─────────────────────────────────────────────────
-    const sentinel = sentinelRef.current;
-    let obs: IntersectionObserver | null = null;
-    if (sentinel) {
-      obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            headingRef.current?.classList.add("s3-animate");
-            paragraphRef.current?.classList.add("s3-animate");
-            obs?.disconnect();
-          }
-        },
-        { threshold: 0 }
-      );
-      obs.observe(sentinel);
-    }
+    const timer = setTimeout(() => {
+      if (headingRef.current) headingRef.current.classList.add("s3-animate");
+      if (paragraphRef.current) paragraphRef.current.classList.add("s3-animate");
+    }, 150);
 
     // ── 2. GSAP oryzo-style card showcase ───────────────────────────────────
     gsap.registerPlugin(ScrollTrigger);
@@ -80,7 +65,7 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
     const ctx = gsap.context(() => {
       const n = cards.length;
 
-      // Layout calculations — read from actual DOM for pixel-perfect alignment
+      // Layout calculations
       const frameEl = section.querySelector('.s3-frame') as HTMLElement;
       const frameW = frameEl ? frameEl.offsetWidth : Math.min(window.innerWidth * 0.46, 600);
       const thumbScale = 0.38;
@@ -89,17 +74,12 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
       const sideStart = frameW / 2 + sideGap + thumbVisualW / 2;
       const thumbStep = thumbVisualW + 16;
 
-      // Easing function for buttery smooth interpolation
       function easeInOutCubic(t: number): number {
         return t < 0.5
           ? 4 * t * t * t
           : 1 - Math.pow(-2 * t + 2, 3) / 2;
       }
 
-      /**
-       * Position ALL cards based on `activeFloat` (0 → n-1).
-       * Uses eased interpolation for smooth acceleration/deceleration.
-       */
       function positionCards(activeFloat: number) {
         cards.forEach((card, i) => {
           const offset = i - activeFloat;
@@ -111,7 +91,6 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
           if (absOff < 0.005) {
             x = 0; s = 1; o = 1; z = 20;
           } else if (absOff <= 1) {
-            // Ease the transition — slow start/end, fast middle
             const t = easeInOutCubic(absOff);
             x = sign * sideStart * t;
             s = 1 - (1 - thumbScale) * t;
@@ -127,7 +106,6 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
 
           if (absOff > 4.5) o = 0;
 
-          // Use gsap.to with short duration for micro-smoothing each frame
           gsap.to(card, {
             x, scale: s, opacity: o, zIndex: z,
             duration: 0.15,
@@ -137,9 +115,7 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
         });
       }
 
-      // Set initial state (instant)
       cards.forEach((card, i) => {
-        const sign = 1;
         if (i === 0) {
           gsap.set(card, { x: 0, scale: 1, opacity: 1, zIndex: 20 });
         } else {
@@ -148,7 +124,6 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
         }
       });
 
-      // ScrollTrigger drives everything via onUpdate
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -166,7 +141,6 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
           const activeFloat = self.progress * (n - 1);
           positionCards(activeFloat);
 
-          // Update dots + counter
           const activeIdx = Math.min(Math.round(activeFloat), n - 1);
           if (counterRef.current) {
             counterRef.current.textContent = `${activeIdx + 1} / ${n}`;
@@ -182,8 +156,8 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
     }, wrapperRef);
 
     return () => {
-      obs?.disconnect();
       ctx.revert();
+      clearTimeout(timer);
     };
   }, []);
 
@@ -196,22 +170,40 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
       >
         {/* ── Background ──────────────────────────────────────────────────── */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className={`absolute inset-0 transition-colors duration-700 ${isDarkMode ? "bg-[#030303]" : "bg-gradient-to-br from-[#FFF5F5] via-white to-[#FFF0F0]"}`} />
-          <div className={`absolute top-0 right-0 w-[50vw] h-[50vh] rounded-full transition-opacity duration-700 ${isDarkMode ? "opacity-[0.08]" : "opacity-[0.04]"}`}
-            style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)" }} />
-          <div className={`absolute bottom-0 left-0 w-[40vw] h-[40vh] rounded-full transition-opacity duration-700 ${isDarkMode ? "opacity-[0.06]" : "opacity-[0.03]"}`}
-            style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)" }} />
+          <div className={`absolute inset-0 transition-colors duration-700 bg-[#fffafa]`} />
+          
+          {/* Grid Pattern */}
+          <div className={`absolute inset-0 transition-opacity duration-700 opacity-[0.04]`}
+            style={{
+              backgroundImage: `linear-gradient(to right, #E40D28 1px, transparent 1px), linear-gradient(to bottom, #E40D28 1px, transparent 1px)`,
+              backgroundSize: `40px 40px`
+            }}
+          />
+
+          <div className={`absolute top-0 left-0 w-[60vw] h-[60vh] rounded-full transition-opacity duration-700 opacity-[0.1]`}
+            style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(-20%, -20%)" }} />
+          
+          <div className={`absolute bottom-0 right-0 w-[50vw] h-[50vh] rounded-full transition-opacity duration-700 opacity-[0.08]`}
+            style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(20%, 20%)" }} />
+            
+          {/* Sparkles scattered in background */}
+          <div className="absolute top-[20%] right-[15%] w-1.5 h-1.5 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 10px 2px rgba(228,13,40,0.5)" }} />
+          <div className="absolute top-[40%] left-[25%] w-1 h-1 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 6px 1px rgba(228,13,40,0.5)" }} />
+          <div className="absolute bottom-[25%] right-[30%] w-2 h-2 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 12px 2px rgba(228,13,40,0.5)" }} />
         </div>
 
         {/* ── Sentinel ────────────────────────────────────────────────────── */}
         <div ref={sentinelRef} className="absolute top-[300px] left-0 w-full h-px pointer-events-none" />
 
         {/* ── Heading (top-left) ───────────────────────────────────────────── */}
-        <div className="absolute top-14 left-14 z-20 max-w-xs">
-          <h2 ref={headingRef} className={`text-3xl md:text-4xl font-bold mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 ${isDarkMode ? "text-zinc-100" : "text-red-900"}`}>
-            What We Build
+        <div className="absolute top-14 left-14 z-20 max-w-md">
+          <h2 ref={headingRef} className={`text-4xl md:text-5xl font-black mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
+            What <span style={{ color: "#E40D28" }}>We Build</span>
+            <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>
+            </svg>
           </h2>
-          <p ref={paragraphRef} className={`text-sm leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 ${isDarkMode ? "text-zinc-400" : "text-red-800/40"}`}>
+          <p ref={paragraphRef} className={`text-sm md:text-base leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 text-gray-500`}>
             Scroll to explore our services
           </p>
         </div>
@@ -219,12 +211,10 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
         {/* ── Center frame (dashed border for visual reference) ────────────── */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2]">
           <div
-            className="s3-frame rounded-[28px] transition-all duration-700"
+            className="s3-frame rounded-[32px] transition-all duration-700"
             style={{
-              width: "min(46vw, 600px)",
-              height: "min(70vh, 560px)",
-              border: isDarkMode ? "2px dashed rgba(228,13,40,0.25)" : "2px dashed rgba(228,13,40,0.12)",
-              background: isDarkMode ? "rgba(228,13,40,0.03)" : "rgba(228,13,40,0.015)",
+              width: "min(48vw, 620px)",
+              height: "min(72vh, 580px)",
             }}
           />
         </div>
@@ -235,66 +225,113 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
             <div
               key={card.id}
               ref={(el) => { cardsRef.current[i] = el; }}
-              className="absolute rounded-[24px] flex flex-col pointer-events-auto"
+              className="absolute rounded-[32px] flex flex-col pointer-events-auto"
               style={{
-                width: "min(46vw, 600px)",
-                height: "min(70vh, 560px)",
-                background: isDarkMode ? "rgba(15,15,20,0.85)" : "rgba(255,255,255,0.95)",
-                backdropFilter: "blur(16px)",
-                border: isDarkMode ? "1px solid rgba(228,13,40,0.2)" : "1px solid rgba(228,13,40,0.08)",
-                boxShadow: isDarkMode
-                  ? "0 8px 48px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)"
-                  : "0 8px 48px rgba(228,13,40,0.06), 0 2px 6px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,1)",
+                width: "min(48vw, 620px)",
+                height: "min(72vh, 580px)",
+                background: "rgba(255,255,255,0.95)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.6)",
+                boxShadow: "0 0 80px rgba(228,13,40,0.15), 0 20px 40px rgba(0,0,0,0.04), inset 0 0 0 2px rgba(255,255,255,0.6)",
                 overflow: "hidden",
                 willChange: "transform, opacity",
                 transition: "background-color 0.7s, border-color 0.7s, box-shadow 0.7s",
               }}
             >
-              {/* Red accent bar */}
-              <div className="h-[3px] w-full flex-shrink-0" style={{
-                background: "linear-gradient(90deg, transparent, #E40D28, #ff4757, #E40D28, transparent)",
-              }} />
+              {/* Card Dotted Wave Background */}
+              <div className="absolute top-0 right-0 w-[250px] h-[250px] pointer-events-none overflow-hidden rounded-tr-[32px] transition-opacity duration-700"
+                style={{ opacity: 0.4 }}>
+                <svg width="100%" height="100%" viewBox="0 0 250 250" preserveAspectRatio="none">
+                  <defs>
+                    <pattern id={`dots-${card.id}`} x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+                      <circle fill="#E40D28" cx="2" cy="2" r="1.5" />
+                    </pattern>
+                    <mask id={`waveMask-${card.id}`}>
+                      <path d="M 0,0 L 250,0 L 250,250 C 150,250 50,150 0,0 Z" fill="white" />
+                    </mask>
+                  </defs>
+                  <rect x="0" y="0" width="100%" height="100%" fill={`url(#dots-${card.id})`} mask={`url(#waveMask-${card.id})`} />
+                </svg>
+              </div>
 
-              <div className="flex-1 p-7 md:p-9 flex flex-col min-h-0">
+              {/* Glowing Inner Border Top */}
+              <div className="absolute top-0 left-0 right-0 h-1.5"
+                style={{ background: "linear-gradient(90deg, transparent, rgba(228,13,40,0.6), transparent)", filter: "blur(2px)" }} />
+
+              <div className="flex-1 p-8 md:p-12 flex flex-col min-h-0 relative z-10">
                 {/* Category badge */}
-                <span className="text-[9px] font-extrabold tracking-[0.25em] uppercase mb-4 inline-block px-3 py-1.5 rounded-full w-fit"
-                  style={{ color: "#E40D28", background: "rgba(228,13,40,0.06)", border: "1px solid rgba(228,13,40,0.1)" }}>
-                  {card.category}
-                </span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 w-fit transition-colors duration-700"
+                  style={{ background: "rgba(228,13,40,0.08)" }}>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#E40D28]" />
+                  <span className="text-[10px] font-black tracking-[0.2em] uppercase"
+                    style={{ color: "#E40D28" }}>
+                    {card.category}
+                  </span>
+                </div>
 
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 flex-shrink-0 transition-all duration-700"
-                  style={{
-                    background: isDarkMode ? "rgba(228,13,40,0.12)" : "rgba(228,13,40,0.05)",
-                    border: isDarkMode ? "1px solid rgba(228,13,40,0.2)" : "1px solid rgba(228,13,40,0.08)"
-                  }}>
-                  <card.Icon />
+                {/* Icon with 3D and Orbit */}
+                <div className="relative w-36 h-36 flex items-center justify-center mb-8">
+                  <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/20 transform rotate-12 scale-[1.15] transition-colors duration-700" />
+                  <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/10 transform -rotate-6 scale-[1.25] transition-colors duration-700" />
+                  
+                  <div className="w-24 h-24 rounded-[24px] flex items-center justify-center relative z-10 transition-all duration-700"
+                    style={{
+                      background: "linear-gradient(135deg, #ffffff, #ffecec)",
+                      boxShadow: "inset 2px 2px 8px rgba(255,255,255,1), inset -2px -2px 8px rgba(228,13,40,0.1), 0 15px 30px rgba(228,13,40,0.15)",
+                      border: "1px solid rgba(255,255,255,0.8)"
+                    }}>
+                    <card.Icon />
+                  </div>
+                  
+                  {/* Decorative small stars around icon */}
+                  <div className="absolute top-2 right-4 w-1.5 h-1.5 bg-[#E40D28] rounded-full blur-[1px]" />
+                  <div className="absolute bottom-4 left-2 w-1 h-1 bg-[#E40D28] rounded-full blur-[0.5px]" />
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-lg md:text-2xl font-bold mb-3 leading-snug tracking-tight transition-colors duration-700 ${isDarkMode ? "text-zinc-100" : "text-gray-900"}`}>
+                <h3 className={`text-2xl md:text-4xl font-black mb-4 leading-tight tracking-tight transition-colors duration-700 ${"text-[#1a1a2e]"}`}>
                   {card.title}
                 </h3>
 
                 {/* Description */}
-                <p className={`text-sm leading-relaxed flex-1 min-h-0 transition-colors duration-700 ${isDarkMode ? "text-zinc-400" : "text-gray-500"}`}>
+                <p className={`text-base md:text-lg leading-relaxed flex-1 min-h-0 transition-colors duration-700 ${"text-gray-500"}`}>
                   {card.desc}
                 </p>
 
+                {/* Divider */}
+                <div className="w-full h-px my-6 transition-colors duration-700"
+                  style={{ background: "linear-gradient(90deg, rgba(228,13,40,0.1), transparent)" }} />
+
                 {/* Footer */}
-                <div className="mt-4 pt-4 flex items-center justify-between transition-colors duration-700"
-                  style={{ borderTop: isDarkMode ? "1px solid rgba(228,13,40,0.15)" : "1px solid rgba(228,13,40,0.07)" }}>
-                  <div>
-                    <div className="text-2xl md:text-3xl font-black leading-none tracking-tight" style={{ color: "#E40D28" }}>
-                      {card.metric}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-[14px] flex items-center justify-center transition-all duration-700"
+                      style={{
+                        background: "linear-gradient(135deg, #ffffff, #fff0f0)",
+                        boxShadow: "inset 2px 2px 4px rgba(255,255,255,1), 0 4px 10px rgba(228,13,40,0.08)",
+                      }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                      </svg>
                     </div>
-                    <div className={`text-[10px] mt-1.5 font-medium tracking-wider uppercase transition-colors duration-700 ${isDarkMode ? "text-zinc-500" : "text-gray-400"}`}>
-                      {card.metricLabel}
+                    <div>
+                      <div className="text-3xl md:text-4xl font-black leading-none tracking-tight" style={{ color: "#E40D28" }}>
+                        {card.metric}
+                      </div>
+                      <div className={`text-[10px] mt-1.5 font-bold tracking-widest uppercase transition-colors duration-700 ${"text-gray-400"}`}>
+                        {card.metricLabel}
+                      </div>
                     </div>
                   </div>
-                  <button className="w-10 h-10 rounded-full flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #E40D28, #ff4757)", boxShadow: "0 4px 14px rgba(228,13,40,0.3)" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  
+                  <button className="w-16 h-16 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
+                    style={{ 
+                      background: "linear-gradient(135deg, #ff4b5c, #E40D28)", 
+                      boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)" 
+                    }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </button>
@@ -305,21 +342,21 @@ export default function SectionThree({ isDarkMode }: SectionThreeProps) {
         </div>
 
         {/* ── Bottom: dots + counter ───────────────────────────────────────── */}
-        <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5">
-          <div className="flex items-center gap-2">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
+          <div className="flex items-center gap-3">
             {CARDS.map((_, i) => (
-              <div key={i} className="s3-dot w-2 h-2 rounded-full bg-[#E40D28] transition-all duration-300"
+              <div key={i} className="s3-dot w-2.5 h-2.5 rounded-full bg-[#E40D28] transition-all duration-300"
                 style={{ opacity: i === 0 ? 1 : 0.2, transform: i === 0 ? "scale(1.5)" : "scale(1)" }} />
             ))}
           </div>
-          <span ref={counterRef} className={`text-xs font-bold tracking-widest tabular-nums transition-colors duration-700 ${isDarkMode ? "text-zinc-500" : "text-red-800/40"}`}>
+          <span ref={counterRef} className={`text-sm font-bold tracking-widest tabular-nums transition-colors duration-700 ${"text-red-800/40"}`}>
             1 / {CARDS.length}
           </span>
         </div>
 
         {/* ── Scroll hint ─────────────────────────────────────────────────── */}
-        <div className={`absolute bottom-7 right-8 z-20 flex items-center gap-2 text-xs font-medium select-none transition-colors duration-700 ${isDarkMode ? "text-zinc-500" : "text-red-400/35"}`}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className={`absolute bottom-10 right-10 z-20 flex items-center gap-2 text-sm font-bold select-none transition-colors duration-700 ${"text-red-400/40"}`}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
           <span>Scroll</span>

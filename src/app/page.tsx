@@ -1,15 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const AppClient = dynamic(() => import("@/components/AppClient"), {
-  ssr: false,
-  loading: () => (
-    <main className="relative min-h-screen w-full overflow-clip bg-[#F1EEF0]">
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#F1EEF0]" />
-    </main>
-  ),
-});
+import AppClient from "@/components/AppClient";
 
 export default function Home() {
   return <AppClient />;

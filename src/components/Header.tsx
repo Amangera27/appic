@@ -140,14 +140,12 @@ const NAV_ITEMS: NavItem[] = [
 
 interface HeaderProps {
   isDarkMode?: boolean;
-  setIsDarkMode?: (mode: boolean) => void;
   isMuted?: boolean;
   setIsMuted?: (mute: boolean) => void;
 }
 
 export default function Header({ 
   isDarkMode = false, 
-  setIsDarkMode, 
   isMuted = true, 
   setIsMuted 
 }: HeaderProps) {
@@ -259,34 +257,8 @@ export default function Header({
       {/* 3. Right: CONTACT US Button & Interactive Features */}
       <div className="flex items-center gap-3.5">
         
-        {/* Sun/Moon Toggle & Sound Equalizer (Elegant utility icons to preserve functionality) */}
-        <div className={`hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-full transition-all duration-300 border ${
-          isDarkMode 
-            ? "bg-zinc-950/60 border-zinc-800/80 backdrop-blur-md" 
-            : "bg-zinc-50/80 border-zinc-200/50 backdrop-blur-md"
-        }`}>
-          {/* Sun/Moon Toggle */}
-          {setIsDarkMode && (
-            <button 
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`transition-colors duration-300 ${
-                isDarkMode ? "text-amber-400 hover:text-amber-300" : "text-zinc-500 hover:text-zinc-900"
-              }`}
-              title="Toggle Theme"
-            >
-              {isDarkMode ? (
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                </svg>
-              ) : (
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
-            </button>
-          )}
-
-          {/* Equalizer/Sound toggle */}
+        {/* Sound Equalizer (Elegant utility icons to preserve functionality) */}
+        <div className={`hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-full transition-all duration-300 border bg-zinc-50/80 border-zinc-200/50 backdrop-blur-md`}>          {/* Equalizer/Sound toggle */}
           {setIsMuted && (
             <button 
               onClick={() => setIsMuted(!isMuted)}
@@ -390,24 +362,7 @@ export default function Header({
           <div className="flex items-center justify-between pt-2 border-t" style={{ borderColor: isDarkMode ? "rgba(63, 63, 70, 0.2)" : "rgba(228, 228, 231, 0.4)" }}>
             <span className={`text-[12px] font-bold ${isDarkMode ? "text-zinc-400" : "text-zinc-500"}`}>Utilities</span>
             <div className="flex items-center gap-3">
-              {setIsDarkMode && (
-                <button 
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  className={`p-2 rounded-full border ${
-                    isDarkMode ? "border-zinc-800 text-amber-400" : "border-zinc-200 text-zinc-500"
-                  }`}
-                >
-                  {isDarkMode ? (
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                    </svg>
-                  ) : (
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                  )}
-                </button>
-              )}
+
 
               {setIsMuted && (
                 <button 
