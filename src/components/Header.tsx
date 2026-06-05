@@ -275,7 +275,7 @@ export default function Header({
 
         {/* Corporate red CONTACT US button (looks identical to the provided screenshot) */}
         <button 
-          className="relative px-6 py-2.5 rounded-full bg-[#DE0A26] hover:bg-[#B2081C] text-white text-[11px] font-bold tracking-widest uppercase transition-all duration-300 shadow-md shadow-red-950/20 hover:scale-[1.04] active:scale-[0.98] outline-none"
+          className="hidden lg:block relative px-6 py-2.5 rounded-full bg-[#DE0A26] hover:bg-[#B2081C] text-white text-[11px] font-bold tracking-widest uppercase transition-all duration-300 shadow-md shadow-red-950/20 hover:scale-[1.04] active:scale-[0.98] outline-none"
         >
           Contact Us
         </button>
@@ -357,6 +357,13 @@ export default function Header({
               </div>
             ))}
           </div>
+
+          {/* Corporate red CONTACT US button for mobile */}
+          <button 
+            className="w-full mt-2 mb-2 py-3 rounded-full bg-[#DE0A26] hover:bg-[#B2081C] text-white text-[12px] font-bold tracking-widest uppercase transition-all duration-300 shadow-md outline-none"
+          >
+            Contact Us
+          </button>
 
           {/* Sun/Moon & Equalizer inside mobile view */}
           <div className="flex items-center justify-between pt-2 border-t" style={{ borderColor: isDarkMode ? "rgba(63, 63, 70, 0.2)" : "rgba(228, 228, 231, 0.4)" }}>

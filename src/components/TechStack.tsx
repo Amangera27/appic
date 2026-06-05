@@ -12,7 +12,6 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
   "/images/react2.webp",
   "/images/next2.webp",
@@ -27,7 +26,6 @@ const imageUrls = [
   "/images/wordpress.png",
   "/images/docker.png",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
@@ -153,6 +151,9 @@ const TechStack = () => {
   }, []);
 
   const materials = useMemo(() => {
+    if (typeof window === "undefined") return [];
+    const textureLoader = new THREE.TextureLoader();
+    const textures = imageUrls.map((url) => textureLoader.load(url));
     return textures.map(
       (texture) =>
         new THREE.MeshPhysicalMaterial({
