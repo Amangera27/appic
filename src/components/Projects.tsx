@@ -78,7 +78,7 @@ export default function Projects() {
 
         {/* 3D Carousel Stage */}
         <div
-          className="absolute top-[360px] sm:top-[400px] bottom-0 left-0 right-0 flex items-center justify-center pointer-events-none"
+          className="relative flex-1 w-full flex items-center justify-center pointer-events-none mt-8 sm:mt-12"
           style={{
             perspective: "1600px",
             perspectiveOrigin: "50% 50%",
@@ -87,7 +87,7 @@ export default function Projects() {
         >
           {/* Inner Stage (enables card overlays/depth) */}
           <div
-            className="relative w-full h-full flex items-center justify-center"
+            className="relative w-full h-full flex items-center justify-center translate-y-12 sm:translate-y-16 lg:translate-y-24"
             style={{ transformStyle: "preserve-3d" }}
           >
             {caseStudies.map((study, index) => (

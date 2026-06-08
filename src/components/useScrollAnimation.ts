@@ -1,25 +1,20 @@
 "use client";
 
 import { useEffect, RefObject } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function useScrollAnimation(
   containerRef: RefObject<HTMLDivElement | null>
 ) {
   useEffect(() => {
-    let ctx: any;
+    gsap.registerPlugin(ScrollTrigger);
+    
     let scrollTriggerInstance: any;
 
-    (async () => {
-      try {
-        const gsapModule = await import("gsap");
-        const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-        gsapModule.gsap.registerPlugin(ScrollTrigger);
-
-        const gsap = gsapModule.gsap;
-
-        ctx = gsap.context(() => {
-          const container = containerRef.current;
-          if (!container) return;
+    const ctx = gsap.context(() => {
+      const container = containerRef.current;
+      if (!container) return;
 
           const cards = container.querySelectorAll(".carousel-card-wrapper");
           const totalCards = cards.length;
@@ -116,7 +111,7 @@ export default function useScrollAnimation(
 
           scrollTriggerInstance = ScrollTrigger.create({
             trigger: container,
-            start: "top 100px",
+            start: "top top",
             end: "bottom bottom",
             scrub: 1.1,
             snap: snapPoints,
@@ -156,10 +151,6 @@ export default function useScrollAnimation(
             window.removeEventListener("resize", updateResponsiveParams);
           };
         }, containerRef);
-      } catch (err) {
-        console.error("GSAP ScrollTrigger curved carousel animation error:", err);
-      }
-    })();
 
     return () => {
       ctx?.revert();

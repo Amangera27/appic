@@ -257,6 +257,13 @@ export default function SectionThree() {
           };
         });
 
+        // Refresh ScrollTrigger to recalculate layout for sections below us (like EyeSection)
+        // since we just added a pin spacer asynchronously.
+        requestAnimationFrame(() => {
+          ScrollTrigger.sort();
+          ScrollTrigger.refresh();
+        });
+
       }, wrapperRef);
 
       return () => {

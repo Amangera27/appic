@@ -5,17 +5,16 @@ import SplashLoader from "@/components/SplashLoader";
 import HeroSection from "@/components/HeroSection";
 import dynamic from "next/dynamic";
 
-
-const SectionThree = dynamic(() => import("@/components/SectionThree"));
-const EyeSection = dynamic(() => import("@/components/EyeSection"));
-const Projects = dynamic(() => import("@/components/Projects"));
-const Testimonials = dynamic(() => import("@/components/Testimonials"));
-const NextSection = dynamic(() => import("@/components/NextSection"));
-const TechStack = dynamic(() => import("@/components/TechStack"));
-const ContactSection = dynamic(() => import("@/components/ContactSection"));
-const FaqSection = dynamic(() => import("@/components/FaqSection"));
-const CricketAnimationSection = dynamic(() => import("@/components/CricketAnimationSection"));
-const Footer = dynamic(() => import("@/components/Footer"));
+import SectionThree from "@/components/SectionThree";
+import EyeSection from "@/components/EyeSection";
+import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
+import NextSection from "@/components/NextSection";
+import TechStack from "@/components/TechStack";
+import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
+import CricketAnimationSection from "@/components/CricketAnimationSection";
+import Footer from "@/components/Footer";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -68,6 +67,7 @@ export default function AppClient() {
       // This ensures pin spacers and trigger start/end points are accurate
       // after the page layout is finalized (splash removed, all sections rendered).
       requestAnimationFrame(() => {
+        ScrollTrigger.sort();
         ScrollTrigger.refresh();
       });
     }
