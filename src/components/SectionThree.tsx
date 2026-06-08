@@ -286,7 +286,7 @@ export default function SectionThree() {
     <div ref={wrapperRef}>
       <div
         ref={sectionRef}
-        className="w-full h-screen relative select-none"
+        className="w-full h-[75vh] lg:h-screen relative select-none"
         style={{ overflow: "clip" }}
       >
         {/* ── Background ──────────────────────────────────────────────────── */}
@@ -317,7 +317,7 @@ export default function SectionThree() {
         <div ref={sentinelRef} className="absolute top-[300px] left-0 w-full h-px pointer-events-none" />
 
         {/* ── Heading (top-left) ───────────────────────────────────────────── */}
-        <div className="absolute top-14 left-14 z-20 max-w-md">
+        <div className="absolute top-6 left-6 lg:top-14 lg:left-14 z-20 max-w-md">
           <h2 ref={headingRef} className={`text-4xl md:text-5xl font-black mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
             What <span style={{ color: "#E40D28" }}>We Build</span>
             <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
@@ -330,7 +330,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Center frame (dashed border for visual reference) ────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2]">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2] pt-16 lg:pt-0">
           <div
             className="s3-frame rounded-[32px] transition-all duration-700"
             style={cardStyle}
@@ -338,7 +338,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Cards ───────────────────────────────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none pt-16 lg:pt-0">
           {CARDS.map((card, i) => (
             <div
               key={card.id}
@@ -461,7 +461,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Bottom: dots + counter ───────────────────────────────────────── */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
+        <div className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 items-center gap-6">
           <div className="flex items-center gap-3">
             {CARDS.map((_, i) => (
               <div key={i} className="s3-dot w-2.5 h-2.5 rounded-full bg-[#E40D28] transition-all duration-300"
@@ -474,7 +474,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Scroll hint ─────────────────────────────────────────────────── */}
-        <div className={`absolute bottom-10 right-10 z-20 flex items-center gap-2 text-sm font-bold select-none transition-colors duration-700 ${"text-red-400/40"}`}>
+        <div className={`hidden lg:flex absolute bottom-10 right-10 z-20 items-center gap-2 text-sm font-bold select-none transition-colors duration-700 ${"text-red-400/40"}`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>

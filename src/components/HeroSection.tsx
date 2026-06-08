@@ -5,6 +5,7 @@ import gsap from "gsap";
 import Header from "./Header";
 import { HiArrowRight } from "react-icons/hi2";
 import Hyperspeed from './Hyperspeed';
+import ParticlesBackground from './lightswind/particles-background';
 
 const BARS_DATA = [
   { left: "-2%", width: "8vw", height: "80vh", grad: "from-[#DE0A26]/52 via-[#DE0A26]/20 to-transparent" },
@@ -58,8 +59,18 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative isolate min-h-[calc(100vh-72px)] overflow-hidden bg-slate-50 text-slate-950 flex items-center justify-center pt-24"
+      className="relative isolate min-h-[75vh] lg:min-h-[calc(100vh-72px)] overflow-hidden bg-slate-50 text-slate-950 flex items-center justify-center pt-16 lg:pt-24"
     >
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-[3] pointer-events-none opacity-15">
+        <ParticlesBackground 
+          colors={['#DE0A26', '#E40D28', '#b10c1e', '#f43f5e', '#e11d48']} 
+          zIndex={0} 
+          size={5}
+          countDesktop={100}
+        />
+      </div>
+
       {/* Dynamic WebGL Hyperspeed background container */}
       <div className="absolute inset-0 z-0 opacity-70">
         <Hyperspeed
@@ -113,7 +124,7 @@ export default function HeroSection() {
         <Header />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 lg:px-10 flex flex-col items-center justify-center animate-hero-reveal">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-10 lg:py-20 sm:px-8 lg:px-10 flex flex-col items-center justify-center animate-hero-reveal">
         <div className="w-full text-center">
 
           {/* Stunning badge with pulse dot and shine animation */}
@@ -128,7 +139,7 @@ export default function HeroSection() {
           </div>
 
           {/* Premium layout with high-impact typography & smooth gradient text */}
-          <h1 className="mx-auto mt-8 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="mx-auto mt-5 lg:mt-8 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-6xl">
             Building modern{" "}
             <span className="bg-gradient-to-r from-[#b10c1e] via-[#de0c27] to-[#e11d48] bg-clip-text text-transparent">
               software
@@ -136,12 +147,12 @@ export default function HeroSection() {
             that shines in a lighter, faster world.
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-base font-medium leading-relaxed text-slate-600 sm:text-lg md:text-xl">
+          <p className="mx-auto mt-5 lg:mt-8 max-w-3xl text-base font-medium leading-relaxed text-slate-600 sm:text-lg md:text-xl">
             We engineer high-performance web, mobile, and AI solutions. Crafted with pristine light-theme aesthetics, micro-interactions, and premium code architecture.
           </p>
 
           {/* Buttons redesigned with custom premium animations and high-end light shadows */}
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-8 lg:mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="/contact-us"
               className="group inline-flex h-14 items-center justify-center rounded-full bg-gradient-to-r from-[#b10c1e] via-[#de0c27] to-[#b10c1e] bg-[length:200%_auto] px-8 text-base font-semibold text-white shadow-[0_12px_24px_rgba(222,12,39,0.22)] transition-all duration-300 hover:bg-[100%_center] hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(222,12,39,0.32)] focus:outline-none focus:ring-4 focus:ring-[#b10c1e]/25"
