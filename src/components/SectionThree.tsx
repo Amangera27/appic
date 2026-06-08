@@ -330,7 +330,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Center frame (dashed border for visual reference) ────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2] pt-16 lg:pt-0">
+        <div className="absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-[6vw] xl:pr-[12vw] 2xl:justify-center 2xl:pr-0 pointer-events-none z-[2] pt-16 lg:pt-0">
           <div
             className="s3-frame rounded-[32px] transition-all duration-700"
             style={cardStyle}
@@ -338,7 +338,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Cards ───────────────────────────────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none pt-16 lg:pt-0">
+        <div className="absolute inset-0 flex items-center justify-center lg:justify-end lg:pr-[6vw] xl:pr-[12vw] 2xl:justify-center 2xl:pr-0 z-10 pointer-events-none pt-16 lg:pt-0">
           {CARDS.map((card, i) => (
             <div
               key={card.id}
