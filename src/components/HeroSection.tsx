@@ -169,7 +169,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="w-full h-screen min-h-[600px] flex flex-col justify-between pt-4 pb-12 px-6 md:px-16 relative transition-colors duration-700 select-none bg-white"
+      className="w-full lg:h-screen lg:min-h-[600px] flex flex-col justify-start lg:justify-between pt-4 pb-16 lg:pb-12 px-6 md:px-16 relative transition-colors duration-700 select-none bg-white"
     >
 
       {/* 
@@ -202,7 +202,7 @@ export default function HeroSection() {
       <Header />
 
       {/* 2. Middle Content Section - Integrated Text and Layout from original design */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-5xl mx-auto py-2 px-2 text-center my-auto">
+      <div className="relative z-10 flex-none lg:flex-1 flex flex-col items-center justify-center max-w-5xl mx-auto py-2 px-2 text-center mt-12 lg:my-auto">
 
         {/* Core Headline */}
         <h1 className="text-3xl md:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12] transition-colors duration-700 max-w-4xl uppercase text-zinc-950">
@@ -225,7 +225,7 @@ export default function HeroSection() {
       </div>
 
       {/* 3. Bottom Row Section */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 pt-4 border-t transition-colors duration-700 border-zinc-100">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6 pt-6 lg:pt-4 border-t-0 lg:border-t transition-colors duration-700 border-zinc-100 mb-auto lg:mb-0 mt-8 lg:mt-0">
 
         {/* Bottom Left: Outline Button "Explore work" with Trionn Liquid Bubble Hover and Magnetic Physics */}
         <div className="w-full md:w-1/2 flex justify-start order-2 md:order-1">

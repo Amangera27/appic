@@ -257,21 +257,7 @@ export default function Header({
       {/* 3. Right: CONTACT US Button & Interactive Features */}
       <div className="flex items-center gap-3.5">
         
-        {/* Sound Equalizer (Elegant utility icons to preserve functionality) */}
-        <div className={`hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-full transition-all duration-300 border bg-zinc-50/80 border-zinc-200/50 backdrop-blur-md`}>          {/* Equalizer/Sound toggle */}
-          {setIsMuted && (
-            <button 
-              onClick={() => setIsMuted(!isMuted)}
-              className="flex items-end gap-[3px] h-3.5 w-5 hover:opacity-80 transition-opacity duration-300"
-              title={isMuted ? "Unmute Showcase" : "Mute Showcase"}
-            >
-              <span className={`w-[2.5px] rounded-full transition-all duration-300 ${isDarkMode ? "bg-zinc-100" : "bg-zinc-800"} ${isMuted ? "h-1" : "h-3 animate-[pulse_1s_infinite_alternate]"}`} />
-              <span className={`w-[2.5px] rounded-full transition-all duration-300 ${isDarkMode ? "bg-zinc-100" : "bg-zinc-800"} ${isMuted ? "h-2" : "h-2 animate-[pulse_0.8s_infinite_alternate_0.2s]"}`} />
-              <span className={`w-[2.5px] rounded-full transition-all duration-300 ${isDarkMode ? "bg-zinc-100" : "bg-zinc-800"} ${isMuted ? "h-1" : "h-3.5 animate-[pulse_1.2s_infinite_alternate_0.1s]"}`} />
-              <span className={`w-[2.5px] bg-[#DE0A26] rounded-full transition-all duration-300 ${isMuted ? "h-1.5" : "h-2.5 animate-[pulse_0.9s_infinite_alternate_0.3s]"}`} />
-            </button>
-          )}
-        </div>
+
 
         {/* Corporate red CONTACT US button (looks identical to the provided screenshot) */}
         <button 
@@ -365,26 +351,7 @@ export default function Header({
             Contact Us
           </button>
 
-          {/* Sun/Moon & Equalizer inside mobile view */}
-          <div className="flex items-center justify-between pt-2 border-t" style={{ borderColor: isDarkMode ? "rgba(63, 63, 70, 0.2)" : "rgba(228, 228, 231, 0.4)" }}>
-            <span className={`text-[12px] font-bold ${isDarkMode ? "text-zinc-400" : "text-zinc-500"}`}>Utilities</span>
-            <div className="flex items-center gap-3">
 
-
-              {setIsMuted && (
-                <button 
-                  onClick={() => setIsMuted(!isMuted)}
-                  className={`p-2 rounded-full border ${
-                    isDarkMode ? "border-zinc-800 text-zinc-200" : "border-zinc-200 text-zinc-800"
-                  }`}
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                </button>
-              )}
-            </div>
-          </div>
         </div>
       )}
     </header>

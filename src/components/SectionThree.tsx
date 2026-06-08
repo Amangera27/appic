@@ -49,13 +49,6 @@ export default function SectionThree() {
   const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // ── 1. Heading slide-in ─────────────────────────────────────────────────
-    const timer = setTimeout(() => {
-      if (headingRef.current) headingRef.current.classList.add("s3-animate");
-      if (paragraphRef.current) paragraphRef.current.classList.add("s3-animate");
-    }, 150);
-
-    // ── 2. GSAP oryzo-style card showcase ───────────────────────────────────
     gsap.registerPlugin(ScrollTrigger);
 
     const section = sectionRef.current;
@@ -65,128 +58,143 @@ export default function SectionThree() {
     const ctx = gsap.context(() => {
       const n = cards.length;
 
-      // Layout calculations
-      const frameEl = section.querySelector('.s3-frame') as HTMLElement;
-      const frameW = frameEl ? frameEl.offsetWidth : Math.min(window.innerWidth * 0.46, 600);
-      const thumbScale = 0.38;
-      const thumbVisualW = frameW * thumbScale;
-      const sideGap = 28;
-      const sideStart = frameW / 2 + sideGap + thumbVisualW / 2;
-      const thumbStep = thumbVisualW + 16;
+      // ── All GSAP / ScrollTrigger runs ONLY on desktop (≥ 768px) ────────────
+      const mm = gsap.matchMedia();
 
-      function easeInOutCubic(t: number): number {
-        return t < 0.5
-          ? 4 * t * t * t
-          : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      }
+      mm.add("(min-width: 768px)", () => {
+        // Heading slide-in
+        const timer = setTimeout(() => {
+          if (headingRef.current) gsap.fromTo(headingRef.current, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" });
+          if (paragraphRef.current) gsap.fromTo(paragraphRef.current, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.7, delay: 0.16, ease: "power3.out" });
+        }, 150);
 
-      function positionCards(activeFloat: number) {
-        cards.forEach((card, i) => {
-          const offset = i - activeFloat;
-          const absOff = Math.abs(offset);
-          const sign = offset >= 0 ? 1 : -1;
+        // Layout calculations
+        const frameEl = section.querySelector('.s3-frame') as HTMLElement;
+        const frameW = frameEl ? frameEl.offsetWidth : Math.min(window.innerWidth * 0.46, 600);
+        const thumbScale = 0.38;
+        const thumbVisualW = frameW * thumbScale;
+        const sideGap = 28;
+        const sideStart = frameW / 2 + sideGap + thumbVisualW / 2;
+        const thumbStep = thumbVisualW + 16;
 
-          let x: number, s: number, o: number, z: number;
-
-          if (absOff < 0.005) {
-            x = 0; s = 1; o = 1; z = 20;
-          } else if (absOff <= 1) {
-            const t = easeInOutCubic(absOff);
-            x = sign * sideStart * t;
-            s = 1 - (1 - thumbScale) * t;
-            o = 1 - 0.2 * t;
-            z = Math.round(20 - 10 * absOff);
-          } else {
-            const extra = absOff - 1;
-            x = sign * (sideStart + extra * thumbStep);
-            s = thumbScale;
-            o = Math.max(0, 0.8 - extra * 0.2);
-            z = Math.round(10 - extra * 2);
-          }
-
-          if (absOff > 4.5) o = 0;
-
-          gsap.to(card, {
-            x, scale: s, opacity: o, zIndex: z,
-            duration: 0.15,
-            ease: "power1.out",
-            overwrite: "auto",
-          });
-        });
-      }
-
-      cards.forEach((card, i) => {
-        if (i === 0) {
-          gsap.set(card, { x: 0, scale: 1, opacity: 1, zIndex: 20 });
-        } else {
-          const x = sideStart + (i - 1) * thumbStep;
-          gsap.set(card, { x, scale: thumbScale, opacity: Math.max(0, 0.8 - (i - 1) * 0.2), zIndex: 10 - i });
+        function easeInOutCubic(t: number): number {
+          return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
-      });
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: () => `+=${(n - 1) * 90}vh`,
-        pin: true,
-        scrub: 1,
-        snap: {
-          snapTo: 1 / (n - 1),
-          duration: { min: 0.4, max: 0.8 },
-          delay: 0.05,
-          ease: "power3.inOut",
-        },
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          const activeFloat = self.progress * (n - 1);
-          positionCards(activeFloat);
+        function positionCards(activeFloat: number) {
+          cards.forEach((card, i) => {
+            const offset = i - activeFloat;
+            const absOff = Math.abs(offset);
+            const sign = offset >= 0 ? 1 : -1;
 
-          const activeIdx = Math.min(Math.round(activeFloat), n - 1);
-          if (counterRef.current) {
-            counterRef.current.textContent = `${activeIdx + 1} / ${n}`;
-          }
-          const dots = section.querySelectorAll(".s3-dot");
-          dots.forEach((dot, di) => {
-            const el = dot as HTMLElement;
-            el.style.opacity = di === activeIdx ? "1" : "0.2";
-            el.style.transform = di === activeIdx ? "scale(1.5)" : "scale(1)";
+            let x: number, s: number, o: number, z: number;
+
+            if (absOff < 0.005) {
+              x = 0; s = 1; o = 1; z = 20;
+            } else if (absOff <= 1) {
+              const t = easeInOutCubic(absOff);
+              x = sign * sideStart * t;
+              s = 1 - (1 - thumbScale) * t;
+              o = 1 - 0.2 * t;
+              z = Math.round(20 - 10 * absOff);
+            } else {
+              const extra = absOff - 1;
+              x = sign * (sideStart + extra * thumbStep);
+              s = thumbScale;
+              o = Math.max(0, 0.8 - extra * 0.2);
+              z = Math.round(10 - extra * 2);
+            }
+
+            if (absOff > 4.5) o = 0;
+
+            gsap.to(card, {
+              x, scale: s, opacity: o, zIndex: z,
+              duration: 0.15,
+              ease: "power1.out",
+              overwrite: "auto",
+            });
           });
-        },
+        }
+
+        cards.forEach((card, i) => {
+          if (i === 0) {
+            gsap.set(card, { x: 0, scale: 1, opacity: 1, zIndex: 20 });
+          } else {
+            const x = sideStart + (i - 1) * thumbStep;
+            gsap.set(card, { x, scale: thumbScale, opacity: Math.max(0, 0.8 - (i - 1) * 0.2), zIndex: 10 - i });
+          }
+        });
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: () => `+=${(n - 1) * 90}vh`,
+          pin: true,
+          scrub: 1,
+          snap: {
+            snapTo: 1 / (n - 1),
+            duration: { min: 0.4, max: 0.8 },
+            delay: 0.05,
+            ease: "power3.inOut",
+          },
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const activeFloat = self.progress * (n - 1);
+            positionCards(activeFloat);
+
+            const activeIdx = Math.min(Math.round(activeFloat), n - 1);
+            if (counterRef.current) {
+              counterRef.current.textContent = `${activeIdx + 1} / ${n}`;
+            }
+            const dots = section.querySelectorAll(".s3-dot");
+            dots.forEach((dot, di) => {
+              const el = dot as HTMLElement;
+              el.style.opacity = di === activeIdx ? "1" : "0.2";
+              el.style.transform = di === activeIdx ? "scale(1.5)" : "scale(1)";
+            });
+          },
+        });
+
+        return () => { clearTimeout(timer); };
       });
+
+      return () => { mm.revert(); };
     }, wrapperRef);
 
-    return () => {
-      ctx.revert();
-      clearTimeout(timer);
-    };
+    return () => { ctx.revert(); };
   }, []);
 
   return (
     <div ref={wrapperRef}>
       <div
         ref={sectionRef}
-        className="w-full h-screen relative select-none"
-        style={{ overflow: "clip" }}
+        className="w-full h-auto py-10 md:py-0 md:h-[100svh] md:min-h-[520px] relative select-none flex flex-col md:block"
+        style={{ overflow: "hidden", background: "#fffafa" }}
       >
+        <style>{`
+          .hide-scrollbar { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+          .hide-scrollbar::-webkit-scrollbar { display: none; }
+        `}</style>
+
         {/* ── Background ──────────────────────────────────────────────────── */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className={`absolute inset-0 transition-colors duration-700 bg-[#fffafa]`} />
+          <div className="absolute inset-0 transition-colors duration-700 bg-[#fffafa]" />
           
-          {/* Grid Pattern */}
-          <div className={`absolute inset-0 transition-opacity duration-700 opacity-[0.04]`}
+          <div className="absolute inset-0 transition-opacity duration-700 opacity-[0.04]"
             style={{
-              backgroundImage: `linear-gradient(to right, #E40D28 1px, transparent 1px), linear-gradient(to bottom, #E40D28 1px, transparent 1px)`,
-              backgroundSize: `40px 40px`
+              backgroundImage: "linear-gradient(to right, #E40D28 1px, transparent 1px), linear-gradient(to bottom, #E40D28 1px, transparent 1px)",
+              backgroundSize: "40px 40px"
             }}
           />
 
-          <div className={`absolute top-0 left-0 w-[60vw] h-[60vh] rounded-full transition-opacity duration-700 opacity-[0.1]`}
+          <div className="absolute top-0 left-0 w-[60vw] h-[60vh] rounded-full transition-opacity duration-700 opacity-[0.1]"
             style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(-20%, -20%)" }} />
           
-          <div className={`absolute bottom-0 right-0 w-[50vw] h-[50vh] rounded-full transition-opacity duration-700 opacity-[0.08]`}
+          <div className="absolute bottom-0 right-0 w-[50vw] h-[50vh] rounded-full transition-opacity duration-700 opacity-[0.08]"
             style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(20%, 20%)" }} />
             
-          {/* Sparkles scattered in background */}
           <div className="absolute top-[20%] right-[15%] w-1.5 h-1.5 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 10px 2px rgba(228,13,40,0.5)" }} />
           <div className="absolute top-[40%] left-[25%] w-1 h-1 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 6px 1px rgba(228,13,40,0.5)" }} />
           <div className="absolute bottom-[25%] right-[30%] w-2 h-2 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 12px 2px rgba(228,13,40,0.5)" }} />
@@ -195,40 +203,35 @@ export default function SectionThree() {
         {/* ── Sentinel ────────────────────────────────────────────────────── */}
         <div ref={sentinelRef} className="absolute top-[300px] left-0 w-full h-px pointer-events-none" />
 
-        {/* ── Heading (top-left) ───────────────────────────────────────────── */}
-        <div className="absolute top-14 left-14 z-20 max-w-md">
-          <h2 ref={headingRef} className={`text-4xl md:text-5xl font-black mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
+        {/* ── Heading ───────────────────────────────────────────── */}
+        <div className="relative md:absolute pt-0 pb-4 md:pt-0 md:pb-0 md:top-14 left-0 md:left-14 z-20 w-full md:max-w-md text-center md:text-left flex-shrink-0">
+          <h2 ref={headingRef} className="text-2xl md:text-5xl font-black mb-1 md:mb-3 leading-tight flex items-center justify-center md:justify-start gap-2 text-[#1a1a2e]">
             What <span style={{ color: "#E40D28" }}>We Build</span>
-            <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
+            <svg className="w-5 h-5 md:w-8 h-8 md:-translate-y-3" viewBox="0 0 24 24" fill="none">
               <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>
             </svg>
           </h2>
-          <p ref={paragraphRef} className={`text-sm md:text-base leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 text-gray-500`}>
-            Scroll to explore our services
+          <p ref={paragraphRef} className="text-xs md:text-base leading-relaxed text-gray-500">
+            Swipe to explore our services
           </p>
         </div>
 
-        {/* ── Center frame (dashed border for visual reference) ────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2]">
+        {/* ── Center frame (desktop only) ────────────── */}
+        <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none z-[2]">
           <div
             className="s3-frame rounded-[32px] transition-all duration-700"
-            style={{
-              width: "min(48vw, 620px)",
-              height: "min(72vh, 580px)",
-            }}
+            style={{ width: "min(48vw, 620px)", height: "min(72vh, 580px)" }}
           />
         </div>
 
         {/* ── Cards ───────────────────────────────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+        <div className="flex-1 min-h-0 md:absolute md:inset-0 flex md:items-center md:justify-center z-10 overflow-x-auto md:overflow-visible overflow-y-hidden snap-x snap-mandatory hide-scrollbar pointer-events-auto md:pointer-events-none px-4 md:px-0 gap-4 md:gap-0 pb-4 md:pb-0 pt-4 md:pt-0 items-center">
           {CARDS.map((card, i) => (
             <div
               key={card.id}
               ref={(el) => { cardsRef.current[i] = el; }}
-              className="absolute rounded-[32px] flex flex-col pointer-events-auto"
+              className="relative md:absolute rounded-[32px] flex flex-col pointer-events-auto shrink-0 snap-center w-[min(85vw,360px)] md:w-[min(48vw,620px)] h-[400px] md:max-h-none md:h-[min(72vh,580px)]"
               style={{
-                width: "min(48vw, 620px)",
-                height: "min(72vh, 580px)",
                 background: "rgba(255,255,255,0.95)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,255,255,0.6)",
@@ -238,100 +241,55 @@ export default function SectionThree() {
                 transition: "background-color 0.7s, border-color 0.7s, box-shadow 0.7s",
               }}
             >
-              {/* Card Dotted Wave Background */}
-              <div className="absolute top-0 right-0 w-[250px] h-[250px] pointer-events-none overflow-hidden rounded-tr-[32px] transition-opacity duration-700"
-                style={{ opacity: 0.4 }}>
+              <div className="absolute top-0 right-0 w-[250px] h-[250px] pointer-events-none overflow-hidden rounded-tr-[32px] opacity-40 transition-opacity duration-700">
                 <svg width="100%" height="100%" viewBox="0 0 250 250" preserveAspectRatio="none">
                   <defs>
-                    <pattern id={`dots-${card.id}`} x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
-                      <circle fill="#E40D28" cx="2" cy="2" r="1.5" />
-                    </pattern>
-                    <mask id={`waveMask-${card.id}`}>
-                      <path d="M 0,0 L 250,0 L 250,250 C 150,250 50,150 0,0 Z" fill="white" />
-                    </mask>
+                    <pattern id={`dots-${card.id}`} x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse"><circle fill="#E40D28" cx="2" cy="2" r="1.5" /></pattern>
+                    <mask id={`waveMask-${card.id}`}><path d="M 0,0 L 250,0 L 250,250 C 150,250 50,150 0,0 Z" fill="white" /></mask>
                   </defs>
                   <rect x="0" y="0" width="100%" height="100%" fill={`url(#dots-${card.id})`} mask={`url(#waveMask-${card.id})`} />
                 </svg>
               </div>
 
-              {/* Glowing Inner Border Top */}
-              <div className="absolute top-0 left-0 right-0 h-1.5"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(228,13,40,0.6), transparent)", filter: "blur(2px)" }} />
+              <div className="absolute top-0 left-0 right-0 h-1.5" style={{ background: "linear-gradient(90deg, transparent, rgba(228,13,40,0.6), transparent)", filter: "blur(2px)" }} />
 
-              <div className="flex-1 p-8 md:p-12 flex flex-col min-h-0 relative z-10">
-                {/* Category badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 w-fit transition-colors duration-700"
-                  style={{ background: "rgba(228,13,40,0.08)" }}>
+              <div className="flex-1 p-6 md:p-12 flex flex-col min-h-0 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-1.5 rounded-full mb-6 md:mb-8 w-fit transition-colors duration-700" style={{ background: "rgba(228,13,40,0.08)" }}>
                   <div className="w-1.5 h-1.5 rounded-full bg-[#E40D28]" />
-                  <span className="text-[10px] font-black tracking-[0.2em] uppercase"
-                    style={{ color: "#E40D28" }}>
-                    {card.category}
-                  </span>
+                  <span className="text-[9px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-700" style={{ color: "#E40D28" }}>{card.category}</span>
                 </div>
 
-                {/* Icon with 3D and Orbit */}
-                <div className="relative w-36 h-36 flex items-center justify-center mb-8">
+                <div className="relative w-24 h-24 md:w-36 md:h-36 flex items-center justify-center mb-6 md:mb-8">
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/20 transform rotate-12 scale-[1.15] transition-colors duration-700" />
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/10 transform -rotate-6 scale-[1.25] transition-colors duration-700" />
-                  
-                  <div className="w-24 h-24 rounded-[24px] flex items-center justify-center relative z-10 transition-all duration-700"
-                    style={{
-                      background: "linear-gradient(135deg, #ffffff, #ffecec)",
-                      boxShadow: "inset 2px 2px 8px rgba(255,255,255,1), inset -2px -2px 8px rgba(228,13,40,0.1), 0 15px 30px rgba(228,13,40,0.15)",
-                      border: "1px solid rgba(255,255,255,0.8)"
-                    }}>
-                    <card.Icon />
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-[20px] md:rounded-[24px] flex items-center justify-center relative z-10 transition-all duration-700"
+                    style={{ background: "linear-gradient(135deg, #ffffff, #ffecec)", boxShadow: "inset 2px 2px 8px rgba(255,255,255,1), inset -2px -2px 8px rgba(228,13,40,0.1), 0 15px 30px rgba(228,13,40,0.15)", border: "1px solid rgba(255,255,255,0.8)" }}>
+                    <div className="scale-[0.65] md:scale-100"><card.Icon /></div>
                   </div>
-                  
-                  {/* Decorative small stars around icon */}
-                  <div className="absolute top-2 right-4 w-1.5 h-1.5 bg-[#E40D28] rounded-full blur-[1px]" />
+                  <div className="absolute top-2 right-4 w-1 h-1 md:w-1.5 md:h-1.5 bg-[#E40D28] rounded-full blur-[1px]" />
                   <div className="absolute bottom-4 left-2 w-1 h-1 bg-[#E40D28] rounded-full blur-[0.5px]" />
                 </div>
 
-                {/* Title */}
-                <h3 className={`text-2xl md:text-4xl font-black mb-4 leading-tight tracking-tight transition-colors duration-700 ${"text-[#1a1a2e]"}`}>
-                  {card.title}
-                </h3>
+                <h3 className="text-xl md:text-4xl font-black mb-2 md:mb-4 leading-tight tracking-tight transition-colors duration-700 text-[#1a1a2e]">{card.title}</h3>
+                <p className="text-sm md:text-lg leading-relaxed min-h-0 transition-colors duration-700 text-gray-500">{card.desc}</p>
+                <div className="w-full h-px mb-4 md:mb-6 mt-auto transition-colors duration-700" style={{ background: "linear-gradient(90deg, rgba(228,13,40,0.1), transparent)" }} />
 
-                {/* Description */}
-                <p className={`text-base md:text-lg leading-relaxed flex-1 min-h-0 transition-colors duration-700 ${"text-gray-500"}`}>
-                  {card.desc}
-                </p>
-
-                {/* Divider */}
-                <div className="w-full h-px my-6 transition-colors duration-700"
-                  style={{ background: "linear-gradient(90deg, rgba(228,13,40,0.1), transparent)" }} />
-
-                {/* Footer */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-[14px] flex items-center justify-center transition-all duration-700"
-                      style={{
-                        background: "linear-gradient(135deg, #ffffff, #fff0f0)",
-                        boxShadow: "inset 2px 2px 4px rgba(255,255,255,1), 0 4px 10px rgba(228,13,40,0.08)",
-                      }}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-[12px] md:rounded-[14px] flex items-center justify-center transition-all duration-700"
+                      style={{ background: "linear-gradient(135deg, #ffffff, #fff0f0)", boxShadow: "inset 2px 2px 4px rgba(255,255,255,1), 0 4px 10px rgba(228,13,40,0.08)" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="scale-75 md:scale-100">
+                        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
                       </svg>
                     </div>
                     <div>
-                      <div className="text-3xl md:text-4xl font-black leading-none tracking-tight" style={{ color: "#E40D28" }}>
-                        {card.metric}
-                      </div>
-                      <div className={`text-[10px] mt-1.5 font-bold tracking-widest uppercase transition-colors duration-700 ${"text-gray-400"}`}>
-                        {card.metricLabel}
-                      </div>
+                      <div className="text-2xl md:text-4xl font-black leading-none tracking-tight transition-colors duration-700" style={{ color: "#E40D28" }}>{card.metric}</div>
+                      <div className="text-[9px] md:text-[10px] mt-1 md:mt-1.5 font-bold tracking-widest uppercase transition-colors duration-700 text-gray-400">{card.metricLabel}</div>
                     </div>
                   </div>
-                  
-                  <button className="w-16 h-16 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
-                    style={{ 
-                      background: "linear-gradient(135deg, #ff4b5c, #E40D28)", 
-                      boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)" 
-                    }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
+                  <button className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
+                    style={{ background: "linear-gradient(135deg, #ff4b5c, #E40D28)", boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)" }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="scale-[0.8] md:scale-100 transform group-hover:translate-x-1 transition-transform">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </button>
@@ -342,7 +300,7 @@ export default function SectionThree() {
         </div>
 
         {/* ── Bottom: dots + counter ───────────────────────────────────────── */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
+        <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 z-20 items-center gap-6">
           <div className="flex items-center gap-3">
             {CARDS.map((_, i) => (
               <div key={i} className="s3-dot w-2.5 h-2.5 rounded-full bg-[#E40D28] transition-all duration-300"
@@ -355,23 +313,13 @@ export default function SectionThree() {
         </div>
 
         {/* ── Scroll hint ─────────────────────────────────────────────────── */}
-        <div className={`absolute bottom-10 right-10 z-20 flex items-center gap-2 text-sm font-bold select-none transition-colors duration-700 ${"text-red-400/40"}`}>
+        <div className={`hidden md:flex absolute bottom-10 right-10 z-20 items-center gap-2 text-sm font-bold select-none transition-colors duration-700 ${"text-red-400/40"}`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
           <span>Scroll</span>
         </div>
 
-        {/* ── Styles ──────────────────────────────────────────────────────── */}
-        <style>{`
-          .s3-hidden { opacity: 0; transform: translateX(-60px); }
-          .s3-heading.s3-animate { animation: s3SlideIn 0.7s cubic-bezier(0.22,1,0.36,1) 0ms forwards; }
-          .s3-paragraph.s3-animate { animation: s3SlideIn 0.7s cubic-bezier(0.22,1,0.36,1) 160ms forwards; }
-          @keyframes s3SlideIn {
-            from { opacity: 0; transform: translateX(-60px); }
-            to   { opacity: 1; transform: translateX(0); }
-          }
-        `}</style>
       </div>
     </div>
   );
