@@ -34,29 +34,29 @@ export default function useScrollAnimation(
               floatCurve = 12;
               baseYOffset = 10;
             } else if (width < 1024) {
-              // Tablet (md)
-              radius = 1000;
-              spacingAngle = 32;
-              floatCurve = 20;
-              baseYOffset = 20;
+              // Tablet (md) - Card width 480px
+              radius = 850;
+              spacingAngle = 40;
+              floatCurve = 15;
+              baseYOffset = 15;
             } else if (width < 1280) {
-              // Small Laptop (lg)
-              radius = 1200;
-              spacingAngle = 28;
+              // Small Laptop (lg) - Card width 560px
+              radius = 1000;
+              spacingAngle = 40;
               floatCurve = 20;
               baseYOffset = 20;
             } else if (width < 1536) {
-              // Laptop (xl)
-              radius = 1400;
-              spacingAngle = 28;
+              // Laptop (xl) - Card width 640px
+              radius = 1200;
+              spacingAngle = 38;
+              floatCurve = 20;
+              baseYOffset = 20;
+            } else {
+              // Desktop (2xl) - Card width 640px
+              radius = 1350;
+              spacingAngle = 35;
               floatCurve = 25;
               baseYOffset = 25;
-            } else {
-              // Desktop (2xl)
-              radius = 1600;
-              spacingAngle = 28;
-              floatCurve = 25;
-              baseYOffset = 30;
             }
           };
 
