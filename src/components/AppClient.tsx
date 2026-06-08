@@ -75,7 +75,7 @@ export default function AppClient() {
 
   return (
     <main
-      className="relative min-h-screen w-full overflow-x-hidden font-sans transition-colors duration-700 bg-white"
+      className="relative min-h-screen w-full font-sans transition-colors duration-700 bg-white"
     >
 
 

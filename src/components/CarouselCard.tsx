@@ -11,6 +11,7 @@ interface CarouselCardProps {
   bgGradient: string;
   themeColor: string;
   btnHover: string;
+  mobileMode?: boolean;
 }
 
 export default function CarouselCard({
@@ -21,24 +22,29 @@ export default function CarouselCard({
   bgGradient,
   themeColor,
   btnHover,
+  mobileMode = false,
 }: CarouselCardProps) {
   return (
     <div 
-      className="carousel-card-wrapper absolute left-1/2 top-1/2 w-[260px] sm:w-[420px] md:w-[540px] lg:w-[640px] h-[160px] sm:h-[240px] md:h-[300px] lg:h-[360px] -translate-x-1/2 -translate-y-1/2 select-none"
+      className={`carousel-card-wrapper select-none ${
+        mobileMode 
+          ? "w-full h-full relative" 
+          : "absolute left-1/2 top-1/2 w-[280px] sm:w-[460px] md:w-[560px] lg:w-[720px] h-[380px] sm:h-[240px] md:h-[280px] lg:h-[340px] -translate-x-1/2 -translate-y-1/2"
+      }`}
       style={{
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden",
       }}
     >
       <div 
-        className={`carousel-card-inner w-full h-full rounded-[2.5rem] p-6 sm:p-9 md:p-11 flex flex-row items-center justify-between gap-4 sm:gap-8 ${bgGradient} border border-white/65 shadow-[0_8px_30px_rgba(0,0,0,0.012)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.03] hover:brightness-[1.01] hover:shadow-[0_25px_50px_rgba(0,0,0,0.06)] cursor-pointer group`}
+        className={`carousel-card-inner w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-7 md:p-8 lg:p-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-8 ${bgGradient} border border-white/65 shadow-[0_8px_30px_rgba(0,0,0,0.012)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.03] hover:brightness-[1.01] hover:shadow-[0_25px_50px_rgba(0,0,0,0.06)] cursor-pointer group`}
         style={{
           transformStyle: "preserve-3d",
         }}
       >
         {/* Left Side: Content (Constrained to 55-60% width) */}
         <div 
-          className="w-[58%] sm:w-[55%] flex flex-col items-start justify-between h-full"
+          className="w-full sm:w-[55%] flex flex-col items-start justify-between flex-1 sm:h-full order-2 sm:order-1"
           style={{ transform: "translateZ(12px)", transformStyle: "preserve-3d" }}
         >
           {/* Logo container */}
@@ -53,10 +59,10 @@ export default function CarouselCard({
 
           {/* Texts */}
           <div className="flex-grow flex flex-col justify-center mb-3 sm:mb-5">
-            <h4 className="text-xs sm:text-lg md:text-xl lg:text-[21px] font-semibold leading-snug text-slate-800 tracking-tight mb-2 group-hover:text-black transition-colors duration-300">
+            <h4 className="text-sm sm:text-lg md:text-xl lg:text-[21px] font-semibold leading-snug text-slate-800 tracking-tight mb-2 group-hover:text-black transition-colors duration-300">
               {title}
             </h4>
-            <p className="text-[10px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-slate-500 font-medium leading-relaxed line-clamp-3">
+            <p className="text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-slate-500 font-medium leading-relaxed line-clamp-3">
               {description}
             </p>
           </div>
@@ -65,7 +71,7 @@ export default function CarouselCard({
           <Link 
             href="#" 
             onClick={(e) => e.stopPropagation()}
-            className={`inline-flex items-center justify-center px-4 sm:px-6 py-1.5 sm:py-2.5 bg-white ${themeColor} text-[9px] sm:text-xs font-bold rounded-full transition-all duration-300 shadow-sm hover:shadow-md ${btnHover}`}
+            className={`inline-flex items-center justify-center px-5 sm:px-6 py-2 sm:py-2.5 bg-white ${themeColor} text-[10px] sm:text-xs font-bold rounded-full transition-all duration-300 shadow-sm hover:shadow-md ${btnHover}`}
           >
             View Project
           </Link>
@@ -73,7 +79,7 @@ export default function CarouselCard({
 
         {/* Right Side: Constrained Mockup Image (Uses standard img tag with max constraints to prevent overflow) */}
         <div 
-          className="w-[38%] sm:w-[40%] h-[90%] flex justify-center items-center relative"
+          className="w-full sm:w-[40%] h-[40%] sm:h-[90%] flex justify-center items-center relative order-1 sm:order-2"
           style={{ 
             transform: "translateZ(20px) scale(1.02)", 
             transformStyle: "preserve-3d",

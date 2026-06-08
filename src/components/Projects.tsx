@@ -61,10 +61,10 @@ export default function Projects() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[300vh] bg-white select-none border-t border-slate-100/80"
+      className="relative w-full min-h-screen sm:h-[300vh] bg-white select-none border-t border-slate-100/80"
     >
-      {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center overflow-hidden pt-8 pb-4 sm:pt-10 sm:pb-4">
+      {/* Desktop Sticky Viewport & Mobile Static Viewport */}
+      <div className="desktop-sticky sm:sticky sm:top-0 w-full sm:h-screen flex flex-col items-center sm:overflow-hidden pt-8 pb-8 sm:pt-10 sm:pb-4">
 
         {/* Stage Header */}
         <div className="text-center z-20 px-6 max-w-4xl shrink-0">
@@ -76,9 +76,9 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* 3D Carousel Stage */}
+        {/* Desktop 3D Carousel Stage */}
         <div
-          className="relative flex-1 w-full flex items-center justify-center pointer-events-none mt-8 sm:mt-12"
+          className="hidden sm:flex relative flex-1 w-full items-center justify-center pointer-events-none mt-12 sm:mt-16 lg:mt-24 desktop-carousel"
           style={{
             perspective: "1600px",
             perspectiveOrigin: "50% 50%",
@@ -103,6 +103,24 @@ export default function Projects() {
               />
             ))}
           </div>
+        </div>
+
+        {/* Mobile Swipe Slider */}
+        <div className="flex sm:hidden w-full overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-6 pt-6 hide-scrollbar">
+          {caseStudies.map((study, index) => (
+            <div key={index} className="shrink-0 w-[85%] h-[380px] snap-center relative">
+              <CarouselCard
+                brandLogo={study.brandLogo}
+                title={study.title}
+                description={study.description}
+                image={study.image}
+                bgGradient={study.bgGradient}
+                themeColor={study.themeColor}
+                btnHover={study.btnHover}
+                mobileMode={true}
+              />
+            </div>
+          ))}
         </div>
 
       </div>

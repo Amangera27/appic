@@ -9,14 +9,13 @@ export default function useScrollAnimation(
 ) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
     let scrollTriggerInstance: any;
 
     const ctx = gsap.context(() => {
       const container = containerRef.current;
       if (!container) return;
 
-          const cards = container.querySelectorAll(".carousel-card-wrapper");
+          const cards = container.querySelectorAll(".desktop-carousel .carousel-card-wrapper");
           const totalCards = cards.length;
           if (totalCards === 0) return;
 
@@ -37,13 +36,13 @@ export default function useScrollAnimation(
             } else if (width < 1024) {
               // Tablet
               radius = 1250;
-              spacingAngle = 32;
+              spacingAngle = 24;
               floatCurve = 20;
               baseYOffset = 20;
             } else {
               // Desktop
-              radius = 1750;
-              spacingAngle = 28;
+              radius = 1600;
+              spacingAngle = 20;
               floatCurve = 25;
               baseYOffset = 30;
             }
@@ -107,14 +106,19 @@ export default function useScrollAnimation(
           }
           snapPoints.push(1);
 
-          const stickyElement = container.querySelector(".sticky");
+          const stickyElement = container.querySelector(".desktop-sticky");
 
           scrollTriggerInstance = ScrollTrigger.create({
             trigger: container,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1.1,
-            snap: snapPoints,
+            scrub: 2,
+            snap: {
+              snapTo: snapPoints,
+              duration: { min: 0.3, max: 0.8 },
+              delay: 0.1,
+              ease: "sine.inOut"
+            },
             pin: stickyElement || true,
             pinSpacing: false,
             onUpdate: (self) => {

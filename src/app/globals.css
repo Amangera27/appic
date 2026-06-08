@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@plugin 'lightswind/plugin';
+@import '../lightswind.css';
 :root {
   --background: #ffffff;
   --foreground: #171717;
