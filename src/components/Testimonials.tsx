@@ -49,12 +49,12 @@ interface TestimonialsProps {
 }
 
 // Geometry constants — must match Tailwind on the card outer wrapper
-//   pt-10 = 40px, h-[460px], pb-6 = 24px → wrapper = 524px
+//   pt-10 = 40px, h-[380px], pb-6 = 24px → wrapper = 444px
 //   Cage outset = 10px beyond card edges
 const CAGE_TOP = 30;  // 40 - 10
-const CAGE_HEIGHT = 480; // 460 + 20
+const CAGE_HEIGHT = 400; // 380 + 20
 const CAGE_LEFT = 10;
-const BRACKET_BTM = 14;  // 524 - (30+480)
+const BRACKET_BTM = 14;  // 444 - (30+400)
 
 function CageBorder({ index }: { index: number }) {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -120,8 +120,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
   const bgBlobsRef = useRef<(HTMLDivElement | null)[]>([]);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // Which card index is currently flipped (-1 = none)
-  const [flippedIndex, setFlippedIndex] = useState<number>(-1);
+  // Which card index is currently flipped (-1 = none, here we default to 0 so 1st card is always open)
+  const [flippedIndex, setFlippedIndex] = useState<number>(0);
   // Track hover for tilt-only cards (card 4)
   const tiltTimers = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
@@ -239,9 +239,9 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
     const card = cardRefs.current[index];
     if (!card) return;
     if (index < 3) {
-      // unflip after short delay so it feels intentional
+      // unflip back to first card after short delay
       clearTimeout(tiltTimers.current[index]);
-      tiltTimers.current[index] = setTimeout(() => setFlippedIndex(-1), 200);
+      tiltTimers.current[index] = setTimeout(() => setFlippedIndex(0), 200);
       return;
     }
     gsap.to(card, { rotateX: 0, rotateY: 0, duration: 1.2, ease: "elastic.out(1, 0.3)" });
@@ -254,8 +254,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       clearTimeout(tiltTimers.current[index]);
       setFlippedIndex(index);
     }
-  };  return (
-    <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-16 md:py-24">
+  }; return (
+    <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-8 md:py-12">
 
       {/* ─── BACKGROUND ──────────────────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0 opacity-[0.40] mix-blend-overlay pointer-events-none"
@@ -275,7 +275,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
         style={{ backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`, backgroundSize: `20px 20px` }} />
 
       {/* ─── MAIN CONTENT ─────────────────────────────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-10 lg:gap-16 h-full pt-4 pb-4 lg:pb-12">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-8 lg:gap-10 h-full pt-2 pb-2 lg:pb-6">
 
         {/* Header */}
         <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
@@ -285,10 +285,10 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
               <span className="text-[10px] font-bold tracking-[0.3em] text-white uppercase">Client Success Stories</span>
             </div>
             <h2 className="text-5xl md:text-7xl lg:text-[88px] font-black text-white tracking-tighter leading-[0.95]">
-              Partnerships <br className="hidden md:block" /> We Cherish.
+              Partnerships We Cherish.
             </h2>
           </div>
-          <p className="text-white/80 text-lg md:text-xl max-w-lg font-light leading-relaxed md:pb-4 border-l border-white/20 pl-6">
+          <p className="text-white/80 text-[16px] max-w-lg font-light leading-relaxed md:pb-4 border-l border-white/20 pl-6">
             We believe in collaboration, transparency, and delivering measurable success — values that
             make us a preferred Application Development Company worldwide.
           </p>
@@ -316,18 +316,18 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
                 <CornerBrackets />
 
                 {/* ── Floating avatar (outside flip, always front-facing) ── */}
-                <div className="card-avatar absolute top-0 left-8 z-[60] w-[88px] h-[88px] rounded-2xl p-[1px] bg-gradient-to-br from-white/60 to-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] -translate-y-1/2 rotate-[-5deg] group-hover:rotate-[0deg] transition-transform duration-500">
+                <div className="card-avatar absolute top-4 left-8 z-[60] w-[60px] h-[60px] rounded-2xl p-[1px] bg-gradient-to-br from-white/60 to-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] -translate-y-1/2 rotate-[-5deg] group-hover:rotate-[0deg] transition-transform duration-500">
                   <div className="w-full h-full rounded-[15px] bg-[#0A0002] flex items-center justify-center overflow-hidden backdrop-blur-xl border border-white/10 relative">
                     <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 4px, #ffffff 4px, #ffffff 5px)` }} />
-                    <span className="relative z-10 text-white font-black text-4xl tracking-tighter">{data.name.charAt(0)}</span>
+                    <span className="relative z-10 text-white font-medium text-2xl tracking-tighter">{data.name.charAt(0)}</span>
                   </div>
                 </div>
 
                 {/* ── Floating play button ── */}
-                <div className="absolute -bottom-4 -right-4 z-[60] w-16 h-16 rounded-full bg-[#DE0C27] flex items-center justify-center shadow-[0_10px_30px_rgba(222,12,39,0.5)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30">
+                <div className="absolute -bottom-2 -right-2 z-[60] w-12 h-12 rounded-full bg-[#DE0C27] flex items-center justify-center shadow-[0_10px_30px_rgba(222,12,39,0.5)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30">
                   {isFlipped
-                    ? <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><rect x="4" y="4" width="4" height="12" rx="1" /><rect x="12" y="4" width="4" height="12" rx="1" /></svg>
-                    : <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
+                    ? <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><rect x="4" y="4" width="4" height="12" rx="1" /><rect x="12" y="4" width="4" height="12" rx="1" /></svg>
+                    : <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
                   }
                   <div className="absolute inset-0 rounded-full border border-white/50 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
                 </div>
@@ -339,7 +339,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
                     FLIP CONTAINER — contains front & back faces
                     ══════════════════════════════════════════════════════ */}
                 <div
-                  className="relative w-full h-[460px]"
+                  className="relative w-full h-[380px]"
                   style={{
                     transformStyle: "preserve-3d",
                     transition: "transform 0.75s cubic-bezier(0.4, 0.0, 0.2, 1)",
@@ -349,26 +349,26 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
 
                   {/* ── FRONT FACE ── */}
                   <div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/[0.08] to-black/40 backdrop-blur-[50px] rounded-[32px] overflow-hidden flex flex-col p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),_0_40px_80px_-20px_rgba(0,0,0,0.8)] border border-white/10"
+                    className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/[0.08] to-black/40 backdrop-blur-[50px] rounded-[32px] overflow-hidden flex flex-col p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),_0_40px_80px_-20px_rgba(0,0,0,0.8)] border border-white/10"
                     style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
                   >
                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-50" />
                     <div className="card-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#DE0C27]/40 rounded-full blur-[80px] pointer-events-none opacity-0 mix-blend-screen" />
                     <div className="absolute -top-6 right-2 text-[200px] leading-none font-serif text-white/[0.04] select-none pointer-events-none font-black tracking-tighter">"</div>
 
-                    <div className="relative z-10 flex flex-col h-full mt-10">
-                      <div className="mb-8">
-                        <h4 className="font-bold text-white text-2xl tracking-wide leading-tight">{data.name}</h4>
-                        <p className="text-[#FF4D4D] text-xs font-black mt-2 uppercase tracking-[0.2em]">{data.role}</p>
+                    <div className="relative z-10 flex flex-col h-full mt-0">
+                      <div className="mb-4">
+                        <h4 className="font-medium text-white text-[18px] md:text-[20px] tracking-wide leading-tight">{data.name}</h4>
+                        <p className="text-[#FF4D4D] text-[10px] font-black mt-1 uppercase tracking-[0.2em]">{data.role}</p>
                       </div>
                       <div className="flex-grow flex flex-col justify-center relative">
-                        <div className="w-8 h-[2px] bg-white/20 mb-6" />
-                        <p className="text-white/80 text-[16px] leading-[1.8] font-light tracking-wide">"{data.quote}"</p>
+                        <div className="w-8 h-[2px] bg-white/20 mb-3" />
+                        <p className="text-white/80 text-[14px] leading-[1.6] font-light tracking-wide">"{data.quote}"</p>
                       </div>
 
                       {/* Hover hint for video cards */}
                       {hasVideo && (
-                        <div className="flex items-center gap-2 mt-4 opacity-60">
+                        <div className="flex items-center gap-2 mt-2 opacity-60">
                           <div className="w-4 h-4 rounded-full border border-white/60 flex items-center justify-center">
                             <svg className="w-2 h-2 text-white ml-0.5" fill="currentColor" viewBox="0 0 10 10"><path d="M2 2l6 3-6 3z" /></svg>
                           </div>
@@ -376,10 +376,10 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
                         </div>
                       )}
 
-                      <div className="relative z-10 pt-4 mt-auto">
-                        <div className="flex items-center gap-3">
+                      <div className="relative z-10 pt-4 mt-auto w-full">
+                        <div className="flex items-center justify-between w-full">
                           <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Project //</span>
-                          <span className="text-sm font-black tracking-widest text-white uppercase">{data.project}</span>
+                          <span className="text-xs font-medium tracking-widest text-white uppercase text-right">{data.project}</span>
                         </div>
                       </div>
                     </div>
@@ -403,7 +403,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
                     >
                       {/* Dark overlay gradient at top for project label */}
                       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/80 to-transparent z-10 pointer-events-none flex items-center px-5">
-                        <span className="text-[10px] font-black tracking-[0.25em] text-white/60 uppercase">Project // {data.project}</span>
+                        <span className="text-[10px] font-medium tracking-[0.25em] text-white/60 uppercase">Project // {data.project}</span>
                       </div>
 
                       {/* YouTube iframe — autoplay only when flipped */}

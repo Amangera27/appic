@@ -293,7 +293,7 @@ export default function NextSection() {
           
           <div ref={subRef} className="flex items-center gap-5">
             <div className="w-12 h-[3px] bg-gradient-to-r from-[#E40D28] to-[#a855f7] rounded-full shadow-[0_0_10px_rgba(228,13,40,0.5)]" />
-            <p className="text-lg md:text-xl text-zinc-600 font-bold tracking-tight">
+            <p className="text-[16px] text-zinc-600 font-bold tracking-tight">
               AI, GenAI, Machine Learning &amp; Blockchain Development.
             </p>
           </div>
@@ -326,12 +326,12 @@ export default function NextSection() {
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* 3D Floating Icon Container */}
-                <div className={`w-14 h-14 rounded-[16px] ${card.theme.iconBg} ${card.theme.iconShadow} flex items-center justify-center mb-6 transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]`}>
+                <div className={`w-14 h-14 rounded-[16px] ${card.theme.iconBg} ${card.theme.iconShadow} flex items-center justify-center mb-4 transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]`}>
                   {card.icon}
                 </div>
                 
                 {/* Title */}
-                <h3 className={`text-[22px] font-black text-zinc-950 mb-3 tracking-tight leading-tight transition-colors duration-300 ${card.theme.titleHover}`}>
+                <h3 className={`text-[22px] font-medium text-zinc-950 mb-2 tracking-tight leading-tight transition-colors duration-300 ${card.theme.titleHover}`}>
                   {card.title}
                 </h3>
                 

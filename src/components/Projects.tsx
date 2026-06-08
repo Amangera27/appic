@@ -71,7 +71,7 @@ export default function Projects() {
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight mb-3">
             Our Case Studies
           </h2>
-          <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[16px] text-slate-500 max-w-2xl mx-auto leading-relaxed">
             Discover how we've helped businesses across various industries transform their ideas into powerful digital solutions.
           </p>
         </div>

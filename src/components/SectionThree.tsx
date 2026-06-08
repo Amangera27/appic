@@ -324,7 +324,7 @@ export default function SectionThree() {
               <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>
             </svg>
           </h2>
-          <p ref={paragraphRef} className={`text-sm md:text-base leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 text-gray-500`}>
+          <p ref={paragraphRef} className={`text-[16px] leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 text-gray-500`}>
             Scroll to explore our services
           </p>
         </div>
