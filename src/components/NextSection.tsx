@@ -244,37 +244,11 @@ export default function NextSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen max-h-[1080px] min-h-[700px] py-12 md:py-16 flex flex-col justify-center"
+      className="relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-start xl:justify-center"
       style={{ backgroundColor: "#Fdfdfd" }} 
     >
-      {/* ─── WAVE DIVIDER ────────────────────────────────────────────────────── */}
-      <div
-        aria-hidden
-        className="pointer-events-none select-none absolute top-[-149px] left-0 w-full h-[150px] overflow-hidden z-20"
-      >
-        <svg
-          ref={svgRef}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 4970.24 380.13"
-          preserveAspectRatio="none"
-          style={{
-            width: "300%",
-            height: "100%",
-            display: "block",
-            fill: "#Fdfdfd",
-            transformOrigin: "50% 100%",
-          }}
-        >
-          <g>
-            {WAVE_PATHS.map((d, i) => <path key={i} d={d} />)}
-          </g>
-        </svg>
-      </div>
-
       {/* ─── GLORIOUS PLANET & VIBRANT BACKGROUND ─────────────────────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Seamless Fade into the solid white wave above */}
-        <div className="absolute top-0 left-0 w-full h-[200px] bg-gradient-to-b from-[#Fdfdfd] via-[#Fdfdfd]/80 to-transparent z-20" />
         
         {/* Deep, beautiful ambient lights (Replaced heavy SVG blur with CSS Radial Gradient) */}
         <div className="absolute inset-0 opacity-[0.25]"
@@ -292,7 +266,7 @@ export default function NextSection() {
       </div>
 
       {/* ─── SECTION CONTENT ─────────────────────────────────────────────────── */}
-      <div className="relative z-30 w-full max-w-[1600px] mx-auto px-6 md:px-10 -mt-16 md:-mt-[120px] flex flex-col justify-center">
+      <div className="relative z-30 w-full max-w-[1600px] mx-auto px-6 md:px-10 mt-0 flex flex-col justify-center">
         
         {/* Header Area */}
         <div className="max-w-[1200px] mb-8 md:mb-12 flex flex-col items-start relative z-30 perspective-[1000px]">

@@ -34,15 +34,27 @@ export default function useScrollAnimation(
               floatCurve = 12;
               baseYOffset = 10;
             } else if (width < 1024) {
-              // Tablet
-              radius = 1250;
-              spacingAngle = 24;
+              // Tablet (md)
+              radius = 1000;
+              spacingAngle = 32;
               floatCurve = 20;
               baseYOffset = 20;
+            } else if (width < 1280) {
+              // Small Laptop (lg)
+              radius = 1200;
+              spacingAngle = 28;
+              floatCurve = 20;
+              baseYOffset = 20;
+            } else if (width < 1536) {
+              // Laptop (xl)
+              radius = 1400;
+              spacingAngle = 28;
+              floatCurve = 25;
+              baseYOffset = 25;
             } else {
-              // Desktop
+              // Desktop (2xl)
               radius = 1600;
-              spacingAngle = 20;
+              spacingAngle = 28;
               floatCurve = 25;
               baseYOffset = 30;
             }
@@ -53,12 +65,13 @@ export default function useScrollAnimation(
 
           // Position calculation helper
           const updatePositions = (progress: number) => {
-            // Add a 10% resting zone at the start and end so cards sit in center
-            let activeIndex = 0;
-            if (progress > 0.1 && progress < 0.9) {
-              activeIndex = ((progress - 0.1) / 0.8) * (totalCards - 1);
-            } else if (progress >= 0.9) {
-              activeIndex = totalCards - 1;
+            // Apply a strict locking deadzone so the active card strictly stays in the center for a portion of the scroll
+            let activeIndex = progress * (totalCards - 1);
+            
+            // Snap the index tightly to whole numbers if it's close to one, creating a stable center rest period
+            const nearestIndex = Math.round(activeIndex);
+            if (Math.abs(activeIndex - nearestIndex) < 0.15) {
+              activeIndex = nearestIndex; // Lock completely to center
             }
 
             cards.forEach((cardNode, index) => {
@@ -99,25 +112,18 @@ export default function useScrollAnimation(
           // Initialize card positions
           updatePositions(0);
 
-          // Create custom snap array based on the deadzone logic
-          const snapPoints = [0];
-          for (let i = 1; i < totalCards - 1; i++) {
-            snapPoints.push(0.1 + (i / (totalCards - 1)) * 0.8);
-          }
-          snapPoints.push(1);
-
           const stickyElement = container.querySelector(".desktop-sticky");
 
           scrollTriggerInstance = ScrollTrigger.create({
             trigger: container,
             start: "top top",
             end: "bottom bottom",
-            scrub: 2,
+            scrub: 1.5,
             snap: {
-              snapTo: snapPoints,
-              duration: { min: 0.3, max: 0.8 },
-              delay: 0.1,
-              ease: "sine.inOut"
+              snapTo: 1 / (totalCards - 1),
+              duration: { min: 0.2, max: 0.6 },
+              delay: 0.05,
+              ease: "power1.inOut"
             },
             pin: stickyElement || true,
             pinSpacing: false,

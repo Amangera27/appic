@@ -61,10 +61,10 @@ export default function Projects() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-screen sm:h-[300vh] bg-white select-none border-t border-slate-100/80"
+      className="relative w-full sm:h-[300vh] bg-white select-none border-t border-slate-100/80"
     >
       {/* Desktop Sticky Viewport & Mobile Static Viewport */}
-      <div className="desktop-sticky sm:sticky sm:top-0 w-full sm:h-screen flex flex-col items-center sm:overflow-hidden pt-8 pb-8 sm:pt-10 sm:pb-4">
+      <div className="desktop-sticky sm:sticky sm:top-0 w-full sm:h-screen flex flex-col items-center sm:overflow-hidden pt-8 pb-2 sm:pt-10 sm:pb-4">
 
         {/* Stage Header */}
         <div className="text-center z-20 px-6 max-w-4xl shrink-0">
@@ -78,7 +78,7 @@ export default function Projects() {
 
         {/* Desktop 3D Carousel Stage */}
         <div
-          className="hidden sm:flex relative flex-1 w-full items-center justify-center pointer-events-none mt-12 sm:mt-16 lg:mt-24 desktop-carousel"
+          className="hidden sm:flex relative flex-1 w-full items-center justify-center pointer-events-none mt-8 sm:mt-12 lg:mt-16 desktop-carousel"
           style={{
             perspective: "1600px",
             perspectiveOrigin: "50% 50%",
@@ -87,7 +87,7 @@ export default function Projects() {
         >
           {/* Inner Stage (enables card overlays/depth) */}
           <div
-            className="relative w-full h-full flex items-center justify-center translate-y-12 sm:translate-y-16 lg:translate-y-24"
+            className="relative w-full h-full flex items-center justify-center translate-y-4 sm:translate-y-8 lg:translate-y-12"
             style={{ transformStyle: "preserve-3d" }}
           >
             {caseStudies.map((study, index) => (

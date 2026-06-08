@@ -141,10 +141,57 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
     // bgBlobsRef.current.forEach((blob) => { ... });
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section, start: "top top", end: "+=400%",
-          pin: true, scrub: 1.5, anticipatePin: 1,
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section, start: "top 20%", end: "+=100%",
+            onEnter: () => {
+              setCursorColor && setCursorColor("#ffffff");
+              setPageBg && setPageBg("#DE0C27");
+            },
+            onLeaveBack: () => {
+              setCursorColor && setCursorColor("#E21628");
+              setPageBg && setPageBg("#ffffff");
+            },
+            onLeave: () => {
+              setCursorColor && setCursorColor("#E21628");
+              setPageBg && setPageBg("#Fdfdfd");
+            },
+            onEnterBack: () => {
+              setCursorColor && setCursorColor("#ffffff");
+              setPageBg && setPageBg("#DE0C27");
+            },
+          },
+        });
+
+        const headerTitle = header.querySelector("h2");
+        const headerDesc = header.querySelector("p");
+
+        gsap.set(cards, { transformPerspective: 2000, transformStyle: "preserve-3d" });
+        gsap.set(cards[0], { y: -1000, z: -1000, rotationX: -60, rotationY: -40, opacity: 0, filter: "blur(40px)" });
+        gsap.set(cards[1], { y: 1000, z: -1000, rotationX: 60, rotationY: 40, opacity: 0, filter: "blur(40px)" });
+        gsap.set(cards[2], { y: -1000, z: -1000, rotationX: -60, rotationY: -40, opacity: 0, filter: "blur(40px)" });
+        gsap.set(cards[3], { y: 1000, z: -1000, rotationX: 60, rotationY: 40, opacity: 0, filter: "blur(40px)" });
+        gsap.set(headerTitle, { opacity: 0, y: 100, scale: 0.8, filter: "blur(20px)" });
+        gsap.set(headerDesc, { opacity: 0, y: 50 });
+
+        tl.to(headerTitle, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 2, ease: "power4.out" }, 0);
+        tl.to(headerDesc, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 0.5);
+
+        const animProps = { y: 0, z: 0, rotationX: 0, rotationY: 0, opacity: 1, filter: "blur(0px)", duration: 2.5, ease: "expo.out" };
+        tl.to(cards, animProps, 1.0);
+        tl.to(cards, { y: "-=40", duration: 2, stagger: 0.3, ease: "sine.inOut" }, "-=1");
+        tl.to({}, { duration: 1 });
+      });
+
+      mm.add("(max-width: 1023px)", () => {
+        // Mobile/Tablet: No pinning, just simple fade in
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 50%",
+          end: "bottom 50%",
           onEnter: () => {
             setCursorColor && setCursorColor("#ffffff");
             setPageBg && setPageBg("#DE0C27");
@@ -161,28 +208,16 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
             setCursorColor && setCursorColor("#ffffff");
             setPageBg && setPageBg("#DE0C27");
           },
-        },
+        });
+
+        gsap.fromTo(cards,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: cardsContainerRef.current, start: "top 80%" }
+          }
+        );
       });
-
-      const headerTitle = header.querySelector("h2");
-      const headerDesc = header.querySelector("p");
-
-      gsap.set(cards, { transformPerspective: 2000, transformStyle: "preserve-3d" });
-      gsap.set(cards[0], { y: -1000, z: -1000, rotationX: -60, rotationY: -40, opacity: 0, filter: "blur(40px)" });
-      gsap.set(cards[1], { y: 1000, z: -1000, rotationX: 60, rotationY: 40, opacity: 0, filter: "blur(40px)" });
-      gsap.set(cards[2], { y: -1000, z: -1000, rotationX: -60, rotationY: -40, opacity: 0, filter: "blur(40px)" });
-      gsap.set(cards[3], { y: 1000, z: -1000, rotationX: 60, rotationY: 40, opacity: 0, filter: "blur(40px)" });
-      gsap.set(headerTitle, { opacity: 0, y: 100, scale: 0.8, filter: "blur(20px)" });
-      gsap.set(headerDesc, { opacity: 0, y: 50 });
-
-      tl.to(headerTitle, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 2, ease: "power4.out" }, 0);
-      tl.to(headerDesc, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 0.5);
-
-      const animProps = { y: 0, z: 0, rotationX: 0, rotationY: 0, opacity: 1, filter: "blur(0px)", duration: 2.5, ease: "expo.out" };
-      // Animate all cards together at the same timeline position (1.0)
-      tl.to(cards, animProps, 1.0);
-      tl.to(cards, { y: "-=40", duration: 2, stagger: 0.3, ease: "sine.inOut" }, "-=1");
-      tl.to({}, { duration: 1 });
     }, section);
 
     return () => ctx.revert();
@@ -219,11 +254,8 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       clearTimeout(tiltTimers.current[index]);
       setFlippedIndex(index);
     }
-  };
-
-  return (
-    <div className="relative w-full">
-    <section ref={sectionRef} className="relative w-full h-screen flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden">
+  };  return (
+    <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-16 md:py-24">
 
       {/* ─── BACKGROUND ──────────────────────────────────────────────────────── */}
       <div className="absolute inset-0 z-0 opacity-[0.40] mix-blend-overlay pointer-events-none"
@@ -243,18 +275,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
         style={{ backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`, backgroundSize: `20px 20px` }} />
 
       {/* ─── MAIN CONTENT ─────────────────────────────────────────────────────── */}
-      <style>{`
-        @media (max-height: 900px) {
-          .testimonials-scaler { transform: scale(0.85); transform-origin: top center; }
-        }
-        @media (max-height: 750px) {
-          .testimonials-scaler { transform: scale(0.75); transform-origin: top center; }
-        }
-        @media (max-height: 650px) {
-          .testimonials-scaler { transform: scale(0.60); transform-origin: top center; }
-        }
-      `}</style>
-      <div className="testimonials-scaler relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-10 lg:gap-16 h-full pt-4 pb-12">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-10 lg:gap-16 h-full pt-4 pb-4 lg:pb-12">
 
         {/* Header */}
         <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
@@ -411,6 +432,5 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
         </div>
       </div>
     </section>
-    </div>
   );
 }

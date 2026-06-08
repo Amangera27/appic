@@ -29,7 +29,7 @@ export default function CarouselCard({
       className={`carousel-card-wrapper select-none ${
         mobileMode 
           ? "w-full h-full relative" 
-          : "absolute left-1/2 top-1/2 w-[280px] sm:w-[460px] md:w-[560px] lg:w-[720px] h-[380px] sm:h-[240px] md:h-[280px] lg:h-[340px] -translate-x-1/2 -translate-y-1/2"
+          : "absolute left-1/2 top-1/2 w-[280px] sm:w-[460px] md:w-[560px] lg:w-[640px] xl:w-[720px] h-[380px] sm:h-[240px] md:h-[280px] lg:h-[300px] xl:h-[340px] -translate-x-1/2 -translate-y-1/2"
       }`}
       style={{
         transformStyle: "preserve-3d",
