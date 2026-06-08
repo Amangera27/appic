@@ -91,43 +91,56 @@ export default function ContactSection() {
     gsap.set(formWrap, { opacity: 0, y: 60, force3D: true });
     gsap.set(headline, { opacity: 0, y: 35, force3D: true });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: wrapper,
-        start:  "top 50%", // start animation when top of section is 50% down the viewport
-        toggleActions: "play none none none", // only play once
-      },
+    let mm = gsap.matchMedia();
+
+    // Desktop: Run the full animation with the paper plane
+    mm.add("(min-width: 1024px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start:  "top 50%", 
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.to(headline, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 0);
+      
+      tl.to(plane, {
+        motionPath: {
+          path: pathEl,
+          align: pathEl,
+          alignOrigin: [0.5, 0.5],
+          autoRotate: true,
+          start: 0,
+          end: 1,
+        },
+        ease: "power1.inOut",
+        duration: 4,
+      }, 1);
+
+      tl.to(plane, { opacity: 1, scale: 1, ease: "sine.out", duration: 1 }, 1);
+      tl.to(plane, { scale: 0.12, opacity: 0, ease: "sine.in", duration: 1 }, 4);
+      tl.to(formWrap, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 4.5);
     });
 
-    // 0s to 1s: Headline drifts in
-    tl.to(headline, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 0);
+    // Mobile & Tablet: Skip the paper plane entirely to avoid huge delays and layout issues
+    mm.add("(max-width: 1023px)", () => {
+      gsap.set(plane, { display: "none" }); // Hide plane
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start:  "top 70%",
+          toggleActions: "play none none none",
+        },
+      });
 
-    // 1s to 5s: Plane flies across
-    tl.to(plane, {
-      motionPath: {
-        path: pathEl,
-        align: pathEl,
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true,
-        start: 0,
-        end: 1,
-      },
-      ease: "power1.inOut",
-      duration: 4,
-    }, 1);
-
-    // 1s to 2s: Plane fades in and scales up
-    tl.to(plane, { opacity: 1, scale: 1, ease: "sine.out", duration: 1 }, 1);
-
-    // 4s to 5s: Plane shrinks and fades out as it exits
-    tl.to(plane, { scale: 0.12, opacity: 0, ease: "sine.in", duration: 1 }, 4);
-
-    // 4.5s to 5.5s: Form rises in
-    tl.to(formWrap, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 4.5);
+      tl.to(headline, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 0);
+      tl.to(formWrap, { opacity: 1, y: 0, ease: "power2.out", duration: 1 }, 0.5); // Bring in form immediately after
+    });
 
     return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
+      mm.revert();
     };
   }, []);
 
@@ -157,9 +170,35 @@ export default function ContactSection() {
     gsap.set(trash, { opacity: 0, scale: 0, x: 0, y: 0, rotation: 0, display: "block" });
     gsap.set(success, { opacity: 0, y: 50, display: "none", scale: 0.8 });
     
-    // Convert wrapper to handle overflow-visible for mascot temporarily if needed
-    // But we are using window width, so it should be fine.
-    
+    // --- MOBILE & TABLET BEHAVIOR ---
+    // Skip the complex mascot/trash morph animation on screens < 1024px
+    if (window.innerWidth < 1024) {
+      gsap.to(formInner, { opacity: 0, duration: 0.3 });
+      gsap.to(formCard, { 
+        opacity: 0, 
+        duration: 0.4,
+        onComplete: () => {
+          setIsSubmitting(false);
+          setSubmitted(true);
+          
+          gsap.set(success, { display: "flex" });
+          gsap.to(success, { 
+            opacity: 1, 
+            y: 0, 
+            scale: 1, 
+            duration: 0.6, 
+            ease: "power2.out",
+            onComplete: () => {
+              // Automatically bring back the new form after 3 seconds
+              setTimeout(() => { resetForm(); }, 3000);
+            }
+          });
+        }
+      });
+      return;
+    }
+
+    // --- DESKTOP BEHAVIOR ---
     const tl = gsap.timeline({
       onComplete: () => {
         setIsSubmitting(false);
@@ -167,7 +206,19 @@ export default function ContactSection() {
         
         // Play success animation
         gsap.set(success, { display: "flex" });
-        gsap.to(success, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.75)" });
+        gsap.to(success, { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1, 
+          duration: 0.8, 
+          ease: "elastic.out(1, 0.75)",
+          onComplete: () => {
+            // Automatically bring back the new form after 3 seconds
+            setTimeout(() => {
+              resetForm();
+            }, 3000);
+          }
+        });
         
         // Force GSAP to recalculate pin heights to fix the white space glitch below
         setTimeout(() => ScrollTrigger.refresh(), 100);
@@ -215,6 +266,34 @@ export default function ContactSection() {
       .to(mascot, { y: -40, yoyo: true, repeat: 12, duration: 0.15, ease: "sine.inOut" }, "<")
       .to(trash, { x: "82vw", y: "15vh", duration: 2, ease: "power1.in" }, "<")
       .to(trash, { rotation: -15, yoyo: true, repeat: 6, duration: 0.3, ease: "sine.inOut" }, "<");
+  };
+
+  const resetForm = () => {
+    const success = successRef.current;
+    const formCard = formWrapRef.current;
+    const formInner = formCardInnerRef.current;
+
+    if (!success || !formCard || !formInner) return;
+
+    // Fade out success message
+    gsap.to(success, {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.3,
+      onComplete: () => {
+        gsap.set(success, { display: "none" });
+        setSubmitted(false);
+        setFormData({ name: "", email: "", phone: "", project: "" });
+
+        // Animate the entire form card back in
+        gsap.set(formCard, { scale: 0.8, opacity: 0, x: 0, y: 0 }); // Reset any translation left over
+        gsap.set(formInner, { opacity: 0 });
+
+        const tl = gsap.timeline();
+        tl.to(formCard, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.2)" })
+          .to(formInner, { opacity: 1, duration: 0.4 }, "-=0.2");
+      }
+    });
   };
 
   const inputBase =
@@ -384,7 +463,7 @@ export default function ContactSection() {
                   Get ready for something amazing.
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-xs text-zinc-400 font-medium bg-zinc-50 px-4 py-2 rounded-full border border-zinc-100">
+              <div className="flex items-center gap-2 text-xs text-zinc-400 font-medium bg-zinc-50 px-4 py-2 rounded-full border border-zinc-100 mb-2">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 Team notified · Response guaranteed
               </div>

@@ -90,9 +90,20 @@ export default function AppClient() {
         <Projects />
         <Testimonials setCursorColor={setCursorColor} setPageBg={setPageBg} />
         <NextSection />
-        <TechStack />
-        <ContactSection />
-        <FaqSection />
+        
+        {/* Enforce strict stacking context to prevent GSAP pinning overlaps */}
+        <div className="relative z-[30] bg-[#Fdfdfd]">
+          <TechStack />
+        </div>
+        
+        <div className="relative z-[40] bg-[#faf9f8]">
+          <ContactSection />
+        </div>
+        
+        <div className="relative z-[50] bg-[#E40D28]">
+          <FaqSection />
+        </div>
+        
         <CricketAnimationSection />
         <Footer />
       </div>
