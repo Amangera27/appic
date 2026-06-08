@@ -171,7 +171,7 @@ export default function EyeSection() {
           y: 0,
           opacity: 1,
           left: "auto",
-          top: "48vh",
+          top: "42vh",
           width: "90vw",
         });
         gsap.set([line1, line2, line3], { opacity: 0, y: 15 });
@@ -180,7 +180,7 @@ export default function EyeSection() {
           x: 0,
           y: 0,
           left: 0,
-          top: "76vh",
+          top: "60vh",
           width: "100%",
           opacity: 1,
         });
@@ -190,7 +190,7 @@ export default function EyeSection() {
 
         // Phase 1: Eye shifts up, scaling down to fit mobile
         tl.to(eyeContainerRef.current, {
-          y: "-20vh",
+          y: "-16vh",
           scale: 0.85,
           ease: "power2.inOut",
           duration: 1.2,
@@ -216,24 +216,20 @@ export default function EyeSection() {
           duration: 0.4,
         }, 1.8);
 
-        // Phase 3: Brand logos slide one by one from off-screen right and settle in a horizontal row at constant speed (50vw/s)
-        const targetXMobile = ["-36vw", "-18vw", "0vw", "18vw", "36vw"];
-        const startTimesMobile = [2.1, 2.46, 2.82, 3.18, 3.54];
-        const durationsMobile = [2.02, 1.66, 1.30, 0.94, 0.58];
+        // Phase 3: Brand logos fade in sequentially in a 2-row layout (3 top, 2 bottom)
+        const targetXMobile = ["-30vw", "0vw", "30vw", "-16vw", "16vw"];
+        const targetYMobile = ["-4vh", "-4vh", "-4vh", "5vh", "5vh"];
+        const startTimesMobile = [2.1, 2.4, 2.7, 2.2, 2.5];
 
         logosRef.current.forEach((logo, idx) => {
           if (!logo) return;
-          const fadeTime = Math.min(0.25, durationsMobile[idx] * 0.4);
-          const slideTime = durationsMobile[idx] - fadeTime;
-          const fadeInX = 65 - (fadeTime * 50);
 
           tl.to(logo, {
             keyframes: [
-              { x: "65vw", opacity: 0, duration: 0 },
-              { x: `${fadeInX}vw`, opacity: 1, duration: fadeTime },
-              { x: targetXMobile[idx], opacity: 1, duration: slideTime }
+              { x: targetXMobile[idx], y: targetYMobile[idx], opacity: 0, duration: 0 },
+              { x: targetXMobile[idx], y: targetYMobile[idx], opacity: 1, duration: 0.8 }
             ],
-            ease: "none",
+            ease: "power2.out",
           }, startTimesMobile[idx]);
         });
 
@@ -297,7 +293,7 @@ export default function EyeSection() {
     <div className="relative w-full">
       <section
         ref={sectionRef}
-        className={`relative w-full h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 ${"bg-white"}`}
+        className={`relative w-full h-[80vh] lg:h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 ${"bg-white"}`}
         style={{ contentVisibility: "auto" }}
       >
       {/* Premium Tech Background Elements */}
@@ -321,12 +317,6 @@ export default function EyeSection() {
         />
         
         {/* Corner tech accents */}
-        <div className={`absolute top-10 left-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${"text-red-600/30"}`}>
-          [ SYSTEM.MONITOR.ACTIVE ]
-        </div>
-        <div className={`absolute bottom-10 right-10 text-[10px] font-mono tracking-widest uppercase transition-colors duration-700 ${"text-red-600/30"}`}>
-          [ APPIC.SEC_04.100VH ]
-        </div>
       </div>
 
       {/* Responsive Wrapper containing elements */}
@@ -339,9 +329,8 @@ export default function EyeSection() {
           style={{ willChange: "transform" }}
         >
           <div
-            className="relative max-w-[80vw]"
+            className="relative w-[55vw] lg:w-auto lg:h-[40vh] lg:max-w-[80vw]"
             style={{
-              height: "40vh",
               aspectRatio: "240 / 203",
             }}
           >
@@ -427,7 +416,7 @@ export default function EyeSection() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-7 md:h-16 max-w-[11vw] md:max-w-[10vw] lg:max-w-[120px] xl:max-w-[150px] 2xl:max-w-[180px] object-contain opacity-85 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                className="h-14 sm:h-16 md:h-16 max-w-[26vw] sm:max-w-[22vw] md:max-w-[18vw] lg:max-w-[120px] xl:max-w-[150px] 2xl:max-w-[180px] object-contain opacity-85 hover:opacity-100 transition-all duration-300 cursor-pointer"
                 style={{
                   filter: "none",
                 }}
