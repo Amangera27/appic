@@ -58,8 +58,7 @@ export default function FaqSection() {
         end: "+=150%", // Pins for 1.5x screen height
         scrub: true,
         pin: wrapper, // Pin the inner wrapper
-        pinSpacing: true,
-        pinType: "transform" // Often helps smooth out pin jumps with custom scroll
+        pinSpacing: true
       },
     });
 

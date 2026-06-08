@@ -14,6 +14,8 @@ const NextSection = dynamic(() => import("@/components/NextSection"));
 const TechStack = dynamic(() => import("@/components/TechStack"));
 const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const FaqSection = dynamic(() => import("@/components/FaqSection"));
+const CricketAnimationSection = dynamic(() => import("@/components/CricketAnimationSection"));
+const Footer = dynamic(() => import("@/components/Footer"));
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -73,7 +75,7 @@ export default function AppClient() {
 
   return (
     <main
-      className="relative min-h-screen w-full overflow-clip font-sans transition-colors duration-700 bg-white"
+      className="relative min-h-screen w-full overflow-x-hidden font-sans transition-colors duration-700 bg-white"
     >
 
 
@@ -91,6 +93,8 @@ export default function AppClient() {
         <TechStack />
         <ContactSection />
         <FaqSection />
+        <CricketAnimationSection />
+        <Footer />
       </div>
     </main>
   );
