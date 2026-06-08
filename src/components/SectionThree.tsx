@@ -318,7 +318,7 @@ export default function SectionThree() {
 
         {/* ── Heading (top-left) ───────────────────────────────────────────── */}
         <div className="absolute top-6 left-6 lg:top-14 lg:left-14 z-20 max-w-md">
-          <h2 ref={headingRef} className={`text-4xl md:text-5xl font-black mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
+          <h2 ref={headingRef} className={`text-4xl md:text-5xl font-medium mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
             What <span style={{ color: "#E40D28" }}>We Build</span>
             <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
               <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>
@@ -375,7 +375,7 @@ export default function SectionThree() {
               <div className="absolute top-0 left-0 right-0 h-1.5"
                 style={{ background: "linear-gradient(90deg, transparent, rgba(228,13,40,0.6), transparent)", filter: "blur(2px)" }} />
 
-              <div className="flex-1 p-6 sm:p-8 lg:p-12 flex flex-col min-h-0 relative z-10">
+              <div className="flex-1 p-5 sm:p-6 lg:p-8 flex flex-col min-h-0 relative z-10">
                 {/* Category badge */}
                 <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full mb-4 sm:mb-6 lg:mb-8 w-fit transition-colors duration-700"
                   style={{ background: "rgba(228,13,40,0.08)" }}>
@@ -387,17 +387,17 @@ export default function SectionThree() {
                 </div>
 
                 {/* Icon with 3D and Orbit */}
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-36 lg:h-36 flex items-center justify-center mb-4 sm:mb-6 lg:mb-8 mx-auto sm:mx-0">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-[120px] lg:h-[120px] flex items-center justify-center mb-4 sm:mb-6 lg:mb-6 mx-auto sm:mx-0">
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/20 transform rotate-12 scale-[1.15] transition-colors duration-700" />
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/10 transform -rotate-6 scale-[1.25] transition-colors duration-700" />
                   
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-[18px] lg:rounded-[24px] flex items-center justify-center relative z-10 transition-all duration-700"
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[84px] lg:h-[84px] rounded-[14px] lg:rounded-[20px] flex items-center justify-center relative z-10 transition-all duration-700"
                     style={{
                       background: "linear-gradient(135deg, #ffffff, #ffecec)",
                       boxShadow: "inset 2px 2px 8px rgba(255,255,255,1), inset -2px -2px 8px rgba(228,13,40,0.1), 0 15px 30px rgba(228,13,40,0.15)",
                       border: "1px solid rgba(255,255,255,0.8)"
                     }}>
-                    <div className="scale-[0.7] sm:scale-[0.8] lg:scale-100 flex items-center justify-center">
+                    <div className="scale-[0.6] sm:scale-[0.7] lg:scale-[0.85] flex items-center justify-center">
                       <card.Icon />
                     </div>
                   </div>
@@ -408,7 +408,7 @@ export default function SectionThree() {
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-xl sm:text-2xl lg:text-4xl font-black mb-2 sm:mb-4 leading-tight tracking-tight text-center sm:text-left transition-colors duration-700 ${"text-[#1a1a2e]"}`}>
+                <h3 className={`text-[20px] lg:text-[22px] font-medium mb-2 sm:mb-4 leading-tight tracking-tight text-center sm:text-left transition-colors duration-700 ${"text-[#1a1a2e]"}`}>
                   {card.title}
                 </h3>
 
@@ -418,25 +418,25 @@ export default function SectionThree() {
                 </p>
 
                 {/* Divider */}
-                <div className="w-full h-px my-4 sm:my-6 transition-colors duration-700"
+                <div className="shrink-0 w-full h-px my-6 lg:my-8 transition-colors duration-700"
                   style={{ background: "linear-gradient(90deg, rgba(228,13,40,0.1), transparent)" }} />
 
                 {/* Footer */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-[14px] flex items-center justify-center transition-all duration-700"
+                <div className="shrink-0 flex items-center justify-between mt-auto">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 rounded-[12px] flex items-center justify-center transition-all duration-700"
                       style={{
                         background: "linear-gradient(135deg, #ffffff, #fff0f0)",
                         boxShadow: "inset 2px 2px 4px rgba(255,255,255,1), 0 4px 10px rgba(228,13,40,0.08)",
                       }}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E40D28" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                       </svg>
                     </div>
                     <div>
-                      <div className="text-3xl md:text-4xl font-black leading-none tracking-tight" style={{ color: "#E40D28" }}>
+                      <div className="text-2xl lg:text-3xl font-black leading-none tracking-tight" style={{ color: "#E40D28" }}>
                         {card.metric}
                       </div>
                       <div className={`text-[10px] mt-1.5 font-bold tracking-widest uppercase transition-colors duration-700 ${"text-gray-400"}`}>
@@ -445,12 +445,12 @@ export default function SectionThree() {
                     </div>
                   </div>
                   
-                  <button className="w-16 h-16 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
+                  <button className="w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
                     style={{ 
                       background: "linear-gradient(135deg, #ff4b5c, #E40D28)", 
                       boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)" 
                     }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </button>
