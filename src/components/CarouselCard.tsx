@@ -48,7 +48,7 @@ export default function CarouselCard({
           style={{ transform: "translateZ(12px)", transformStyle: "preserve-3d" }}
         >
           {/* Logo container */}
-          <div className="relative h-6 sm:h-9 w-24 sm:w-36 mb-2 sm:mb-4 flex items-center">
+          <div className="relative h-4 sm:h-6 w-16 sm:w-24 mb-2 sm:mb-4 flex items-center">
             <img 
               src={brandLogo}
               alt="Brand Logo"
@@ -59,10 +59,10 @@ export default function CarouselCard({
 
           {/* Texts */}
           <div className="flex-grow flex flex-col justify-center mb-3 sm:mb-5">
-            <h4 className="text-sm sm:text-lg md:text-xl lg:text-[21px] font-semibold leading-snug text-slate-800 tracking-tight mb-2 group-hover:text-black transition-colors duration-300">
+            <h4 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] font-semibold leading-snug text-slate-800 tracking-tight mb-2 group-hover:text-black transition-colors duration-300">
               {title}
             </h4>
-            <p className="text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] text-slate-500 font-medium leading-relaxed line-clamp-3">
+            <p className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] text-slate-500 font-medium leading-relaxed line-clamp-3">
               {description}
             </p>
           </div>

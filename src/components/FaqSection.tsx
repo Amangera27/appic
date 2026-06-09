@@ -116,20 +116,20 @@ export default function FaqSection() {
         <div className="max-w-[1000px] mx-auto px-6 md:px-10 relative z-10">
           
           {/* Section Heading */}
-          <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
+          <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-zinc-100 mb-6">
               <span className="text-xs text-[#E40D28]">✨</span>
               <span className="text-[10px] font-extrabold tracking-widest text-zinc-800 uppercase">Clarity is key</span>
             </div>
-            <h3 className="text-4xl md:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-zinc-900 tracking-[-0.03em] leading-[1.1] mb-6">
               You Ask, <span className="text-[#E40D28] relative inline-block">
                 We Answer.
                 <svg className="absolute left-0 bottom-[-4px] w-full h-[8px] text-[#E40D28]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M 0 5 Q 50 10 100 5 Q 50 0 0 5" fill="currentColor"/>
                 </svg>
               </span>
-            </h3>
-            <p className="text-zinc-500 font-medium text-lg max-w-2xl leading-relaxed">
+            </h2>
+            <p className="text-zinc-500 font-medium text-[16px] max-w-2xl leading-relaxed">
               Everything you need to know about partnering with us, our development process, and how we turn your ideas into reality.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function FaqSection() {
                       
                       {/* Question & Answer */}
                       <div className="flex flex-col flex-1">
-                        <h4 className={`text-xl md:text-2xl font-bold tracking-tight transition-colors duration-500 ${
+                        <h4 className={`text-[20px] md:text-[22px] font-medium tracking-tight transition-colors duration-500 ${
                           isOpen ? "text-[#E40D28]" : "text-zinc-800 group-hover:text-zinc-950"
                         }`}>
                           {faq.question}
@@ -175,7 +175,7 @@ export default function FaqSection() {
                            className="overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]"
                            style={{ maxHeight: isOpen ? "400px" : "0px", opacity: isOpen ? 1 : 0 }}
                         >
-                           <p className="pt-4 text-zinc-500 text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+                           <p className="pt-4 text-zinc-500 text-[16px] font-medium leading-relaxed max-w-2xl">
                              {faq.answer}
                            </p>
                         </div>
