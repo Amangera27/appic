@@ -13,16 +13,16 @@ const WAVE_PATHS = [
 const CARDS = [
   {
     title: "AI Development",
-    desc: "We specialize in <span class='text-[#a855f7] font-bold'>AI development services</span> that drive innovation and transform businesses. Our team creates customized AI solutions, including machine learning, data analytics, and NLP.",
+    desc: "We specialize in <span class='text-[#DE0C27] font-bold'>AI development services</span> that drive innovation and transform businesses. Our team creates customized AI solutions, including machine learning, data analytics, and NLP.",
     theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(168,85,247,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(168,85,247,0.6)]", 
-      iconBg: "bg-gradient-to-br from-[#c084fc] to-[#7e22ce]",
-      iconShadow: "shadow-[0_10px_30px_rgba(168,85,247,0.5)]",
-      arrowText: "text-[#9333ea]",
-      titleHover: "group-hover:text-[#9333ea]",
-      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#c084fc] group-hover:to-[#7e22ce] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]",
-      orbColor: "from-[#a855f7]/40 to-[#c084fc]/10",
-      borderHover: "group-hover:border-[#a855f7]/50"
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+      iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
+      iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
+      arrowText: "text-[#dc2626]",
+      titleHover: "group-hover:text-[#dc2626]",
+      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#f87171] group-hover:to-[#b91c1c] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(222,12,39,0.6)]",
+      orbColor: "from-[#DE0C27]/40 to-[#f87171]/10",
+      borderHover: "group-hover:border-[#DE0C27]/50"
     },
     icon: (
       <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -32,16 +32,16 @@ const CARDS = [
   },
   {
     title: "Gen AI Development",
-    desc: "Our AI engineers develop <span class='text-[#f97316] font-bold'>GenAI models</span> for personalized content generation such as text, images, audio, video, and more. We harness generative models to help you innovate and stay competitive.",
+    desc: "Our AI engineers develop <span class='text-[#DE0C27] font-bold'>GenAI models</span> for personalized content generation such as text, images, audio, video, and more. We harness generative models to help you innovate and stay competitive.",
     theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(249,115,22,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(249,115,22,0.6)]", 
-      iconBg: "bg-gradient-to-br from-[#fdba74] to-[#ea580c]",
-      iconShadow: "shadow-[0_10px_30px_rgba(249,115,22,0.5)]",
-      arrowText: "text-[#ea580c]",
-      titleHover: "group-hover:text-[#ea580c]",
-      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#fdba74] group-hover:to-[#ea580c] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(249,115,22,0.6)]",
-      orbColor: "from-[#f97316]/40 to-[#fdba74]/10",
-      borderHover: "group-hover:border-[#f97316]/50"
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+      iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
+      iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
+      arrowText: "text-[#dc2626]",
+      titleHover: "group-hover:text-[#dc2626]",
+      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#f87171] group-hover:to-[#b91c1c] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(222,12,39,0.6)]",
+      orbColor: "from-[#DE0C27]/40 to-[#f87171]/10",
+      borderHover: "group-hover:border-[#DE0C27]/50"
     },
     icon: (
       <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -51,16 +51,16 @@ const CARDS = [
   },
   {
     title: "ML Development",
-    desc: "Through our <span class='text-[#10b981] font-bold'>ML development services</span>, you get solutions like predictive analysis, customer personalization models, fraud detection, and more. We build intelligent systems that analyze data patterns.",
+    desc: "Through our <span class='text-[#DE0C27] font-bold'>ML development services</span>, you get solutions like predictive analysis, customer personalization models, fraud detection, and more. We build intelligent systems that analyze data patterns.",
     theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(16,185,129,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(16,185,129,0.6)]", 
-      iconBg: "bg-gradient-to-br from-[#6ee7b7] to-[#059669]",
-      iconShadow: "shadow-[0_10px_30px_rgba(16,185,129,0.5)]",
-      arrowText: "text-[#059669]",
-      titleHover: "group-hover:text-[#059669]",
-      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#6ee7b7] group-hover:to-[#059669] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(16,185,129,0.6)]",
-      orbColor: "from-[#10b981]/40 to-[#6ee7b7]/10",
-      borderHover: "group-hover:border-[#10b981]/50"
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+      iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
+      iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
+      arrowText: "text-[#dc2626]",
+      titleHover: "group-hover:text-[#dc2626]",
+      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#f87171] group-hover:to-[#b91c1c] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(222,12,39,0.6)]",
+      orbColor: "from-[#DE0C27]/40 to-[#f87171]/10",
+      borderHover: "group-hover:border-[#DE0C27]/50"
     },
     icon: (
       <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -70,16 +70,16 @@ const CARDS = [
   },
   {
     title: "Blockchain",
-    desc: "Unlock the future of secure and transparent business operations with our <span class='text-[#3b82f6] font-bold'>Blockchain development services</span>. Bring your ideas to life with our expert Blockchain developers.",
+    desc: "Unlock the future of secure and transparent business operations with our <span class='text-[#DE0C27] font-bold'>Blockchain development services</span>. Bring your ideas to life with our expert Blockchain developers.",
     theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(59,130,246,0.6)]", 
-      iconBg: "bg-gradient-to-br from-[#93c5fd] to-[#2563eb]",
-      iconShadow: "shadow-[0_10px_30px_rgba(59,130,246,0.5)]",
-      arrowText: "text-[#2563eb]",
-      titleHover: "group-hover:text-[#2563eb]",
-      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#93c5fd] group-hover:to-[#2563eb] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]",
-      orbColor: "from-[#3b82f6]/40 to-[#93c5fd]/10",
-      borderHover: "group-hover:border-[#3b82f6]/50"
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+      iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
+      iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
+      arrowText: "text-[#dc2626]",
+      titleHover: "group-hover:text-[#dc2626]",
+      arrowBg: "group-hover:bg-gradient-to-r group-hover:from-[#f87171] group-hover:to-[#b91c1c] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(222,12,39,0.6)]",
+      orbColor: "from-[#DE0C27]/40 to-[#f87171]/10",
+      borderHover: "group-hover:border-[#DE0C27]/50"
     },
     icon: (
       <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -88,34 +88,6 @@ const CARDS = [
     )
   }
 ];
-
-const CircuitLines = () => (
-  <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15] z-0">
-    {/* Top Right Area */}
-    <path className="circuit-line" d="M400 50 L200 50 L150 100 L50 100" stroke="#3b82f6" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-    <path className="circuit-line" d="M400 120 L300 120 L250 170 L100 170" stroke="#0ea5e9" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-    <path className="circuit-line" d="M280 0 L280 80 L230 130 L230 250" stroke="#60a5fa" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-    
-    {/* Bottom Left Area */}
-    <path className="circuit-line" d="M0 350 L150 350 L200 300 L350 300" stroke="#3b82f6" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-    <path className="circuit-line" d="M0 280 L80 280 L130 230 L250 230" stroke="#0ea5e9" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-    <path className="circuit-line" d="M120 400 L120 320 L170 270 L170 150" stroke="#60a5fa" strokeWidth="2" strokeDasharray="500" strokeDashoffset="500" />
-
-    {/* Center Crossings */}
-    <path className="circuit-line" d="M50 50 L100 100 L100 200 L200 300" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="500" strokeDashoffset="500" />
-    <path className="circuit-line" d="M350 350 L300 300 L300 200 L200 100" stroke="#0ea5e9" strokeWidth="1.5" strokeDasharray="500" strokeDashoffset="500" />
-
-    {/* Dots/Nodes */}
-    <circle cx="50" cy="100" r="4" fill="#3b82f6" className="circuit-dot opacity-0" />
-    <circle cx="100" cy="170" r="4" fill="#0ea5e9" className="circuit-dot opacity-0" />
-    <circle cx="230" cy="250" r="4" fill="#60a5fa" className="circuit-dot opacity-0" />
-    <circle cx="350" cy="300" r="4" fill="#3b82f6" className="circuit-dot opacity-0" />
-    <circle cx="250" cy="230" r="4" fill="#0ea5e9" className="circuit-dot opacity-0" />
-    <circle cx="170" cy="150" r="4" fill="#60a5fa" className="circuit-dot opacity-0" />
-    <circle cx="200" cy="300" r="3" fill="#3b82f6" className="circuit-dot opacity-0" />
-    <circle cx="200" cy="100" r="3" fill="#0ea5e9" className="circuit-dot opacity-0" />
-  </svg>
-);
 
 export default function NextSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -245,22 +217,14 @@ export default function NextSection() {
     <section
       ref={sectionRef}
       className="relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-start xl:justify-center"
-      style={{ backgroundColor: "#Fdfdfd" }} 
+      style={{ backgroundColor: "#faf9f8" }} 
     >
       {/* ─── GLORIOUS PLANET & VIBRANT BACKGROUND ─────────────────────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         
         {/* Deep, beautiful ambient lights (Replaced heavy SVG blur with CSS Radial Gradient) */}
         <div className="absolute inset-0 opacity-[0.25]"
-             style={{ background: 'radial-gradient(circle at 70% 30%, rgba(228,13,40,0.3) 0%, rgba(168,85,247,0.1) 40%, transparent 80%)' }} />
-        
-        {/* Soft Grid overlay for texture */}
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`,
-            backgroundSize: `40px 40px`
-          }}
-        />
+             style={{ background: 'radial-gradient(circle at 70% 30%, rgba(228,13,40,0.3) 0%, rgba(222,12,39,0.1) 40%, transparent 80%)' }} />
 
 
       </div>
@@ -270,29 +234,21 @@ export default function NextSection() {
         
         {/* Header Area */}
         <div className="max-w-[1200px] mb-8 md:mb-12 flex flex-col items-start relative z-30 perspective-[1000px]">
-          <div 
-            ref={badgeRef}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md shadow-sm border border-zinc-200/50 mb-4 hover:bg-white hover:shadow-md transition-all duration-300"
-          >
-            <div className="w-2 h-2 rounded-full bg-[#E40D28] animate-pulse" />
-            <span className="text-[10px] font-black tracking-[0.25em] text-zinc-900 uppercase">
-              Future-Ready Services
-            </span>
-          </div>
+
 
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-6 flex flex-wrap gap-x-3 gap-y-1 perspective-[1000px]">
             {"Leading The Way In".split(" ").map((word, i) => (
               <span key={`l-${i}`} ref={el => { headerWordsRef.current[i] = el; }} className="inline-block drop-shadow-sm">{word}</span>
             ))}
-            <span ref={el => { headerWordsRef.current[4] = el; }} className="inline-block bg-gradient-to-r from-[#E40D28] via-[#a855f7] to-[#E40D28] animate-gradient-text bg-clip-text text-transparent drop-shadow-md pb-2">AI</span>
-            <span ref={el => { headerWordsRef.current[5] = el; }} className="inline-block bg-gradient-to-r from-[#E40D28] via-[#a855f7] to-[#E40D28] animate-gradient-text bg-clip-text text-transparent drop-shadow-md pb-2">Innovation</span>
+            <span ref={el => { headerWordsRef.current[4] = el; }} className="inline-block text-[#DE0C27] drop-shadow-md pb-2">AI</span>
+            <span ref={el => { headerWordsRef.current[5] = el; }} className="inline-block text-[#DE0C27] drop-shadow-md pb-2">Innovation</span>
             {"To Create Solutions That Matter".split(" ").map((word, i) => (
               <span key={`t-${i}`} ref={el => { headerWordsRef.current[6 + i] = el; }} className="inline-block drop-shadow-sm">{word}</span>
             ))}
           </h2>
           
           <div ref={subRef} className="flex items-center gap-5">
-            <div className="w-12 h-[3px] bg-gradient-to-r from-[#E40D28] to-[#a855f7] rounded-full shadow-[0_0_10px_rgba(228,13,40,0.5)]" />
+            <div className="w-12 h-[3px] bg-gradient-to-r from-[#E40D28] to-[#DE0C27] rounded-full shadow-[0_0_10px_rgba(228,13,40,0.5)]" />
             <p className="text-[16px] text-zinc-600 font-bold tracking-tight">
               AI, GenAI, Machine Learning &amp; Blockchain Development.
             </p>
@@ -321,8 +277,7 @@ export default function NextSection() {
               {/* Internal Glass Reflection Overlay */}
               <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" />
 
-              {/* Blue Robotic Circuit Lines */}
-              <CircuitLines />
+
 
               <div className="relative z-10 flex flex-col h-full">
                 {/* 3D Floating Icon Container */}

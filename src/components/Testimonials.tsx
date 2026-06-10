@@ -258,8 +258,6 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
     <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-8 md:py-12">
 
       {/* ─── BACKGROUND ──────────────────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-0 opacity-[0.40] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`, backgroundSize: `4rem 4rem`, maskImage: `radial-gradient(circle at center, black 40%, transparent 80%)` }} />
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[200vw] overflow-hidden pointer-events-none z-0 opacity-[0.03] select-none mix-blend-overlay">
         <div ref={marqueeRef} className="flex whitespace-nowrap">
           <h1 className="text-[300px] font-black uppercase tracking-tighter leading-none px-8">
@@ -270,9 +268,6 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       <div ref={el => { bgBlobsRef.current[0] = el; }} className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,77,77,0.3)_0%,transparent_70%)] pointer-events-none z-0" />
       <div ref={el => { bgBlobsRef.current[1] = el; }} className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(circle_at_center,rgba(138,0,15,0.4)_0%,transparent_70%)] pointer-events-none z-0" />
       <div ref={el => { bgBlobsRef.current[2] = el; }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,transparent_70%)] pointer-events-none z-0" />
-      {/* Grid overlay for texture (Replaced heavy SVG noise) */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-[1]"
-        style={{ backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)`, backgroundSize: `20px 20px` }} />
 
       {/* ─── MAIN CONTENT ─────────────────────────────────────────────────────── */}
       <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-8 lg:gap-10 h-full pt-2 pb-2 lg:pb-6">
@@ -313,18 +308,17 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
               >
                 {/* ── Floating cage (always visible, outside flip) ── */}
                 <CageBorder index={index} />
-                <CornerBrackets />
 
                 {/* ── Floating avatar (outside flip, always front-facing) ── */}
-                <div className="card-avatar absolute top-4 left-8 z-[60] w-[60px] h-[60px] rounded-2xl p-[1px] bg-gradient-to-br from-white/60 to-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] -translate-y-1/2 rotate-[-5deg] group-hover:rotate-[0deg] transition-transform duration-500">
-                  <div className="w-full h-full rounded-[15px] bg-[#0A0002] flex items-center justify-center overflow-hidden backdrop-blur-xl border border-white/10 relative">
+                <div className="card-avatar absolute top-8 left-8 z-[60] w-[46px] h-[46px] rounded-2xl p-[1px] bg-gradient-to-br from-white/60 to-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] -translate-y-1/2 rotate-[-5deg] group-hover:rotate-[0deg] transition-transform duration-500">
+                  <div className="w-full h-full rounded-[14px] bg-[#0A0002] flex items-center justify-center overflow-hidden backdrop-blur-xl border border-white/10 relative">
                     <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 4px, #ffffff 4px, #ffffff 5px)` }} />
-                    <span className="relative z-10 text-white font-medium text-2xl tracking-tighter">{data.name.charAt(0)}</span>
+                    <span className="relative z-10 text-white font-medium text-xl tracking-tighter">{data.name.charAt(0)}</span>
                   </div>
                 </div>
 
                 {/* ── Floating play button ── */}
-                <div className="absolute -bottom-2 -right-2 z-[60] w-12 h-12 rounded-full bg-[#DE0C27] flex items-center justify-center shadow-[0_10px_30px_rgba(222,12,39,0.5)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30">
+                <div className="absolute bottom-0 right-0 z-[60] w-10 h-10 rounded-full bg-[#DE0C27] flex items-center justify-center shadow-[0_10px_30px_rgba(222,12,39,0.5)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-white/30">
                   {isFlipped
                     ? <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><rect x="4" y="4" width="4" height="12" rx="1" /><rect x="12" y="4" width="4" height="12" rx="1" /></svg>
                     : <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4l12 6-12 6z" /></svg>
@@ -406,11 +400,11 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
                         <span className="text-[10px] font-medium tracking-[0.25em] text-white/60 uppercase">Project // {data.project}</span>
                       </div>
 
-                      {/* YouTube iframe — autoplay only when flipped */}
+                      {/* YouTube iframe */}
                       {isFlipped && (
                         <iframe
                           className="absolute inset-0 w-full h-full"
-                          src={`https://www.youtube.com/embed/${data.videoId}?autoplay=1&mute=0&rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3`}
+                          src={`https://www.youtube.com/embed/${data.videoId}?autoplay=0&mute=0&rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3`}
                           title={`${data.name} testimonial`}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen

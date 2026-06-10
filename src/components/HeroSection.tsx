@@ -5,7 +5,7 @@ import gsap from "gsap";
 import Header from "./Header";
 import { HiArrowRight } from "react-icons/hi2";
 import Hyperspeed from './Hyperspeed';
-import ParticlesBackground from './lightswind/particles-background';
+
 
 const BARS_DATA = [
   { left: "-2%", width: "8vw", height: "80vh", grad: "from-[#DE0A26]/52 via-[#DE0A26]/20 to-transparent" },
@@ -61,15 +61,7 @@ export default function HeroSection() {
       ref={heroRef}
       className="relative isolate min-h-[75vh] lg:min-h-[calc(100vh-72px)] overflow-hidden bg-slate-50 text-slate-950 flex items-center justify-center pt-16 lg:pt-24"
     >
-      {/* Particles Background */}
-      <div className="absolute inset-0 z-[3] pointer-events-none opacity-15">
-        <ParticlesBackground 
-          colors={['#DE0A26', '#E40D28', '#b10c1e', '#f43f5e', '#e11d48']} 
-          zIndex={0} 
-          size={5}
-          countDesktop={100}
-        />
-      </div>
+
 
       {/* Dynamic WebGL Hyperspeed background container */}
       <div className="absolute inset-0 z-0 opacity-70">
