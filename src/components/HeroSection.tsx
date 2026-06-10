@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Header from "./Header";
 import { HiArrowRight } from "react-icons/hi2";
-import Hyperspeed from './Hyperspeed';
+
 
 
 const BARS_DATA = [
@@ -63,23 +63,6 @@ export default function HeroSection() {
     >
 
 
-      {/* Dynamic WebGL Hyperspeed background container */}
-      <div className="absolute inset-0 z-0 opacity-70">
-        <Hyperspeed
-          effectOptions={{
-            colors: {
-              roadColor: 0xf8fafc,
-              islandColor: 0xf8fafc,
-              background: 0xf8fafc,
-              shoulderLines: 0xcbced4,
-              brokenLines: 0xcbced4,
-              leftCars: [0xb10c1e, 0xf43f5e, 0xe11d48],
-              rightCars: [0x0ea5e9, 0x2563eb, 0x06b6d4],
-              sticks: 0x3b82f6
-            }
-          }}
-        />
-      </div>
 
       {/* Tactile Glowing Vertical Bars Background (As drawn by user) */}
       <div

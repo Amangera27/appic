@@ -65,14 +65,7 @@ export default function useScrollAnimation(
 
           // Position calculation helper
           const updatePositions = (progress: number) => {
-            // Apply a strict locking deadzone so the active card strictly stays in the center for a portion of the scroll
             let activeIndex = progress * (totalCards - 1);
-            
-            // Snap the index tightly to whole numbers if it's close to one, creating a stable center rest period
-            const nearestIndex = Math.round(activeIndex);
-            if (Math.abs(activeIndex - nearestIndex) < 0.15) {
-              activeIndex = nearestIndex; // Lock completely to center
-            }
 
             cards.forEach((cardNode, index) => {
               const card = cardNode as HTMLElement;
@@ -119,12 +112,6 @@ export default function useScrollAnimation(
             start: "top top",
             end: "bottom bottom",
             scrub: 1.5,
-            snap: {
-              snapTo: 1 / (totalCards - 1),
-              duration: { min: 0.2, max: 0.6 },
-              delay: 0.05,
-              ease: "power1.inOut"
-            },
             pin: stickyElement || true,
             pinSpacing: false,
             onUpdate: (self) => {

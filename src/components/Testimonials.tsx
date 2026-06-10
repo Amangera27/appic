@@ -70,8 +70,24 @@ function CageBorder({ index }: { index: number }) {
       strokeDasharray: `${perimeter * 0.30} ${perimeter * 0.70}`,
       strokeDashoffset: -(index * 60),
     });
-    gsap.to(rectEl, { strokeDashoffset: `-=${perimeter}`, duration: 5 + index * 0.7, ease: "none", repeat: -1 });
-    gsap.to(svg, { opacity: 0.65, duration: 2.2 + index * 0.35, ease: "sine.inOut", repeat: -1, yoyo: true, delay: index * 0.25 });
+    const t1 = gsap.to(rectEl, { strokeDashoffset: `-=${perimeter}`, duration: 5 + index * 0.7, ease: "none", repeat: -1, paused: true });
+    const t2 = gsap.to(svg, { opacity: 0.65, duration: 2.2 + index * 0.35, ease: "sine.inOut", repeat: -1, yoyo: true, delay: index * 0.25, paused: true });
+
+    const trigger = ScrollTrigger.create({
+      trigger: svg,
+      start: "top 120%",
+      end: "bottom -20%",
+      onEnter: () => { t1.play(); t2.play(); },
+      onEnterBack: () => { t1.play(); t2.play(); },
+      onLeave: () => { t1.pause(); t2.pause(); },
+      onLeaveBack: () => { t1.pause(); t2.pause(); },
+    });
+
+    return () => {
+      t1.kill();
+      t2.kill();
+      trigger.kill();
+    };
   }, [index]);
 
   const vbW = 300, vbH = CAGE_HEIGHT, rx = 32;
@@ -133,8 +149,18 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
     const marquee = marqueeRef.current;
     if (!section || !header || cards.length === 0) return;
 
+    let marqueeTween: gsap.core.Tween | null = null;
     if (marquee) {
-      gsap.to(marquee, { xPercent: -50, ease: "none", duration: 30, repeat: -1 });
+      marqueeTween = gsap.to(marquee, { xPercent: -50, ease: "none", duration: 30, repeat: -1, paused: true });
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 120%",
+        end: "bottom -20%",
+        onEnter: () => marqueeTween?.play(),
+        onEnterBack: () => marqueeTween?.play(),
+        onLeave: () => marqueeTween?.pause(),
+        onLeaveBack: () => marqueeTween?.pause(),
+      });
     }
 
     // (DISABLED FOR PERFORMANCE) Endless heavy blob animations
