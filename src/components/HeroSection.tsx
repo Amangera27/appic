@@ -4,6 +4,9 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Header from "./Header";
 import { HiArrowRight } from "react-icons/hi2";
+import dynamic from "next/dynamic";
+
+const Hyperspeed = dynamic(() => import("./Hyperspeed"), { ssr: false });
 
 
 
@@ -63,6 +66,25 @@ export default function HeroSection() {
     >
 
 
+      {/* Dynamic WebGL Hyperspeed background container */}
+      <div className="absolute inset-0 z-0 opacity-70">
+        <Hyperspeed
+          effectOptions={{
+            colors: {
+              roadColor: 0xf8fafc,
+              islandColor: 0xf8fafc,
+              background: 0xf8fafc,
+              shoulderLines: 0xcbced4,
+              brokenLines: 0xcbced4,
+              leftCars: [0xb10c1e, 0xf43f5e, 0xe11d48],
+              rightCars: [0x0ea5e9, 0x2563eb, 0x06b6d4],
+              sticks: 0x3b82f6
+            }
+          }}
+        />
+      </div>
+
+
 
       {/* Tactile Glowing Vertical Bars Background (As drawn by user) */}
       <div
@@ -114,7 +136,10 @@ export default function HeroSection() {
           </div>
 
           {/* Premium layout with high-impact typography & smooth gradient text */}
-          <h1 className="mx-auto mt-5 lg:mt-8 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 
+            className="mx-auto mt-5 lg:mt-8 max-w-4xl leading-[1.1] tracking-tight text-slate-950"
+            style={{ fontSize: "55px", fontWeight: 600 }}
+          >
             Building modern{" "}
             <span className="bg-gradient-to-r from-[#b10c1e] via-[#de0c27] to-[#e11d48] bg-clip-text text-transparent">
               software

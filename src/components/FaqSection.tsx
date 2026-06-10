@@ -68,7 +68,13 @@ export default function FaqSection() {
       ease: "power2.inOut",
       duration: 1,
     })
-    // Keep texts visible instead of fading them out
+    // Fade out both texts as the circle expands
+    .to(".intro-text", {
+      opacity: 0,
+      scale: 1.2,
+      ease: "power2.inOut",
+      duration: 0.5,
+    }, "<0.2"); // Start slightly after circle starts expanding
 
     return () => {
       tl.scrollTrigger?.kill();

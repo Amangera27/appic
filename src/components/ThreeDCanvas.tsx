@@ -29,7 +29,7 @@ export default function ThreeDCanvas() {
     const updatePosition = () => {
       const dx = targetPos.current.x - mousePos.current.x;
       const dy = targetPos.current.y - mousePos.current.y;
-      
+
       mousePos.current.x += dx * 0.08; // Lerp speed
       mousePos.current.y += dy * 0.08;
 
@@ -57,7 +57,7 @@ export default function ThreeDCanvas() {
   );
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="absolute inset-0 w-full h-full bg-[#020205] overflow-hidden -z-20 will-change-transform"
       style={{
@@ -66,7 +66,7 @@ export default function ThreeDCanvas() {
         "--mouse-y": "0",
       } as React.CSSProperties}
     >
-      
+
       {/* 1. Deep Space Dynamic Radial Glow (Follows mouse slightly) - Optimized blur values for performance */}
       <div
         className="absolute w-[800px] h-[800px] rounded-full blur-[90px] opacity-25 transition-transform duration-500 pointer-events-none will-change-transform"
@@ -102,13 +102,13 @@ export default function ThreeDCanvas() {
       />
 
       {/* Grid Floor Reflection Accent */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-[#020205] via-[#020205]/80 to-transparent pointer-events-none"
       />
 
       {/* 3. Floating 3D Geometric Outlines */}
       <div className="absolute inset-0 pointer-events-none select-none">
-        
+
         {/* Floating Ring 1 */}
         <div
           className="absolute w-96 h-96 border border-white/5 rounded-full flex items-center justify-center transition-transform duration-500 will-change-transform"
@@ -136,7 +136,7 @@ export default function ThreeDCanvas() {
         </div>
 
         {/* Futuristic Tech Reticle Overlay */}
-        <div 
+        <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/5 rounded-full opacity-40 transition-transform duration-300 will-change-transform"
           style={{
             transform: `translate(-50%, -50%) translate(calc(var(--mouse-x) * 40px), calc(var(--mouse-y) * 40px)) scale(0.95)`,
