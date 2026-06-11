@@ -29,7 +29,7 @@ export default function CarouselCard({
       className={`carousel-card-wrapper select-none ${
         mobileMode 
           ? "w-full h-full relative" 
-          : "absolute left-1/2 top-1/2 w-[280px] sm:w-[420px] md:w-[480px] lg:w-[560px] xl:w-[640px] h-[380px] sm:h-[220px] md:h-[240px] lg:h-[280px] xl:h-[320px] -translate-x-1/2 -translate-y-1/2"
+          : "absolute left-1/2 top-1/2 w-[280px] sm:w-[420px] md:w-[480px] lg:w-[560px] xl:w-[640px] h-[380px] sm:h-[280px] md:h-[300px] lg:h-[310px] xl:h-[330px] -translate-x-1/2 -translate-y-1/2"
       }`}
       style={{
         transformStyle: "preserve-3d",
@@ -37,7 +37,7 @@ export default function CarouselCard({
       }}
     >
       <div 
-        className={`carousel-card-inner w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-7 md:p-8 lg:p-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-8 ${bgGradient} border border-white/65 shadow-[0_8px_30px_rgba(0,0,0,0.012)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.03] hover:brightness-[1.01] hover:shadow-[0_25px_50px_rgba(0,0,0,0.06)] cursor-pointer group`}
+        className={`carousel-card-inner w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-6 md:p-7 lg:p-9 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 lg:gap-8 ${bgGradient} border border-white/65 shadow-[0_8px_30px_rgba(0,0,0,0.012)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.03] hover:brightness-[1.01] hover:shadow-[0_25px_50px_rgba(0,0,0,0.06)] cursor-pointer group`}
         style={{
           transformStyle: "preserve-3d",
         }}

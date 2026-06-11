@@ -9,6 +9,12 @@ export default function useScrollAnimation(
 ) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Disable ScrollTrigger and pinning animations on mobile (width < 640) to save CPU/GPU resources
+    if (typeof window !== "undefined" && window.innerWidth < 640) {
+      return;
+    }
+
     let scrollTriggerInstance: any;
 
     const ctx = gsap.context(() => {

@@ -90,7 +90,7 @@ export default function FaqSection() {
         className="h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#E40D28]"
       >
         {/* Base text layer (White text on Red) */}
-        <h2 className="intro-text absolute z-10 text-white text-5xl md:text-7xl lg:text-[100px] font-black tracking-tight pointer-events-none text-center px-4">
+        <h2 className="intro-text absolute z-10 text-white text-3xl sm:text-5xl md:text-7xl lg:text-[100px] font-black tracking-tight pointer-events-none text-center px-4">
           Got Questions?
         </h2>
 
@@ -100,7 +100,7 @@ export default function FaqSection() {
           className="absolute inset-0 z-20 bg-[#faf9f8] flex items-center justify-center pointer-events-none"
           style={{ willChange: "clip-path" }}
         >
-          <h2 className="intro-text text-[#E40D28] text-5xl md:text-7xl lg:text-[100px] font-black tracking-tight pointer-events-none text-center px-4">
+          <h2 className="intro-text text-[#E40D28] text-3xl sm:text-5xl md:text-7xl lg:text-[100px] font-black tracking-tight pointer-events-none text-center px-4">
             Got Questions?
           </h2>
         </div>
@@ -121,7 +121,7 @@ export default function FaqSection() {
               <span className="text-xs text-[#E40D28]">✨</span>
               <span className="text-[10px] font-extrabold tracking-widest text-zinc-800 uppercase">Clarity is key</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-zinc-900 tracking-[-0.03em] leading-[1.1] mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[56px] font-black text-zinc-900 tracking-[-0.03em] leading-[1.1] mb-6">
               You Ask, <span className="text-[#E40D28] relative inline-block">
                 We Answer.
                 <svg className="absolute left-0 bottom-[-4px] w-full h-[8px] text-[#E40D28]/30" viewBox="0 0 100 10" preserveAspectRatio="none">

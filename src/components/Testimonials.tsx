@@ -305,7 +305,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
               <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span className="text-[10px] font-bold tracking-[0.3em] text-white uppercase">Client Success Stories</span>
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-[88px] font-black text-white tracking-tighter leading-[0.95]">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-[88px] font-black text-white tracking-tighter leading-[0.95]">
               Partnerships We Cherish.
             </h2>
           </div>

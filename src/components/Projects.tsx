@@ -68,7 +68,7 @@ export default function Projects() {
 
         {/* Stage Header */}
         <div className="text-center z-20 px-6 max-w-4xl shrink-0">
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight mb-3">
             Our Case Studies
           </h2>
           <p className="text-[16px] text-slate-500 max-w-2xl mx-auto leading-relaxed">

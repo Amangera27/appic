@@ -236,7 +236,7 @@ export default function NextSection() {
         <div className="max-w-[1200px] mb-8 md:mb-12 flex flex-col items-start relative z-30 perspective-[1000px]">
 
 
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-6 flex flex-wrap gap-x-3 gap-y-1 perspective-[1000px]">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-6 flex flex-wrap gap-x-3 gap-y-1 perspective-[1000px]">
             {"Leading The Way In".split(" ").map((word, i) => (
               <span key={`l-${i}`} ref={el => { headerWordsRef.current[i] = el; }} className="inline-block drop-shadow-sm">{word}</span>
             ))}

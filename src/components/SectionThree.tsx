@@ -318,7 +318,7 @@ export default function SectionThree() {
 
         {/* ── Heading (top-left) ───────────────────────────────────────────── */}
         <div className="absolute top-6 left-6 lg:top-14 lg:left-14 z-20 max-w-md">
-          <h2 ref={headingRef} className={`text-4xl md:text-5xl font-medium mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
+          <h2 ref={headingRef} className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
             What <span style={{ color: "#E40D28" }}>We Build</span>
             <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
               <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>

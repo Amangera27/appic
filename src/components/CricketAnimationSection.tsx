@@ -34,30 +34,45 @@ export default function CricketAnimationSection() {
     gsap.registerPlugin(ScrollTrigger);
     
     let ctx = gsap.context(() => {
-      // PHASE 1: Entry
+      // PHASE 1: Entry & Smart Viewport Play/Pause to save mobile CPU/battery
+      let initialized = false;
       ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: "top 80%",
+        start: "top 100%",
+        end: "bottom 0%",
         onEnter: () => {
-          setHasEntered(true);
-          
-          // Bring characters in
-          gsap.to(bowlerRef.current, {
-            x: 0,
-            duration: 1.5,
-            ease: "power2.out",
-          });
-          gsap.to(batterRef.current, {
-            x: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            onComplete: () => {
-              setShowPrompt(true);
-              startAutoLoop(); // Start continuous looping after entry
-            }
-          });
+          if (!initialized) {
+            initialized = true;
+            setHasEntered(true);
+            
+            // Bring characters in
+            gsap.to(bowlerRef.current, {
+              x: 0,
+              duration: 1.5,
+              ease: "power2.out",
+            });
+            gsap.to(batterRef.current, {
+              x: 0,
+              duration: 1.5,
+              ease: "power2.out",
+              onComplete: () => {
+                setShowPrompt(true);
+                startAutoLoop(); // Start continuous looping after entry
+              }
+            });
+          } else {
+            if (masterTl.current) masterTl.current.play();
+          }
         },
-        once: true
+        onLeave: () => {
+          if (masterTl.current) masterTl.current.pause();
+        },
+        onEnterBack: () => {
+          if (masterTl.current) masterTl.current.play();
+        },
+        onLeaveBack: () => {
+          if (masterTl.current) masterTl.current.pause();
+        }
       });
     }, sectionRef);
 

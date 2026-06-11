@@ -146,96 +146,58 @@ export default function EyeSection() {
         };
       });
 
-      // Mobile layout: Stacked vertically
+      // Mobile layout: Stacked statically using absolute positions (keeps desktop layout clean and separate)
       mm.add("(max-width: 767px)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=300%",
-            pin: true,
-            scrub: 1.2,
-            anticipatePin: 1,
-          }
-        });
-
-        // Target text lines
         const line1 = textContainerRef.current?.querySelector(".line-1") || null;
         const line2 = textContainerRef.current?.querySelector(".line-2") || null;
         const line3 = textContainerRef.current?.querySelector(".line-3") || null;
 
-        // Set initial positions
-        gsap.set(eyeContainerRef.current, { x: 0, y: 0, scale: 1 });
+        // Position mascot logo centered at top: 8vh
+        gsap.set(eyeContainerRef.current, { 
+          x: 0, 
+          y: 0, 
+          scale: 0.72,
+          position: "absolute",
+          top: "8vh",
+          left: "50%",
+          xPercent: -50,
+        });
+
+        // Position texts centered at top: 33vh
         gsap.set(textContainerRef.current, {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          left: "auto",
-          top: "42vh",
+          position: "absolute",
+          left: "50%",
+          xPercent: -50,
+          top: "33vh",
           width: "90vw",
         });
-        gsap.set([line1, line2, line3], { opacity: 0, y: 15 });
 
+        // Make lines visible
+        gsap.set([line1, line2, line3], { opacity: 1, y: 0 });
+
+        // Position logos centered at top: 56vh
         gsap.set(logosContainerRef.current, {
-          x: 0,
-          y: 0,
+          position: "absolute",
           left: 0,
-          top: "60vh",
+          top: "56vh",
           width: "100%",
           opacity: 1,
         });
-        logosRef.current.forEach((logo) => {
-          if (logo) gsap.set(logo, { x: "65vw", opacity: 0 });
-        });
 
-        // Phase 1: Eye shifts up, scaling down to fit mobile
-        tl.to(eyeContainerRef.current, {
-          y: "-16vh",
-          scale: 0.85,
-          ease: "power2.inOut",
-          duration: 1.2,
-        }, 0);
-
-        // Phase 2: Text lines animate in one by one after eye has fully shifted
-        tl.to(line1, {
-          opacity: 1,
-          y: 0,
-          ease: "power2.out",
-          duration: 0.4,
-        }, 1.2)
-          .to(line2, {
-            opacity: 1,
-            y: 0,
-            ease: "power2.out",
-            duration: 0.4,
-          }, 1.5)
-          .to(line3, {
-            opacity: 1,
-            y: 0,
-            ease: "power2.out",
-            duration: 0.4,
-          }, 1.8);
-
-        // Phase 3: Brand logos fade in sequentially in a 2-row layout (3 top, 2 bottom)
         const targetXMobile = ["-30vw", "0vw", "30vw", "-16vw", "16vw"];
-        const targetYMobile = ["-4vh", "-4vh", "-4vh", "5vh", "5vh"];
-        const startTimesMobile = [2.1, 2.4, 2.7, 2.2, 2.5];
+        const targetYMobile = ["-1vh", "-1vh", "-1vh", "7vh", "7vh"];
 
         logosRef.current.forEach((logo, idx) => {
           if (!logo) return;
-
-          tl.to(logo, {
-            keyframes: [
-              { x: targetXMobile[idx], y: targetYMobile[idx], opacity: 0, duration: 0 },
-              { x: targetXMobile[idx], y: targetYMobile[idx], opacity: 1, duration: 0.8 }
-            ],
-            ease: "power2.out",
-          }, startTimesMobile[idx]);
+          gsap.set(logo, { 
+            position: "absolute",
+            x: targetXMobile[idx], 
+            y: targetYMobile[idx], 
+            opacity: 1 
+          });
         });
 
-        return () => {
-          tl.kill();
-        };
+        return () => {};
       });
 
     }, sectionRef);
@@ -293,7 +255,7 @@ export default function EyeSection() {
     <div className="relative w-full">
       <section
         ref={sectionRef}
-        className={`relative w-full h-[80vh] lg:h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 ${"bg-white"}`}
+        className="relative w-full h-[80vh] lg:h-screen overflow-hidden flex items-center justify-center select-none z-10 transition-colors duration-700 bg-white"
         style={{ contentVisibility: "auto" }}
       >
         {/* Premium Tech Background Elements */}
@@ -309,7 +271,7 @@ export default function EyeSection() {
           {/* Red glowing radial gradient ambient light on white bg */}
           <div
             ref={glowRef}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] rounded-full filter blur-[100px] pointer-events-none transition-opacity duration-700 ${"opacity-10"}`}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] rounded-full filter blur-[100px] pointer-events-none transition-opacity duration-700 opacity-10`}
             style={{
               background: "radial-gradient(circle, #E40D28 0%, transparent 70%)",
               willChange: "transform, opacity",
@@ -329,7 +291,7 @@ export default function EyeSection() {
             style={{ willChange: "transform" }}
           >
             <div
-              className="relative w-[55vw] lg:w-auto lg:h-[40vh] lg:max-w-[80vw]"
+              className="relative w-[38vw] md:w-auto md:h-[40vh] md:max-w-[80vw]"
               style={{
                 aspectRatio: "240 / 203",
               }}
@@ -385,7 +347,7 @@ export default function EyeSection() {
             <span className="line-1 block text-[11px] md:text-[13px] font-bold tracking-[0.25em] text-[#E40D28] uppercase mb-4 opacity-0" style={{ willChange: "transform, opacity" }}>
               Still not convinced to work with us?
             </span>
-            <h2 className={`text-2xl md:text-[40px] lg:text-[46px] xl:text-[50px] font-black leading-[1.12] tracking-tight transition-colors duration-700 ${"text-zinc-950"}`}>
+            <h2 className={`text-[20px] sm:text-2xl md:text-[40px] lg:text-[46px] xl:text-[50px] font-black leading-[1.12] tracking-tight transition-colors duration-700 text-zinc-950`}>
               <span className="line-2 block opacity-0" style={{ willChange: "transform, opacity" }}>
                 Look at the partners
                 who collaborate with us.
@@ -414,7 +376,7 @@ export default function EyeSection() {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  className="h-14 sm:h-16 md:h-16 max-w-[26vw] sm:max-w-[22vw] md:max-w-[18vw] lg:max-w-[120px] xl:max-w-[150px] 2xl:max-w-[180px] object-contain opacity-85 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  className="h-12 md:h-16 max-w-[26vw] sm:max-w-[22vw] md:max-w-[18vw] lg:max-w-[120px] xl:max-w-[150px] 2xl:max-w-[180px] object-contain opacity-85 hover:opacity-100 transition-all duration-300 cursor-pointer"
                   style={{
                     filter: "none",
                   }}

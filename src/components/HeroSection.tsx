@@ -4,11 +4,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Header from "./Header";
 import { HiArrowRight } from "react-icons/hi2";
-import dynamic from "next/dynamic";
-
-const Hyperspeed = dynamic(() => import("./Hyperspeed"), { ssr: false });
-
-
 
 const BARS_DATA = [
   { left: "-2%", width: "8vw", height: "80vh", grad: "from-[#DE0A26]/52 via-[#DE0A26]/20 to-transparent" },
@@ -64,31 +59,9 @@ export default function HeroSection() {
       ref={heroRef}
       className="relative isolate min-h-[75vh] lg:min-h-[calc(100vh-72px)] overflow-hidden bg-slate-50 text-slate-950 flex items-center justify-center pt-16 lg:pt-24"
     >
-
-
-      {/* Dynamic WebGL Hyperspeed background container */}
-      <div className="absolute inset-0 z-0 opacity-70">
-        <Hyperspeed
-          effectOptions={{
-            colors: {
-              roadColor: 0xf8fafc,
-              islandColor: 0xf8fafc,
-              background: 0xf8fafc,
-              shoulderLines: 0xcbced4,
-              brokenLines: 0xcbced4,
-              leftCars: [0xb10c1e, 0xf43f5e, 0xe11d48],
-              rightCars: [0x0ea5e9, 0x2563eb, 0x06b6d4],
-              sticks: 0x3b82f6
-            }
-          }}
-        />
-      </div>
-
-
-
-      {/* Tactile Glowing Vertical Bars Background (As drawn by user) */}
+      {/* Tactile Glowing Vertical Bars Background (As drawn by user) - Hidden on mobile for GPU/CPU optimization */}
       <div
-        className="absolute inset-0 z-[1] overflow-hidden pointer-events-none transition-opacity duration-700 opacity-100"
+        className="hidden md:block absolute inset-0 z-[1] overflow-hidden pointer-events-none transition-opacity duration-700 opacity-100"
         style={{ transform: "translate3d(0,0,0)" }}
       >
         {BARS_DATA.map((bar, index) => (
@@ -112,10 +85,10 @@ export default function HeroSection() {
       {/* Elegant light gradients for depth and soft premium aesthetics */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/80 to-white/95 z-[2] pointer-events-none" aria-hidden />
       
-      {/* Smoothly floating blurry red circles for a premium ambient glow (z-[3] for visibility above white gradient) */}
-      <div className="absolute -top-20 -left-20 h-[350px] w-[350px] rounded-full bg-[#b10c1e]/14 blur-[80px] z-[3] pointer-events-none animate-blob-float-1" aria-hidden />
-      <div className="absolute top-[25%] -right-20 h-[300px] w-[300px] rounded-full bg-[#de0c27]/12 blur-[70px] z-[3] pointer-events-none animate-blob-float-2" aria-hidden />
-      <div className="absolute bottom-10 left-[10%] h-[400px] w-[400px] rounded-full bg-[#f43f5e]/13 blur-[90px] z-[3] pointer-events-none animate-blob-float-3" aria-hidden />
+      {/* Smoothly floating blurry red circles for a premium ambient glow - Hidden on mobile to prevent GPU draw lags */}
+      <div className="hidden md:block absolute -top-20 -left-20 h-[350px] w-[350px] rounded-full bg-[#b10c1e]/14 blur-[80px] z-[3] pointer-events-none animate-blob-float-1" aria-hidden />
+      <div className="hidden md:block absolute top-[25%] -right-20 h-[300px] w-[300px] rounded-full bg-[#de0c27]/12 blur-[70px] z-[3] pointer-events-none animate-blob-float-2" aria-hidden />
+      <div className="hidden md:block absolute bottom-10 left-[10%] h-[400px] w-[400px] rounded-full bg-[#f43f5e]/13 blur-[90px] z-[3] pointer-events-none animate-blob-float-3" aria-hidden />
 
       <div className="absolute top-0 left-0 w-full z-50">
         <Header />
@@ -137,8 +110,7 @@ export default function HeroSection() {
 
           {/* Premium layout with high-impact typography & smooth gradient text */}
           <h1 
-            className="mx-auto mt-5 lg:mt-8 max-w-4xl leading-[1.1] tracking-tight text-slate-950"
-            style={{ fontSize: "55px", fontWeight: 600 }}
+            className="mx-auto mt-5 lg:mt-8 max-w-4xl leading-[1.1] tracking-tight text-slate-950 text-[30px] sm:text-[40px] md:text-[48px] lg:text-[55px] font-semibold"
           >
             Building modern{" "}
             <span className="bg-gradient-to-r from-[#b10c1e] via-[#de0c27] to-[#e11d48] bg-clip-text text-transparent">
