@@ -11,6 +11,7 @@ const Projects = dynamic(() => import("@/components/Projects"), { ssr: false });
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
 const NextSection = dynamic(() => import("@/components/NextSection"), { ssr: false });
 const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: false });
+const TechStack = dynamic(() => import("@/components/TechStack"), { ssr: false });
 const FaqSection = dynamic(() => import("@/components/FaqSection"), { ssr: false });
 const CricketAnimationSection = dynamic(() => import("@/components/CricketAnimationSection"), { ssr: false });
 import Footer from "@/components/Footer";
@@ -146,7 +147,12 @@ export default function AppClient() {
           <NextSection />
         </LazySection>
         
-
+        {/* Enforce strict stacking context to prevent GSAP pinning overlaps */}
+        <div className="relative z-[30] bg-[#Fdfdfd]">
+          <LazySection height="400px">
+            <TechStack />
+          </LazySection>
+        </div>
         
         <div className="relative z-[40] bg-[#faf9f8]">
           <LazySection height="800px">

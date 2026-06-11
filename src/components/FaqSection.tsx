@@ -68,13 +68,13 @@ export default function FaqSection() {
       ease: "power2.inOut",
       duration: 1,
     })
-    // Fade out both texts as the circle expands
-    .to(".intro-text", {
-      opacity: 0,
-      scale: 1.2,
-      ease: "power2.inOut",
-      duration: 0.5,
-    }, "<0.2"); // Start slightly after circle starts expanding
+      // Fade out both texts as the circle expands
+      .to(".intro-text", {
+        opacity: 0,
+        scale: 1.2,
+        ease: "power2.inOut",
+        duration: 0.5,
+      }, "<0.2"); // Start slightly after circle starts expanding
 
     return () => {
       tl.scrollTrigger?.kill();
@@ -107,26 +107,21 @@ export default function FaqSection() {
       </div>
 
       {/* ── FAQ Content Area ── */}
-      <div className="relative w-full bg-[#faf9f8] z-20 pb-32 pt-20 overflow-hidden">
-        
+      <div className="relative w-full bg-[#faf9f8] z-20 py-[40px] md:py-[60px] overflow-hidden">
+
         {/* Soft Ambient Background Blobs matching ContactSection */}
         <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full opacity-[0.12] bg-gradient-to-r from-[#E40D28] to-transparent blur-[80px] pointer-events-none" />
         <div className="absolute bottom-[5%] right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.1] bg-gradient-to-l from-[#ff6b35] to-transparent blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1000px] mx-auto px-6 md:px-10 relative z-10">
-          
+
           {/* Section Heading */}
           <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-zinc-100 mb-6">
-              <span className="text-xs text-[#E40D28]">✨</span>
-              <span className="text-[10px] font-extrabold tracking-widest text-zinc-800 uppercase">Clarity is key</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[56px] font-black text-zinc-900 tracking-[-0.03em] leading-[1.1] mb-6">
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-4">
               You Ask, <span className="text-[#E40D28] relative inline-block">
                 We Answer.
-                <svg className="absolute left-0 bottom-[-4px] w-full h-[8px] text-[#E40D28]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M 0 5 Q 50 10 100 5 Q 50 0 0 5" fill="currentColor"/>
-                </svg>
+
               </span>
             </h2>
             <p className="text-zinc-500 font-medium text-[16px] max-w-2xl leading-relaxed">
@@ -141,56 +136,52 @@ export default function FaqSection() {
               return (
                 <div
                   key={index}
-                  className={`group relative bg-white rounded-3xl border transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] overflow-hidden cursor-pointer ${
-                    isOpen 
-                      ? "border-transparent shadow-[0_20px_40px_rgba(228,13,40,0.08)] md:scale-[1.02] my-2 md:my-4 z-10" 
-                      : "border-zinc-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 z-0"
-                  }`}
+                  className={`group relative bg-white rounded-3xl border transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] overflow-hidden cursor-pointer ${isOpen
+                    ? "border-transparent shadow-[0_20px_40px_rgba(228,13,40,0.08)] md:scale-[1.02] my-2 md:my-4 z-10"
+                    : "border-zinc-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 z-0"
+                    }`}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   {/* Subtle inner hover gradient */}
                   <div className="absolute inset-0 bg-gradient-to-r from-[#E40D28]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
+
                   <div className="relative z-10 px-6 py-6 md:px-10 md:py-8 flex items-start justify-between gap-4 md:gap-8">
-                    
-                    <div className="flex items-start gap-4 md:gap-8 w-full">
+
+                    <div className="flex items-center gap-4 md:gap-8 w-full">
                       {/* Number Badge */}
-                      <div className={`mt-1 flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
-                        isOpen ? "bg-[#E40D28]/10 text-[#E40D28]" : "bg-zinc-50 text-zinc-400 group-hover:bg-[#E40D28]/5 group-hover:text-[#E40D28]"
-                      }`}>
-                         <span className="font-bold font-mono text-sm">
-                           {(index + 1).toString().padStart(2, '0')}
-                         </span>
+                      <div className={`mt-1 flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? "bg-[#E40D28]/10 text-[#E40D28]" : "bg-zinc-50 text-zinc-400 group-hover:bg-[#E40D28]/5 group-hover:text-[#E40D28]"
+                        }`}>
+                        <span className="font-bold font-mono text-sm">
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
                       </div>
-                      
+
                       {/* Question & Answer */}
                       <div className="flex flex-col flex-1">
-                        <h4 className={`text-[20px] md:text-[22px] font-medium tracking-tight transition-colors duration-500 ${
-                          isOpen ? "text-[#E40D28]" : "text-zinc-800 group-hover:text-zinc-950"
-                        }`}>
+                        <h4 className={`text-[20px] md:text-[22px] font-medium tracking-tight transition-colors duration-500 ${isOpen ? "text-[#E40D28]" : "text-zinc-800 group-hover:text-zinc-950"
+                          }`}>
                           {faq.question}
                         </h4>
-                        
-                        <div 
-                           className="overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]"
-                           style={{ maxHeight: isOpen ? "400px" : "0px", opacity: isOpen ? 1 : 0 }}
+
+                        <div
+                          className="overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]"
+                          style={{ maxHeight: isOpen ? "400px" : "0px", opacity: isOpen ? 1 : 0 }}
                         >
-                           <p className="pt-4 text-zinc-500 text-[16px] font-medium leading-relaxed max-w-2xl">
-                             {faq.answer}
-                           </p>
+                          <p className="pt-4 text-zinc-500 text-[16px] font-medium leading-relaxed max-w-2xl">
+                            {faq.answer}
+                          </p>
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Toggle Button */}
-                    <div className={`mt-1 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] border ${
-                      isOpen 
-                        ? "bg-[#E40D28] border-[#E40D28] text-white rotate-45 shadow-[0_8px_16px_rgba(228,13,40,0.3)]" 
-                        : "bg-white border-zinc-200 text-zinc-400 group-hover:border-[#E40D28] group-hover:text-[#E40D28]"
-                    }`}>
-                       <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                       </svg>
+                    <div className={`mt-1 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.87,0,0.13,1)] border ${isOpen
+                      ? "bg-[#E40D28] border-[#E40D28] text-white rotate-45 shadow-[0_8px_16px_rgba(228,13,40,0.3)]"
+                      : "bg-white border-zinc-200 text-zinc-400 group-hover:border-[#E40D28] group-hover:text-[#E40D28]"
+                      }`}>
+                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                      </svg>
                     </div>
                   </div>
                 </div>

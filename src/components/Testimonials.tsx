@@ -281,7 +281,7 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       setFlippedIndex(index);
     }
   }; return (
-    <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-8 md:py-12">
+    <section ref={sectionRef} className="relative w-full flex flex-col justify-center bg-[#DE0C27] isolate overflow-hidden py-[40px] md:py-[60px]">
 
       {/* ─── BACKGROUND ──────────────────────────────────────────────────────── */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[200vw] overflow-hidden pointer-events-none z-0 opacity-[0.03] select-none mix-blend-overlay">
@@ -296,10 +296,10 @@ export default function Testimonials({ setCursorColor, setPageBg }: Testimonials
       <div ref={el => { bgBlobsRef.current[2] = el; }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,transparent_70%)] pointer-events-none z-0" />
 
       {/* ─── MAIN CONTENT ─────────────────────────────────────────────────────── */}
-      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-8 lg:gap-10 h-full pt-2 pb-2 lg:pb-6">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-start gap-8 lg:gap-10 h-full">
 
         {/* Header */}
-        <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
+        <div ref={headerRef} className="text-center md:text-left shrink-0 relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6">
               <div className="w-2 h-2 rounded-full bg-white animate-pulse" />

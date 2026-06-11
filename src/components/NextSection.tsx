@@ -14,8 +14,8 @@ const CARDS = [
   {
     title: "AI Development",
     desc: "We specialize in <span class='text-[#DE0C27] font-bold'>AI development services</span> that drive innovation and transform businesses. Our team creates customized AI solutions, including machine learning, data analytics, and NLP.",
-    theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+    theme: {
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]",
       iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
       iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
       arrowText: "text-[#dc2626]",
@@ -33,8 +33,8 @@ const CARDS = [
   {
     title: "Gen AI Development",
     desc: "Our AI engineers develop <span class='text-[#DE0C27] font-bold'>GenAI models</span> for personalized content generation such as text, images, audio, video, and more. We harness generative models to help you innovate and stay competitive.",
-    theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+    theme: {
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]",
       iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
       iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
       arrowText: "text-[#dc2626]",
@@ -52,8 +52,8 @@ const CARDS = [
   {
     title: "ML Development",
     desc: "Through our <span class='text-[#DE0C27] font-bold'>ML development services</span>, you get solutions like predictive analysis, customer personalization models, fraud detection, and more. We build intelligent systems that analyze data patterns.",
-    theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+    theme: {
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]",
       iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
       iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
       arrowText: "text-[#dc2626]",
@@ -71,8 +71,8 @@ const CARDS = [
   {
     title: "Blockchain",
     desc: "Unlock the future of secure and transparent business operations with our <span class='text-[#DE0C27] font-bold'>Blockchain development services</span>. Bring your ideas to life with our expert Blockchain developers.",
-    theme: { 
-      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]", 
+    theme: {
+      glow: "shadow-[0_20px_50px_-15px_rgba(222,12,39,0.3)] group-hover:shadow-[0_40px_80px_-15px_rgba(222,12,39,0.6)]",
       iconBg: "bg-gradient-to-br from-[#f87171] to-[#b91c1c]",
       iconShadow: "shadow-[0_10px_30px_rgba(222,12,39,0.5)]",
       arrowText: "text-[#dc2626]",
@@ -92,9 +92,9 @@ const CARDS = [
 export default function NextSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  const headerWordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
-  const subRef = useRef<HTMLDivElement>(null);
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const planetRef = useRef<HTMLDivElement>(null);
 
@@ -127,7 +127,7 @@ export default function NextSection() {
     const svg = svgRef.current;
     let drift: gsap.core.Tween | null = null;
     let rise: gsap.core.Tween | null = null;
-    
+
     if (svg) {
       drift = gsap.to(svg, {
         x: "-33.3333%",
@@ -158,48 +158,46 @@ export default function NextSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 60%", 
+        start: "top 60%",
         toggleActions: "play none none reverse",
       }
     });
 
     gsap.set(badgeRef.current, { y: 30, opacity: 0, scale: 0.8 });
-    gsap.set(headerWordsRef.current, { y: 50, opacity: 0, rotateX: -40, transformOrigin: "0% 50% -50" });
-    gsap.set(subRef.current, { x: -30, opacity: 0 });
-    gsap.set(cardsRef.current, { 
-      y: 150, 
+    gsap.set(headingRef.current, { y: 30, opacity: 0 });
+    gsap.set(paragraphRef.current, { y: 20, opacity: 0 });
+    gsap.set(cardsRef.current, {
+      y: 150,
       opacity: 0,
       scale: 0.8,
       rotationX: -45,
       rotationY: 15,
       z: -100
     });
-
+ 
     tl.to(badgeRef.current, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.7)" })
-      .to(headerWordsRef.current, { 
-        y: 0, 
-        opacity: 1, 
-        rotateX: 0,
-        duration: 1, 
-        stagger: 0.05, 
-        ease: "back.out(1.5)" 
+      .to(headingRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out"
       }, "-=0.6")
-      .to(subRef.current, { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
-      .to(cardsRef.current, { 
-        y: 0, 
-        opacity: 1, 
+      .to(paragraphRef.current, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .to(cardsRef.current, {
+        y: 0,
+        opacity: 1,
         scale: 1,
         rotationX: 0,
         rotationY: 0,
         z: 0,
-        duration: 1.5, 
-        stagger: 0.2, 
-        ease: "back.out(1.5)" 
+        duration: 1.5,
+        stagger: 0.2,
+        ease: "back.out(1.5)"
       }, "-=0.6");
 
     const circuitLines = section.querySelectorAll('.circuit-line');
     const circuitDots = section.querySelectorAll('.circuit-dot');
-    
+
     // (DISABLED FOR PERFORMANCE) Lines and dots infinite GSAP loop
     // gsap.to(circuitLines, { ... });
     // gsap.to(circuitDots, { ... });
@@ -216,43 +214,32 @@ export default function NextSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-start xl:justify-center"
-      style={{ backgroundColor: "#faf9f8" }} 
+      className="relative w-full py-[40px] md:py-[60px]"
+      style={{ backgroundColor: "#faf9f8" }}
     >
       {/* ─── GLORIOUS PLANET & VIBRANT BACKGROUND ─────────────────────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        
+
         {/* Deep, beautiful ambient lights (Replaced heavy SVG blur with CSS Radial Gradient) */}
         <div className="absolute inset-0 opacity-[0.25]"
-             style={{ background: 'radial-gradient(circle at 70% 30%, rgba(228,13,40,0.3) 0%, rgba(222,12,39,0.1) 40%, transparent 80%)' }} />
+          style={{ background: 'radial-gradient(circle at 70% 30%, rgba(228,13,40,0.3) 0%, rgba(222,12,39,0.1) 40%, transparent 80%)' }} />
 
 
       </div>
 
       {/* ─── SECTION CONTENT ─────────────────────────────────────────────────── */}
       <div className="relative z-30 w-full max-w-[1600px] mx-auto px-6 md:px-10 mt-0 flex flex-col justify-center">
-        
+
         {/* Header Area */}
         <div className="max-w-[1200px] mb-8 md:mb-12 flex flex-col items-start relative z-30 perspective-[1000px]">
 
 
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[56px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-6 flex flex-wrap gap-x-3 gap-y-1 perspective-[1000px]">
-            {"Leading The Way In".split(" ").map((word, i) => (
-              <span key={`l-${i}`} ref={el => { headerWordsRef.current[i] = el; }} className="inline-block drop-shadow-sm">{word}</span>
-            ))}
-            <span ref={el => { headerWordsRef.current[4] = el; }} className="inline-block text-[#DE0C27] drop-shadow-md pb-2">AI</span>
-            <span ref={el => { headerWordsRef.current[5] = el; }} className="inline-block text-[#DE0C27] drop-shadow-md pb-2">Innovation</span>
-            {"To Create Solutions That Matter".split(" ").map((word, i) => (
-              <span key={`t-${i}`} ref={el => { headerWordsRef.current[6 + i] = el; }} className="inline-block drop-shadow-sm">{word}</span>
-            ))}
+          <h2 ref={headingRef} className="text-3xl sm:text-4xl lg:text-[48px] font-black text-[#111111] tracking-[-0.03em] leading-[1.1] mb-4">
+            Leading The Way In <span className="text-[#DE0C27]">AI Innovation</span> To Create Solutions That Matter
           </h2>
-          
-          <div ref={subRef} className="flex items-center gap-5">
-            <div className="w-12 h-[3px] bg-gradient-to-r from-[#E40D28] to-[#DE0C27] rounded-full shadow-[0_0_10px_rgba(228,13,40,0.5)]" />
-            <p className="text-[16px] text-zinc-600 font-bold tracking-tight">
-              AI, GenAI, Machine Learning &amp; Blockchain Development.
-            </p>
-          </div>
+          <p ref={paragraphRef} className="text-zinc-500 font-medium text-[16px] max-w-2xl leading-relaxed">
+            AI, GenAI, Machine Learning &amp; Blockchain Development.
+          </p>
         </div>
 
         {/* Breathtaking Cards Grid */}
@@ -284,14 +271,14 @@ export default function NextSection() {
                 <div className={`w-14 h-14 rounded-[16px] ${card.theme.iconBg} ${card.theme.iconShadow} flex items-center justify-center mb-4 transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]`}>
                   {card.icon}
                 </div>
-                
+
                 {/* Title */}
                 <h3 className={`text-[22px] font-medium text-zinc-950 mb-2 tracking-tight leading-tight transition-colors duration-300 ${card.theme.titleHover}`}>
                   {card.title}
                 </h3>
-                
+
                 {/* Description */}
-                <p 
+                <p
                   className="text-zinc-500 text-[14px] leading-[1.6] font-medium flex-grow mb-6 group-hover:text-zinc-700 transition-colors duration-300"
                   dangerouslySetInnerHTML={{ __html: card.desc }}
                 />

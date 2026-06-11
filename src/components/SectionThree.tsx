@@ -193,7 +193,7 @@ export default function SectionThree() {
                 val: targetFloat,
                 duration: 0.5,
                 ease: "power3.out",
-                onUpdate: function() {
+                onUpdate: function () {
                   activeFloat = this.targets()[0].val;
                   updateUI(activeFloat);
                 }
@@ -222,7 +222,7 @@ export default function SectionThree() {
           const onTouchEnd = (e: TouchEvent) => {
             isDragging = false;
             const dx = e.changedTouches[0].clientX - touchStartX;
-            
+
             if (dx < -40) {
               targetFloat = Math.min(n - 1, Math.round(targetFloat + 1));
             } else if (dx > 40) {
@@ -235,7 +235,7 @@ export default function SectionThree() {
               val: targetFloat,
               duration: 0.5,
               ease: "power3.out",
-              onUpdate: function() {
+              onUpdate: function () {
                 activeFloat = this.targets()[0].val;
                 updateUI(activeFloat);
               },
@@ -292,7 +292,7 @@ export default function SectionThree() {
         {/* ── Background ──────────────────────────────────────────────────── */}
         <div className="absolute inset-0 pointer-events-none">
           <div className={`absolute inset-0 transition-colors duration-700 bg-[#fffafa]`} />
-          
+
           {/* Grid Pattern */}
           <div className={`absolute inset-0 transition-opacity duration-700 opacity-[0.04]`}
             style={{
@@ -303,10 +303,10 @@ export default function SectionThree() {
 
           <div className={`absolute top-0 left-0 w-[60vw] h-[60vh] rounded-full transition-opacity duration-700 opacity-[0.1]`}
             style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(-20%, -20%)" }} />
-          
+
           <div className={`absolute bottom-0 right-0 w-[50vw] h-[50vh] rounded-full transition-opacity duration-700 opacity-[0.08]`}
             style={{ background: "radial-gradient(circle, #E40D28, transparent 70%)", transform: "translate(20%, 20%)" }} />
-            
+
           {/* Sparkles scattered in background */}
           <div className="absolute top-[20%] right-[15%] w-1.5 h-1.5 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 10px 2px rgba(228,13,40,0.5)" }} />
           <div className="absolute top-[40%] left-[25%] w-1 h-1 bg-[#E40D28] rounded-full rotate-45" style={{ boxShadow: "0 0 6px 1px rgba(228,13,40,0.5)" }} />
@@ -320,9 +320,6 @@ export default function SectionThree() {
         <div className="absolute top-6 left-6 lg:top-14 lg:left-14 z-20 max-w-md">
           <h2 ref={headingRef} className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-3 s3-hidden s3-heading leading-tight transition-colors duration-700 flex items-center gap-2 text-[#1a1a2e]`}>
             What <span style={{ color: "#E40D28" }}>We Build</span>
-            <svg className="w-8 h-8 -translate-y-3" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10L12 2Z" fill="#E40D28"/>
-            </svg>
           </h2>
           <p ref={paragraphRef} className={`text-[16px] leading-relaxed s3-hidden s3-paragraph transition-colors duration-700 text-gray-500`}>
             Scroll to explore our services
@@ -390,7 +387,7 @@ export default function SectionThree() {
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-[120px] lg:h-[120px] flex items-center justify-center mb-4 sm:mb-6 lg:mb-6 mx-auto sm:mx-0">
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/20 transform rotate-12 scale-[1.15] transition-colors duration-700" />
                   <div className="absolute inset-0 rounded-[35%] border border-[#E40D28]/10 transform -rotate-6 scale-[1.25] transition-colors duration-700" />
-                  
+
                   <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[84px] lg:h-[84px] rounded-[14px] lg:rounded-[20px] flex items-center justify-center relative z-10 transition-all duration-700"
                     style={{
                       background: "linear-gradient(135deg, #ffffff, #ffecec)",
@@ -401,7 +398,7 @@ export default function SectionThree() {
                       <card.Icon />
                     </div>
                   </div>
-                  
+
                   {/* Decorative small stars around icon */}
                   <div className="absolute top-2 right-4 w-1.5 h-1.5 bg-[#E40D28] rounded-full blur-[1px]" />
                   <div className="absolute bottom-4 left-2 w-1 h-1 bg-[#E40D28] rounded-full blur-[0.5px]" />
@@ -444,11 +441,11 @@ export default function SectionThree() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <button className="w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center group transition-transform hover:scale-105"
-                    style={{ 
-                      background: "linear-gradient(135deg, #ff4b5c, #E40D28)", 
-                      boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)" 
+                    style={{
+                      background: "linear-gradient(135deg, #ff4b5c, #E40D28)",
+                      boxShadow: "0 8px 25px rgba(228,13,40,0.4), inset 2px 2px 4px rgba(255,255,255,0.3)"
                     }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
                       <path d="M5 12h14M12 5l7 7-7 7" />
