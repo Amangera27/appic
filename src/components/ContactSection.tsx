@@ -523,7 +523,7 @@ export default function ContactSection() {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-base font-black text-zinc-950 leading-tight">Send us a message</h3>
+                        <h3 className="text-base font-semibold text-zinc-950 leading-tight">Send us a message</h3>
                         <p className="text-zinc-500 text-[11px] font-semibold mt-0.5">
                           Fill the form below and we'll get back to you <br className="hidden sm:block" />
                           within <span className="text-[#E40D28] font-bold">2 hours</span>.
@@ -549,9 +549,9 @@ export default function ContactSection() {
                       <form ref={formElementRef} onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="relative">
-                            <label className="block text-[9px] font-black text-zinc-400 uppercase tracking-[0.15em] mb-1.5">Full Name</label>
+                            <label className="block text-[10px] font-medium text-zinc-600 uppercase tracking-[0.15em] mb-1.5">Full Name</label>
                             <div className="relative">
-                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">
+                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 z-10 pointer-events-none">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
@@ -564,9 +564,9 @@ export default function ContactSection() {
                             </div>
                           </div>
                           <div className="relative">
-                            <label className="block text-[9px] font-black text-zinc-400 uppercase tracking-[0.15em] mb-1.5">Email Address</label>
+                            <label className="block text-[10px] font-medium text-zinc-600 uppercase tracking-[0.15em] mb-1.5">Email Address</label>
                             <div className="relative">
-                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400">
+                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 z-10 pointer-events-none">
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
@@ -581,7 +581,7 @@ export default function ContactSection() {
                         </div>
 
                         <div>
-                          <label className="block text-[9px] font-black text-zinc-400 uppercase tracking-[0.15em] mb-1.5">Phone Number</label>
+                          <label className="block text-[10px] font-medium text-zinc-600 uppercase tracking-[0.15em] mb-1.5">Phone Number</label>
                           <div className="flex gap-2">
                             <div className="flex items-center gap-1.5 bg-white/40 border border-zinc-200/70 rounded-2xl px-3.5 py-3 text-zinc-700 text-xs font-semibold select-none flex-shrink-0">
                               <span>🇮🇳</span>
@@ -599,7 +599,7 @@ export default function ContactSection() {
                         </div>
 
                         <div className="relative">
-                          <label className="block text-[9px] font-black text-zinc-400 uppercase tracking-[0.15em] mb-1.5">Project Details</label>
+                          <label className="block text-[10px] font-medium text-zinc-600 uppercase tracking-[0.15em] mb-1.5">Project Details</label>
                           <textarea placeholder="Tell us about your project, goals, timeline..."
                             value={formData.project}
                             onChange={e => setFormData(p => ({ ...p, project: e.target.value.slice(0, 500) }))}
@@ -670,12 +670,12 @@ export default function ContactSection() {
                     {
                       icon: (
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12.069 18.874c-4.023 0-5.82-1.979-5.82-3.464 0-.765.561-1.296 1.333-1.296 1.723 0 1.273 2.477 4.487 2.477 1.641 0 2.55-.895 2.55-1.811 0-.551-.269-1.16-1.337-1.429l-3.566-.895c-2.862-.723-3.384-2.286-3.384-3.751 0-3.047 2.861-4.191 5.568-4.191 2.488 0 5.473 1.373 5.473 3.199 0 .784-.688 1.24-1.453 1.24-1.469 0-1.195-2.026-4.252-2.026-1.469 0-2.274.664-2.274 1.619 0 .955.116 1.054 3.546 1.838 3.428.786 3.951 2.367 3.951 3.693.001 2.805-2.538 4.797-5.822 4.797m6.98-7.32c.085.571.127 1.148.127 1.724 0 6.588-5.364 11.93-11.981 11.93C1.361 25.208 0 20.258 0 19.33c0-.521.41-.919.936-.919.494 0 .867.359 1.017.834.521 2.282 2.657 3.975 5.178 3.975 3.264 0 5.913-2.621 5.913-5.849 0-.521-.066-1.039-.193-1.54-.373.083-.754.13-1.147.13-3.979 0-7.213-3.199-7.213-7.14C4.491 5.198 7.725 2 11.704 2c3.978 0 7.212 3.199 7.212 7.14 0 .432-.04.854-.114 1.264.508.328.978.693 1.388 1.094.264-.617.418-1.286.45-1.988-.001-5.564-4.553-10.07-10.154-10.07C4.938-.56.385 3.944.385 9.508c0 2.77 1.12 5.281 2.937 7.126-.038.281-.063.565-.063.852 0 4.985 4.072 9.028 9.094 9.028 2.516 0 4.793-.995 6.455-2.609 2.218-.748 4.087-2.228 5.243-4.154-.647-.298-1.237-.683-1.738-1.145a8.64 8.64 0 01-.264-.052z" />
+                          <path d="M22.032 10.426v7.352a1.8 1.8 0 01-1.8 1.8h-7.251v-9.152h9.051zm-9.97 0v9.152H2.998a1.8 1.8 0 01-1.8-1.8v-7.352h10.864zm5.452-1.213a3.616 3.616 0 110-7.232 3.616 3.616 0 010 7.232zm-9.969 0A3.616 3.616 0 117.544 1.98a3.616 3.616 0 010 7.232z"/>
                         </svg>
                       ),
-                      label: "Skype",
-                      value: "live:appicsoftwares",
-                      href: "skype:live:appicsoftwares?chat",
+                      label: "Teams",
+                      value: "Connect on Teams",
+                      href: "#",
                     }
                   ].map((item, i) => (
                     <a key={i} href={item.href}
@@ -702,7 +702,7 @@ export default function ContactSection() {
                       </div>
 
                       <div className="relative min-w-0">
-                        <div className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-1">{item.label}</div>
+                        <div className="text-[10px] font-bold !text-[#b5b4bb] uppercase tracking-[0.2em] mb-1">{item.label}</div>
                         <div className="text-zinc-700 text-xs sm:text-[13px] font-semibold break-all leading-tight group-hover:text-zinc-900 transition-colors duration-200">{item.value}</div>
                       </div>
                     </a>
@@ -711,7 +711,7 @@ export default function ContactSection() {
 
                 {/* Connect with Us row */}
                 <div className="rounded-[28px] p-5 glass-premium-interactive">
-                  <div className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-3">Connect With Us</div>
+                  <div className="text-[10px] font-bold !text-[#b5b4bb] uppercase tracking-[0.2em] mb-3">Connect With Us</div>
                   <div className="flex items-center gap-3">
                     {SOCIAL.map((s, i) => (
                       <a key={i} href={s.href} aria-label={s.label}
@@ -737,7 +737,7 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-zinc-950 leading-tight">100% Secure</h4>
+                    <h4 className="text-xs font-semibold text-zinc-950 leading-tight">100% Secure</h4>
                     <p className="text-[10px] text-zinc-500 font-semibold mt-0.5 leading-tight">Your data is protected with top-level security.</p>
                   </div>
                 </div>
@@ -749,7 +749,7 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-zinc-950 leading-tight">Quick Response</h4>
+                    <h4 className="text-xs font-semibold text-zinc-950 leading-tight">Quick Response</h4>
                     <p className="text-[10px] text-zinc-500 font-semibold mt-0.5 leading-tight">We typically reply within 2 hours.</p>
                   </div>
                 </div>
@@ -761,7 +761,7 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-zinc-950 leading-tight">Expert Team</h4>
+                    <h4 className="text-xs font-semibold text-zinc-950 leading-tight">Expert Team</h4>
                     <p className="text-[10px] text-zinc-500 font-semibold mt-0.5 leading-tight">Get assistance from our experienced pros.</p>
                   </div>
                 </div>
@@ -773,7 +773,7 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-xs font-black text-zinc-950 leading-tight">Client First</h4>
+                    <h4 className="text-xs font-semibold text-zinc-950 leading-tight">Client First</h4>
                     <p className="text-[10px] text-zinc-500 font-semibold mt-0.5 leading-tight">Your success is our top priority.</p>
                   </div>
                 </div>
